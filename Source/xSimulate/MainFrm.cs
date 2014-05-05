@@ -63,17 +63,21 @@ namespace xSimulate
             FindElementAction findElementAction = new FindElementAction();
             findElementAction.ID = "kw1";
 
-            IBrowser browser = factory.Create(action);
-            browser.Run();
+            action.AddNext(findElementAction);
 
-            while (!browser.IsComplete())
-            {
-                System.Threading.Thread.Sleep(1);
-                Application.DoEvents();
-            }
+            MouseAction mouseAction = new MouseAction();
+            mouseAction.Click = true;
+            action.AddNext(mouseAction);
 
-            browser = factory.Create(findElementAction);
-            browser.Run();
+            AttributeAction attributeAction = new AttributeAction();
+            attributeAction.SetValue = "baidu";
+            action.AddNext(attributeAction);
+
+            ScrollAction scrollAction = new ScrollAction();
+            scrollAction.Position = Position.PageBottom;
+            action.AddNext(scrollAction);
+
+            factory.Run(action);
         }
     }
 }

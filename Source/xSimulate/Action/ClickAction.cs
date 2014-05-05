@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace xSimulate.Action
 {
-    class ClickAction
+    public class ClickAction : ActionBase
     {
+        public override ActionType ActionType
+        {
+            get { return ActionType.ClickAction; }
+        }
     }
 }

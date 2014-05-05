@@ -10,29 +10,20 @@ namespace xSimulate.Browser
 {
     public class PageBrowser : BrowserBase
     {
-        private PageAction action;
-        private bool runComplete;
-
-        public PageBrowser(WebBrowser webBrowser, PageAction action)
+        public PageBrowser(WebBrowser webBrowser)
             : base(webBrowser)
         {
-            this.action = action;
         }
 
-        public override void Run()
+        public override void Run(IAction action)
         {
-            this.runComplete = false;
-            webBrowser.Navigate(this.action.Uri);
-        }
-
-        protected override void OnDocumentCompleted()
-        {
-            this.runComplete = true;
+            PageAction pageAction = action as PageAction;
+            webBrowser.Navigate(pageAction.Uri);
         }
 
         public override bool IsComplete()
         {
-            return this.runComplete;
+            return this.webBrowser.ReadyState == WebBrowserReadyState.Complete;
         }
     }
 }

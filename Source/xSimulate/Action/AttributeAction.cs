@@ -6,19 +6,13 @@ using System.Threading.Tasks;
 
 namespace xSimulate.Action
 {
-    public enum Position
-    {
-        None,
-        PageBottom
-    }
-
-    public class ScrollAction : ActionBase
+    public class AttributeAction : ActionBase
     {
         public override ActionType ActionType
         {
-            get { return ActionType.ScrollAction; }
+            get { return ActionType.AttributeAction; }
         }
 
-        public Position Position { get; set; }
+        public string SetValue { get; set; }
     }
 }

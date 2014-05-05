@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using xSimulate.Action;
 
 namespace xSimulate.Browser
 {
@@ -23,7 +24,7 @@ namespace xSimulate.Browser
             OnDocumentCompleted();
         }
 
-        public abstract void Run();
+        public abstract void Run(IAction action);
 
         public virtual bool IsComplete()
         {

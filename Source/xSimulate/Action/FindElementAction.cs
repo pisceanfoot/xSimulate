@@ -16,5 +16,10 @@ namespace xSimulate.Action
         public HtmlElement Element { get; set; }
 
         public HtmlElement[] ElementArray { get; set; }
+
+        public override ActionType ActionType
+        {
+            get { return ActionType.FindElementAction; }
+        }
     }
 }

@@ -10,19 +10,17 @@ namespace xSimulate.Browser
 {
     public class FindElementBrowser : BrowserBase
     {
-        private FindElementAction action;
-
-        public FindElementBrowser(WebBrowser webBrowser, FindElementAction action)
+        public FindElementBrowser(WebBrowser webBrowser)
             : base(webBrowser)
         {
-            this.action = action;
         }
 
-        public override void Run()
+        public override void Run(IAction action)
         {
-            if (!string.IsNullOrEmpty(this.action.ID))
+            FindElementAction findElementAction = action as FindElementAction;
+            if (!string.IsNullOrEmpty(findElementAction.ID))
             {
-                this.action.Element = this.webBrowser.Document.GetElementById(this.action.ID);
+                BrowserStorage.Storage = this.webBrowser.Document.GetElementById(findElementAction.ID);
             }
         }
     }

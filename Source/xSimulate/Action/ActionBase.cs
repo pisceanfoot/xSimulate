@@ -9,6 +9,11 @@ namespace xSimulate.Action
     [Serializable]
     public abstract class ActionBase : IAction
     {
+        public abstract ActionType ActionType
+        {
+            get;
+        }
+
         public List<IAction> NextAction { get; set; }
 
         public void AddNext(IAction action)

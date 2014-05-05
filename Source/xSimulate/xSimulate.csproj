@@ -50,18 +50,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Action\ActionBase.cs" />
+    <Compile Include="Action\ActionType.cs" />
+    <Compile Include="Action\AttributeAction.cs" />
     <Compile Include="Action\BrowserAction.cs" />
     <Compile Include="Action\ClickAction.cs" />
     <Compile Include="Action\FindElementAction.cs" />
     <Compile Include="Action\IAction.cs" />
+    <Compile Include="Action\MouseAction.cs" />
     <Compile Include="Action\MouseMoveAction.cs" />
     <Compile Include="Action\PageAction.cs" />
     <Compile Include="Action\ScrollAction.cs" />
+    <Compile Include="Browser\AttributeBrowser.cs" />
     <Compile Include="Browser\BrowserBase.cs" />
     <Compile Include="Browser\BrowserFactory.cs" />
+    <Compile Include="Browser\BrowserStorage.cs" />
+    <Compile Include="Browser\MouseBrowser.cs" />
     <Compile Include="Browser\FindElementBrowser.cs" />
     <Compile Include="Browser\IBrowser.cs" />
     <Compile Include="Browser\PageBrowser.cs" />
+    <Compile Include="Browser\ScrollBrowser.cs" />
     <Compile Include="MainFrm.cs">
       <SubType>Form</SubType>
     </Compile>

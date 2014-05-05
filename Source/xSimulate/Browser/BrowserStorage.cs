@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using xSimulate.Action;
 
 namespace xSimulate.Browser
 {
-    public interface IBrowser
+    public static class BrowserStorage
     {
-        void Run(IAction action);
-
-        bool IsComplete();
+        public static object Storage
+        {
+            get;
+            set;
+        }
     }
 }
