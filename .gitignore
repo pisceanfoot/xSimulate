@@ -1,0 +1,11 @@
+# git ignore file
+**/bin
+**/obj
+*.suo
+*.user
+*.db
+*.scc
+*.vspscc
+*.pdsync
+TestResults.*
+/TestResults/*.trx
