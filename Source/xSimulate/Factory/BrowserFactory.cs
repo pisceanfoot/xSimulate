@@ -13,14 +13,27 @@ namespace xSimulate.Factory
     {
         private WebBrowserEx webBrowser;
         private Dictionary<ActionType, ITask> taskDic;
+        private System.Windows.Forms.Timer timer;
 
         public BrowserFactory(WebBrowserEx webBrowser)
         {
             taskDic = new Dictionary<ActionType, ITask>();
 
+            timer = new System.Windows.Forms.Timer();
+            timer.Tick += timer_Tick;
+            timer.Interval = 500;
+            timer.Enabled = false;
+
             this.webBrowser = webBrowser;
             this.webBrowser.ScriptErrorsSuppressed = false;
             this.webBrowser.NewWindow3 += webBrowser_NewWindow3;
+            
+        }
+
+        void timer_Tick(object sender, EventArgs e)
+        {
+            timer.Enabled = false;
+            this.webBrowser.Navigate("http://www.baidu.com", null, null, "Referer: http://www.google.com\r\n");
         }
 
         void webBrowser_NewWindow3(object sender, WebBrowserNewWindowEventArgs e)
@@ -33,7 +46,10 @@ namespace xSimulate.Factory
 
                 // Navigate to url from new window
                 //string.Format("Referer: {0}", this.webBrowser.Url.ToString() + Environment.NewLine)
-                this.webBrowser.Navigate(e.Url, "_self", null, null);
+                //this.webBrowser.Navigate(e.Url, null, null, "Referer:http://www.google.comrnUser-Agent:hi im uarnanythingulike:some stuff:)");
+
+                //this.webBrowser.Navigate(e.Url, null, null, "Referer: http://www.google.com\r\n");
+                timer.Enabled = true;
             }
             
         }
