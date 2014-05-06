@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace xSimulate.Action
+﻿namespace xSimulate.Action
 {
     public class MouseAction : ActionBase
     {
@@ -14,5 +8,7 @@ namespace xSimulate.Action
         }
 
         public bool Click { get; set; }
+
+        public bool MouseClick { get; set; }
     }
 }

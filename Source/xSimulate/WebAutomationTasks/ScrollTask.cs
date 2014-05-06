@@ -1,19 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using xSimulate.Action;
+using xSimulate.Browse;
+using xSimulate.WebAutomationTasks;
 
 namespace xSimulate.Browser
 {
-    public class ScrollBrowser : BrowserBase
+    public class ScrollTask : CommonTask
     {
         private Timer timer;
+        private int step = 100;
+        private int bottom = 0;
+        private bool running = true;
+        private int lastY = -1;
 
-        public ScrollBrowser(WebBrowser webBrowser)
+        public ScrollTask(WebBrowserEx webBrowser)
             : base(webBrowser)
         {
             timer = new Timer();
@@ -36,11 +38,20 @@ namespace xSimulate.Browser
                 return;
             }
 
+            lastY = -1;
+            running = true;
             if (scrollAction.Position == Position.PageBottom)
             {
-                int max = GetMaxPosition();
-                ToY(max);
+                bottom = GetMaxPosition();
+                step = 100;
             }
+
+            this.timer.Start();
+        }
+
+        public override bool IsComplete()
+        {
+            return !running;
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -48,14 +59,29 @@ namespace xSimulate.Browser
             this.timer.Stop();
             if (Process())
             {
+                running = false;
                 return;
             }
 
             this.timer.Start();
         }
 
+        
         private bool Process()
         {
+            int y = GetY();
+            if (lastY == y)
+            {
+                return true;
+            }
+            lastY = y;
+            if (bottom >= y)
+            {
+                ToY(y + step);
+
+                return false;
+            }
+
             return true;
         }
 

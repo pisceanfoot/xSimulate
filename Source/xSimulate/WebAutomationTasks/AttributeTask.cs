@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using xSimulate.Action;
+using xSimulate.Browse;
+using xSimulate.Storage;
 
-namespace xSimulate.Browser
+namespace xSimulate.WebAutomationTasks
 {
-    public class AttributeBrowser : BrowserBase
+    public class AttributeTask : CommonTask
     {
-        public AttributeBrowser(WebBrowser webBrowser)
+        public AttributeTask(WebBrowserEx webBrowser)
             : base(webBrowser)
         {
         }
@@ -30,7 +27,7 @@ namespace xSimulate.Browser
         {
             if (!string.IsNullOrEmpty(action.SetValue))
             {
-                HtmlElement element = BrowserStorage.Storage as HtmlElement;
+                HtmlElement element = TaskStorage.Storage as HtmlElement;
                 if (element == null)
                 {
                     return;

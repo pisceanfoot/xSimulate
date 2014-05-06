@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+
 using xSimulate.Action;
+using xSimulate.Browse;
 
-namespace xSimulate.Browser
+namespace xSimulate.WebAutomationTasks
 {
-    public abstract class BrowserBase : IBrowser
+    public abstract class CommonTask : ITask
     {
-        protected WebBrowser webBrowser;
+        protected WebBrowserEx webBrowser;
 
-        public BrowserBase(WebBrowser webBrowser)
+        public CommonTask(WebBrowserEx webBrowser)
         {
             this.webBrowser = webBrowser;
 
@@ -33,7 +30,6 @@ namespace xSimulate.Browser
 
         protected virtual void OnDocumentCompleted()
         {
-
         }
     }
 }

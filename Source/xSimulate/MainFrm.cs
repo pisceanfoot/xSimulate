@@ -1,20 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using xSimulate.Action;
-using xSimulate.Browser;
+using xSimulate.Browse;
+using xSimulate.Factory;
 
 namespace xSimulate
 {
     public partial class MainFrm : Form
     {
-        private WebBrowser webBrowser;
+        private WebBrowserEx webBrowser;
         private BrowserFactory factory;
         private Timer timer;
 
@@ -32,12 +26,12 @@ namespace xSimulate
             this.timer.Enabled = false;
         }
 
-        void MainFrm_Load(object sender, EventArgs e)
+        private void MainFrm_Load(object sender, EventArgs e)
         {
             this.timer.Start();
         }
 
-        void timer_Tick(object sender, EventArgs e)
+        private void timer_Tick(object sender, EventArgs e)
         {
             this.timer.Stop();
             Run();
@@ -50,7 +44,7 @@ namespace xSimulate
 
         private void InitWebBrowser()
         {
-            this.webBrowser = new WebBrowser();
+            this.webBrowser = new WebBrowserEx();
             this.webBrowser.Dock = DockStyle.Fill;
             this.Controls.Add(this.webBrowser);
         }
@@ -58,11 +52,10 @@ namespace xSimulate
         private void Run()
         {
             PageAction action = new PageAction();
-            action.Uri = "http://www.baidu.com";
+            action.Uri = "http://www.newegg.cn";
 
             FindElementAction findElementAction = new FindElementAction();
-            findElementAction.ID = "kw1";
-
+            findElementAction.ID = "topSearch";
             action.AddNext(findElementAction);
 
             MouseAction mouseAction = new MouseAction();
@@ -70,12 +63,30 @@ namespace xSimulate
             action.AddNext(mouseAction);
 
             AttributeAction attributeAction = new AttributeAction();
-            attributeAction.SetValue = "baidu";
+            attributeAction.SetValue = "手机";
             action.AddNext(attributeAction);
 
-            ScrollAction scrollAction = new ScrollAction();
-            scrollAction.Position = Position.PageBottom;
-            action.AddNext(scrollAction);
+            mouseAction = new MouseAction();
+            mouseAction.Click = true;
+            mouseAction.SaveData = false;
+            action.AddNext(mouseAction);
+
+            //
+            //findElementAction = new FindElementAction();
+            //findElementAction.ClassName = "btn_search";
+            //action.AddNext(findElementAction);
+
+            findElementAction = new FindElementAction();
+            findElementAction.Url = "http://www.newegg.cn/Product/A36-296-C0S-02.htm?&neg_sp=Home-_-A36-296-C0S-02-_-HotSaleArea";
+            action.AddNext(findElementAction);
+
+            mouseAction = new MouseAction();
+            mouseAction.Click = true;
+            action.AddNext(mouseAction);
+
+            //ScrollAction scrollAction = new ScrollAction();
+            //scrollAction.Position = Position.PageBottom;
+            //action.AddNext(scrollAction);
 
             factory.Run(action);
         }

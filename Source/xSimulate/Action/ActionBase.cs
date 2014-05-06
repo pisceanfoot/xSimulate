@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace xSimulate.Action
 {
     [Serializable]
     public abstract class ActionBase : IAction
     {
-        public abstract ActionType ActionType
+        public ActionBase()
         {
-            get;
+            this.SaveData = true;
         }
+
+        public abstract ActionType ActionType { get; }
+
+        public bool SaveData { get; set; }
 
         public List<IAction> NextAction { get; set; }
 
