@@ -1,5 +1,5 @@
-﻿using System.Windows.Forms;
-
+﻿using System.Threading;
+using System.Windows.Forms;
 using xSimulate.Action;
 using xSimulate.Browse;
 
@@ -13,7 +13,7 @@ namespace xSimulate.WebAutomationTasks
         {
             this.webBrowser = webBrowser;
 
-            this.webBrowser.DocumentCompleted += WebBrowser_DocumentCompleted;
+            //this.webBrowser.DocumentCompleted += WebBrowser_DocumentCompleted;
         }
 
         private void WebBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
@@ -21,7 +21,25 @@ namespace xSimulate.WebAutomationTasks
             OnDocumentCompleted();
         }
 
-        public abstract void Run(IAction action);
+        public virtual void Run(IAction action)
+        {
+            WaitForRun();
+            OnProcess(action);
+        }
+
+        protected abstract void OnProcess(IAction action);
+
+        protected void WaitForRun()
+        {
+            if (this.webBrowser.ReadyState != WebBrowserReadyState.Uninitialized)
+            {
+                while (this.webBrowser.ReadyState != WebBrowserReadyState.Complete)
+                {
+                    Application.DoEvents();
+                    Thread.Sleep(500);
+                }
+            }
+        }
 
         public virtual bool IsComplete()
         {

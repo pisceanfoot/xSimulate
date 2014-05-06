@@ -15,19 +15,14 @@ namespace xSimulate.Browser
 
         public override void Run(IAction action)
         {
+            OnProcess(action);
+        }
+
+        protected override void OnProcess(IAction action)
+        {
             PageAction pageAction = action as PageAction;
             webBrowser.Navigate(pageAction.Uri);
         }
-
-        //bool hasSet = false;
-        //protected override void OnDocumentCompleted()
-        //{
-        //    if (!hasSet)
-        //    {
-        //        //TaskStorage.Storage = this.webBrowser.Document.Body;
-        //        hasSet = true;
-        //    }
-        //}
 
         public override bool IsComplete()
         {

@@ -24,7 +24,7 @@ namespace xSimulate.Browser
             timer.Enabled = false;
         }
 
-        public override void Run(Action.IAction action)
+        protected override void OnProcess(Action.IAction action)
         {
             ScrollAction scrollAction = action as ScrollAction;
             if (scrollAction == null)

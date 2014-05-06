@@ -16,7 +16,7 @@ namespace xSimulate.WebAutomationTasks
         {
         }
 
-        public override void Run(Action.IAction action)
+        protected override void OnProcess(Action.IAction action)
         {
             TaskStorage.Storage = null;
         }

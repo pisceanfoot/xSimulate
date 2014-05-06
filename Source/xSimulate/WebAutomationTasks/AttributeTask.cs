@@ -12,7 +12,7 @@ namespace xSimulate.WebAutomationTasks
         {
         }
 
-        public override void Run(Action.IAction action)
+        protected override void OnProcess(Action.IAction action)
         {
             AttributeAction attributeAction = action as AttributeAction;
             if (attributeAction == null)

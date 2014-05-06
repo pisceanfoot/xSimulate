@@ -18,7 +18,7 @@ namespace xSimulate.Browser
         {
         }
 
-        public override void Run(IAction action)
+        protected override void OnProcess(IAction action)
         {
             FindElementAction findElementAction = action as FindElementAction;
             FindID(findElementAction);

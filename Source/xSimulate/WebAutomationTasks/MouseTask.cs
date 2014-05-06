@@ -17,7 +17,7 @@ namespace xSimulate.Browser
         {
         }
 
-        public override void Run(IAction action)
+        protected override void OnProcess(IAction action)
         {
             HtmlElement element = TaskStorage.Storage as HtmlElement;
             if (element == null)

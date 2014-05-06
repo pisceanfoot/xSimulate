@@ -30,28 +30,25 @@ namespace xSimulate.Factory
             
         }
 
-        void timer_Tick(object sender, EventArgs e)
+        private void timer_Tick(object sender, EventArgs e)
         {
             timer.Enabled = false;
-            this.webBrowser.Navigate("http://www.baidu.com", null, null, "Referer: http://www.google.com\r\n");
+            if(!string.IsNullOrEmpty(this.webBrowser.NextUrl))
+            {
+                this.webBrowser.Navigate(this.webBrowser.NextUrl, null, null, string.Format("Referer: {0}\r\n", this.webBrowser.Url.ToString()));
+                this.webBrowser.NextUrl = null;
+            }
         }
 
-        void webBrowser_NewWindow3(object sender, WebBrowserNewWindowEventArgs e)
+        private void webBrowser_NewWindow3(object sender, WebBrowserNewWindowEventArgs e)
         {
             if (!string.IsNullOrEmpty(e.Url))
             {
-
-                //Prevent new window
                 e.Cancel = true;
 
-                // Navigate to url from new window
-                //string.Format("Referer: {0}", this.webBrowser.Url.ToString() + Environment.NewLine)
-                //this.webBrowser.Navigate(e.Url, null, null, "Referer:http://www.google.comrnUser-Agent:hi im uarnanythingulike:some stuff:)");
-
-                //this.webBrowser.Navigate(e.Url, null, null, "Referer: http://www.google.com\r\n");
+                this.webBrowser.NextUrl = e.Url;
                 timer.Enabled = true;
             }
-            
         }
 
         public void Run(IAction action)
