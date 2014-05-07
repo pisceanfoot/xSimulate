@@ -10,6 +10,8 @@ namespace xSimulate.Action
 
         public string Url { get; set; }
 
+        public string XPath { get; set; }
+
         public override ActionType ActionType
         {
             get { return ActionType.FindElementAction; }

@@ -9,6 +9,7 @@
         ScrollAction,
         MouseAction,
         AttributeAction,
-        ClearDataAction
+        ClearDataAction,
+        WaitAction
     }
 }

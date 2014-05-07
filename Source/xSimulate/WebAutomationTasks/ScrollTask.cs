@@ -10,6 +10,7 @@ namespace xSimulate.Browser
     public class ScrollTask : CommonTask
     {
         private Timer timer;
+        private Random random;
         private int step = 100;
         private int bottom = 0;
         private bool running = true;
@@ -22,6 +23,8 @@ namespace xSimulate.Browser
             timer.Interval = 500;
             timer.Tick += timer_Tick;
             timer.Enabled = false;
+
+            random = new Random();
         }
 
         protected override void OnProcess(Action.IAction action)
@@ -43,7 +46,7 @@ namespace xSimulate.Browser
             if (scrollAction.Position == Position.PageBottom)
             {
                 bottom = GetMaxPosition();
-                step = 100;
+                step = random.Next(100, 200);
             }
 
             this.timer.Start();
@@ -65,7 +68,6 @@ namespace xSimulate.Browser
 
             this.timer.Start();
         }
-
         
         private bool Process()
         {

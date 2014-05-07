@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transaction>
+  <version>5</version>
+  <name>京东网上商城-综合网购首选，正品行货，机打发票，售后上门取件，省钱又放心</name>
+  <description></description>
+  <url>http://www.360buy.com</url>
+  <popwin>1</popwin>
+  <nobub></nobub>
+  <plugin></plugin>
+  <steps>
+    <step>
+      <name>京东网上商城-综合网购首选，正品行货，机打发票，售后上门取件，省钱又放心</name>
+      <description></description>
+      <shot>1</shot>
+      <actions>
+        <action type="WAIT">
+          <context window="0" frame="0"/>
+          <attributes>
+            <attribute name="condition">STATUS</attribute>
+            <attribute name="express">1</attribute>
+            <attribute name="timeout">60</attribute>
+          </attributes>
+        </action>
+        <action type="CLICK">
+          <context window="0" frame="0"/>
+          <attributes>
+            <attribute name="tagName">INPUT</attribute>
+            <attribute name="id">key</attribute>
+            <attribute name="type">TEXT</attribute>
+            <attribute name="index">0</attribute>
+          </attributes>
+        </action>
+      </actions>
+    </step>
+    <step>
+      <name>京东网上商城-综合网购首选，正品行货，机打发票，售后上门取件，省钱又放心[2]</name>
+      <description></description>
+      <shot>1</shot>
+      <actions>
+        <action type="WAIT">
+          <context window="0" frame="1"/>
+          <attributes>
+            <attribute name="condition">STATUS</attribute>
+            <attribute name="express">1</attribute>
+            <attribute name="timeout">60</attribute>
+          </attributes>
+        </action>
+        <action type="SETVALUE">
+          <context window="0" frame="0"/>
+          <attributes>
+            <attribute name="tagName">INPUT</attribute>
+            <attribute name="id">key</attribute>
+            <attribute name="type">TEXT</attribute>
+            <attribute name="index">0</attribute>
+            <attribute name="value">bFnKG]IJ&gt;+XK</attribute>
+          </attributes>
+        </action>
+        <action type="CLICK">
+          <context window="0" frame="0"/>
+          <attributes>
+            <attribute name="tagName">INPUT</attribute>
+            <attribute name="type">BUTTON</attribute>
+            <attribute name="value">搜索</attribute>
+            <attribute name="index">0</attribute>
+          </attributes>
+        </action>
+      </actions>
+    </step>
+    <step>
+      <name>IPHONE4S - 商品搜索 - 京东商城</name>
+      <description></description>
+      <shot>1</shot>
+      <actions>
+        <action type="WAIT">
+          <context window="0" frame="0"/>
+          <attributes>
+            <attribute name="condition">STATUS</attribute>
+            <attribute name="express">1</attribute>
+            <attribute name="timeout">60</attribute>
+          </attributes>
+        </action>
+        <action type="CLICK">
+          <context window="0" frame="0"/>
+          <attributes>
+            <attribute name="tagName">A</attribute>
+            <attribute name="href">http://jd2008.360buy.com/purchase/InitCart.aspx?pid=570127&amp;pcount=1&amp;ptype=1</attribute>
+            <attribute name="innerText">加入购物车</attribute>
+            <attribute name="index">0</attribute>
+          </attributes>
+        </action>
+      </actions>
+    </step>
+    <step>
+      <name>商品已成功加入购物车</name>
+      <description></description>
+      <shot>1</shot>
+      <actions>
+        <action type="WAIT">
+          <context window="1" frame="0"/>
+          <attributes>
+            <attribute name="condition">STATUS</attribute>
+            <attribute name="express">2</attribute>
+            <attribute name="timeout">60</attribute>
+          </attributes>
+        </action>
+        <action type="CLICK">
+          <context window="1" frame="0"/>
+          <attributes>
+            <attribute name="tagName">A</attribute>
+            <attribute name="id">GotoShoppingCart</attribute>
+            <attribute name="href">http://cart.360buy.com/cart/cart.html?backurl=http://www.360buy.com/product/570127.html</attribute>
+            <attribute name="innerText">去结算</attribute>
+            <attribute name="index">0</attribute>
+          </attributes>
+        </action>
+      </actions>
+    </step>
+    <step>
+      <name>我的购物车 - 京东商城</name>
+      <description></description>
+      <shot>1</shot>
+      <actions>
+        <action type="WAIT">
+          <context window="1" frame="0"/>
+          <attributes>
+            <attribute name="condition">STATUS</attribute>
+            <attribute name="express">1</attribute>
+            <attribute name="timeout">60</attribute>
+          </attributes>
+        </action>
+        <action type="CLICK">
+          <context window="1" frame="0"/>
+          <attributes>
+            <attribute name="tagName">A</attribute>
+            <attribute name="id">toSettlement</attribute>
+            <attribute name="href">javascript:goToOrder();</attribute>
+            <attribute name="innerText">去结算</attribute>
+            <attribute name="index">0</attribute>
+          </attributes>
+        </action>
+      </actions>
+    </step>
+    <step>
+      <name>我的购物车 - 京东商城[6]</name>
+      <description></description>
+      <shot>1</shot>
+      <actions>
+        <action type="WAIT">
+          <context window="1" frame="1"/>
+          <attributes>
+            <attribute name="condition">STATUS</attribute>
+            <attribute name="express">1</attribute>
+            <attribute name="timeout">60</attribute>
+          </attributes>
+        </action>
+      </actions>
+    </step>
+  </steps>
+</transaction>

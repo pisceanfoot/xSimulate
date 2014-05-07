@@ -10,6 +10,7 @@ namespace xSimulate
     {
         private WebBrowserEx webBrowser;
         private BrowserFactory factory;
+        private MyTraceListener trace;
         private Timer timer;
 
         public MainFrm()
@@ -24,6 +25,9 @@ namespace xSimulate
             this.timer.Tick += timer_Tick;
             this.timer.Interval = 1000;
             this.timer.Enabled = false;
+
+            trace = new MyTraceListener(this.TextBoxLog);
+            System.Diagnostics.Trace.Listeners.Add(trace);
         }
 
         private void MainFrm_Load(object sender, EventArgs e)
@@ -46,7 +50,7 @@ namespace xSimulate
         {
             this.webBrowser = new WebBrowserEx();
             this.webBrowser.Dock = DockStyle.Fill;
-            this.Controls.Add(this.webBrowser);
+            this.tabPageWebBrowser.Controls.Add(this.webBrowser);
         }
 
         private void Run()
@@ -66,27 +70,27 @@ namespace xSimulate
             attributeAction.SetValue = "手机";
             action.AddNext(attributeAction);
 
-            mouseAction = new MouseAction();
-            mouseAction.Click = true;
-            mouseAction.SaveData = false;
-            action.AddNext(mouseAction);
+            //mouseAction = new MouseAction();
+            //mouseAction.Click = true;
+            //mouseAction.SaveData = false;
+            //action.AddNext(mouseAction);
 
             //
             //findElementAction = new FindElementAction();
             //findElementAction.ClassName = "btn_search";
             //action.AddNext(findElementAction);
 
-            findElementAction = new FindElementAction();
-            findElementAction.Url = "http://www.newegg.cn/Product/A36-296-C0S-02.htm?&neg_sp=Home-_-A36-296-C0S-02-_-HotSaleArea";
-            action.AddNext(findElementAction);
+            //findElementAction = new FindElementAction();
+            //findElementAction.Url = "http://www.newegg.cn/Product/A36-296-C0S-02.htm?&neg_sp=Home-_-A36-296-C0S-02-_-HotSaleArea";
+            //action.AddNext(findElementAction);
 
-            mouseAction = new MouseAction();
-            mouseAction.Click = true;
-            action.AddNext(mouseAction);
+            //mouseAction = new MouseAction();
+            //mouseAction.Click = true;
+            //action.AddNext(mouseAction);
 
-            //ScrollAction scrollAction = new ScrollAction();
-            //scrollAction.Position = Position.PageBottom;
-            //action.AddNext(scrollAction);
+            ScrollAction scrollAction = new ScrollAction();
+            scrollAction.Position = Position.PageBottom;
+            action.AddNext(scrollAction);
 
             factory.Run(action);
         }

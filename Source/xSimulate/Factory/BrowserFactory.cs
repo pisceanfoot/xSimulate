@@ -21,7 +21,7 @@ namespace xSimulate.Factory
 
             timer = new System.Windows.Forms.Timer();
             timer.Tick += timer_Tick;
-            timer.Interval = 500;
+            timer.Interval = 10;
             timer.Enabled = false;
 
             this.webBrowser = webBrowser;
@@ -102,6 +102,10 @@ namespace xSimulate.Factory
             else if (action.ActionType == ActionType.ClearDataAction)
             {
                 task = new ClearDataTask(this.webBrowser);
+            }
+            else if (action.ActionType == ActionType.WaitAction)
+            {
+                task = new WaitTask(this.webBrowser);
             }
 
             taskDic.Add(action.ActionType, task);
