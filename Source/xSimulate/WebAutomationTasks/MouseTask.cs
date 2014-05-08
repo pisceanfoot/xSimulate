@@ -8,7 +8,7 @@ using xSimulate.Storage;
 using xSimulate.Util;
 using xSimulate.WebAutomationTasks;
 
-namespace xSimulate.Browser
+namespace xSimulate.WebAutomationTasks
 {
     public class MouseTask : CommonTask
     {

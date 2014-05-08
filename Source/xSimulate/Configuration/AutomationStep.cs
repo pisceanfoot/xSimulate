@@ -18,6 +18,16 @@ namespace xSimulate.Configuration
 
         [XmlArray("actions")]
         [XmlArrayItem("action")]
-        public List<AutomationAction> AutomationActionList { get; set; }
+        public List<AutomationAction> ActionList { get; set; }
+
+        public void Add(AutomationAction action)
+        {
+            if (this.ActionList == null)
+            {
+                this.ActionList = new List<AutomationAction>();
+            }
+
+            this.ActionList.Add(action);
+        }
     }
 }

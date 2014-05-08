@@ -1,10 +1,17 @@
 ﻿using System;
 using System.Xml.Serialization;
+using xSimulate.Configuration;
 
 namespace xSimulate.Action
 {
     public class AttributeAction : FindElementAction
     {
+        public AttributeAction(AutomationAction automationActionData)
+            : base(automationActionData)
+        {
+            this.SetValue = GetAttributeValue<string>("value");
+        }
+
         public override ActionType ActionType
         {
             get { return ActionType.AttributeAction; }

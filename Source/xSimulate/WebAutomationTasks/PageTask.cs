@@ -22,10 +22,17 @@ namespace xSimulate.Browser
         {
             PageAction pageAction = action as PageAction;
             webBrowser.Navigate(pageAction.Url);
+
+            LoggerManager.Debug("浏览: {0}", pageAction.Url);
         }
 
         public override bool IsComplete()
         {
+            if (this.webBrowser.IsDisposed)
+            {
+                return true;
+            }
+
             return this.webBrowser.ReadyState == WebBrowserReadyState.Complete;
         }
     }

@@ -5,7 +5,7 @@ using xSimulate.Storage;
 
 namespace xSimulate.WebAutomationTasks
 {
-    public class AttributeTask : CommonTask
+    public class AttributeTask : FindElementTask
     {
         public AttributeTask(WebBrowserEx webBrowser)
             : base(webBrowser)
@@ -14,6 +14,8 @@ namespace xSimulate.WebAutomationTasks
 
         protected override void OnProcess(Action.IAction action)
         {
+            base.OnProcess(action);
+
             AttributeAction attributeAction = action as AttributeAction;
             if (attributeAction == null)
             {

@@ -43,8 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Test_AutomationManagement.cs" />
+    <Compile Include="Test_ClassLoader.cs" />
+    <Compile Include="Test_Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\xSimulate\xSimulate.csproj">
+      <Project>{18c5b982-661f-43f9-9922-5036ab43a683}</Project>
+      <Name>xSimulate</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

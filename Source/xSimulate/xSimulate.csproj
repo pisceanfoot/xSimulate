@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Action\ActionBase.cs" />
+    <Compile Include="AutomationManagement.cs" />
     <Compile Include="Configuration\AutomationAction.cs" />
     <Compile Include="Configuration\AutomationActionAttribute.cs" />
     <Compile Include="Configuration\AutomationStep.cs" />
@@ -71,6 +72,9 @@
     <Compile Include="Action\ActionStep.cs" />
     <Compile Include="LoggerManager.cs" />
     <Compile Include="Trace\MyTraceListener.cs" />
+    <Compile Include="Util\ClassLoader.cs" />
+    <Compile Include="Util\Converter.cs" />
+    <Compile Include="Util\StringConvertTo.cs" />
     <Compile Include="Util\Win32API.cs" />
     <Compile Include="Util\XmlSerializerHelper.cs" />
     <Compile Include="WebAutomationTasks\AttributeTask.cs" />
@@ -105,6 +109,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="data.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

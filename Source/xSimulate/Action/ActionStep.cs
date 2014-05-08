@@ -10,6 +10,6 @@ namespace xSimulate.Action
 
         public string Description { get; set; }
 
-        public List<ActionBase> ActionList { get; set; }
+        public List<IAction> ActionList { get; set; }
     }
 }

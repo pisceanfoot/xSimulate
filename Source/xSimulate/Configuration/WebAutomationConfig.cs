@@ -29,19 +29,26 @@ namespace xSimulate.Configuration
 
         [XmlArray("steps")]
         [XmlArrayItem("step")]
-        public List<AutomationStep> AutomationStepList { get; set; }
-        
-        public static WebAutomationConfig Config
-        {
-            get
-            {
-                if (actionConfig == null)
-                {
-                    actionConfig = XmlSerializerHelper.LoadFromXml<WebAutomationConfig>("data.config");
-                }
+        public List<AutomationStep> StepList { get; set; }
 
-                return actionConfig;
+        public void Add(AutomationStep step)
+        {
+            if (this.StepList == null)
+            {
+                this.StepList = new List<AutomationStep>();
             }
+
+            this.StepList.Add(step);
+        }
+        
+        public static WebAutomationConfig Load()
+        {
+            if (actionConfig == null)
+            {
+                actionConfig = XmlSerializerHelper.LoadFromXml<WebAutomationConfig>("data.config");
+            }
+
+            return actionConfig;
         }
 
         public static void Save(WebAutomationConfig config)

@@ -14,10 +14,30 @@ namespace xSimulate.Configuration
 
         [XmlArray("attributes")]
         [XmlArrayItem("attribute")]
-        public List<AutomationActionAttribute> AutomationActionAttributeList { get; set; }
+        public List<AutomationActionAttribute> AttributeList { get; set; }
 
         [XmlArray("childActions")]
         [XmlArrayItem("childAction")]
         public List<AutomationAction> ChildActionList { get; set; }
+
+        public void Add(AutomationActionAttribute attribute)
+        {
+            if (this.AttributeList == null)
+            {
+                this.AttributeList = new List<AutomationActionAttribute>();
+            }
+
+            this.AttributeList.Add(attribute);
+        }
+
+        public void AddChild(AutomationAction childAction)
+        {
+            if (this.ChildActionList == null)
+            {
+                this.ChildActionList = new List<AutomationAction>();
+            }
+
+            this.ChildActionList.Add(childAction);
+        }
     }
 }

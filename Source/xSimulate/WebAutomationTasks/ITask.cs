@@ -1,4 +1,5 @@
-﻿using xSimulate.Action;
+﻿using System.Windows.Forms;
+using xSimulate.Action;
 
 namespace xSimulate.WebAutomationTasks
 {

@@ -11,104 +11,48 @@ namespace xSimulate.Factory
 {
     public class BrowserFactory
     {
-        private WebBrowserEx webBrowser;
-        private Dictionary<ActionType, ITask> taskDic;
-        private System.Windows.Forms.Timer timer;
+        private static Dictionary<ActionType, ITask> taskDic = new Dictionary<ActionType,ITask>();
 
-        public BrowserFactory(WebBrowserEx webBrowser)
+        public static ITask Create(IAction action, WebBrowserEx webBrowser)
         {
-            taskDic = new Dictionary<ActionType, ITask>();
+            ITask task = null;
 
-            timer = new System.Windows.Forms.Timer();
-            timer.Tick += timer_Tick;
-            timer.Interval = 10;
-            timer.Enabled = false;
-
-            this.webBrowser = webBrowser;
-            this.webBrowser.ScriptErrorsSuppressed = false;
-            this.webBrowser.NewWindow3 += webBrowser_NewWindow3;
-            
-        }
-
-        private void timer_Tick(object sender, EventArgs e)
-        {
-            timer.Enabled = false;
-            if(!string.IsNullOrEmpty(this.webBrowser.NextUrl))
-            {
-                this.webBrowser.Navigate(this.webBrowser.NextUrl, null, null, string.Format("Referer: {0}\r\n", this.webBrowser.Url.ToString()));
-                this.webBrowser.NextUrl = null;
-            }
-        }
-
-        private void webBrowser_NewWindow3(object sender, WebBrowserNewWindowEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(e.Url))
-            {
-                e.Cancel = true;
-
-                this.webBrowser.NextUrl = e.Url;
-                timer.Enabled = true;
-            }
-        }
-
-        public void Run(IAction action)
-        {
-            ITask task = Create(action);
-            task.Run(action);
-            while (!task.IsComplete())
-            {
-                Application.DoEvents();
-                Thread.Sleep(500);
-            }
-
-            if (action.NextAction != null && action.NextAction.Count > 0)
-            {
-                foreach (IAction nextAction in action.NextAction)
-                {
-                    Run(nextAction);
-                }
-            }
-        }
-
-        public ITask Create(IAction action)
-        {
-            ITask task;
-            taskDic.TryGetValue(action.ActionType, out task);
-            if (task != null)
+            if (taskDic.TryGetValue(action.ActionType, out task))
             {
                 return task;
             }
 
             if (action.ActionType == ActionType.PageAction)
             {
-                task = new PageTask(this.webBrowser);
+                task = new PageTask(webBrowser);
             }
             else if (action.ActionType == ActionType.FindElementAction)
             {
-                task = new FindElementTask(this.webBrowser);
+                task = new FindElementTask(webBrowser);
             }
             else if (action.ActionType == ActionType.MouseAction)
             {
-                task = new MouseTask(this.webBrowser);
+                task = new MouseTask(webBrowser);
             }
             else if (action.ActionType == ActionType.AttributeAction)
             {
-                task = new AttributeTask(this.webBrowser);
+                task = new AttributeTask(webBrowser);
             }
             else if (action.ActionType == ActionType.ScrollAction)
             {
-                task = new ScrollTask(this.webBrowser);
+                task = new ScrollTask(webBrowser);
             }
             else if (action.ActionType == ActionType.ClearDataAction)
             {
-                task = new ClearDataTask(this.webBrowser);
+                task = new ClearDataTask(webBrowser);
             }
             else if (action.ActionType == ActionType.WaitAction)
             {
-                task = new WaitTask(this.webBrowser);
+                task = new WaitTask(webBrowser);
             }
 
             taskDic.Add(action.ActionType, task);
+
             return task;
         }
     }

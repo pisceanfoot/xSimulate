@@ -7,7 +7,7 @@ using xSimulate.WebAutomationTasks;
 using System.Text.RegularExpressions;
 using xSimulate.Browse;
 
-namespace xSimulate.Browser
+namespace xSimulate.WebAutomationTasks
 {
     public class FindElementTask : CommonTask
     {
@@ -31,7 +31,6 @@ namespace xSimulate.Browser
             FindUrl(findElementAction);
             FindXPath(findElementAction);
         }
-
 
         #region Find ID
         private void FindID(FindElementAction findElementAction)

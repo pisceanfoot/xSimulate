@@ -5,7 +5,7 @@ using xSimulate.Action;
 using xSimulate.Browse;
 using xSimulate.WebAutomationTasks;
 
-namespace xSimulate.Browser
+namespace xSimulate.WebAutomationTasks
 {
     public class ScrollTask : CommonTask
     {
