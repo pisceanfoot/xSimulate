@@ -23,7 +23,7 @@ namespace xSimulate.Browser
             PageAction pageAction = action as PageAction;
             webBrowser.Navigate(pageAction.Url);
 
-            LoggerManager.Debug("浏览: {0}", pageAction.Url);
+            LoggerManager.Debug("Browser: {0}", pageAction.Url);
         }
 
         public override bool IsComplete()

@@ -14,7 +14,7 @@ namespace xSimulate.Action
         {
             this.automationActionData = automationActionData;
 
-            this.SaveData = GetAttributeValue<bool>("savedata");
+            this.SaveData = GetAttributeValue<bool>("savedata", true);
         }
 
         public abstract ActionType ActionType { get; }
@@ -40,6 +40,10 @@ namespace xSimulate.Action
 
         protected T GetAttributeValue<T>(string name)
         {
+            return GetAttributeValue<T>(name, default(T));
+        }
+        protected T GetAttributeValue<T>(string name, T defaultValue)
+        {
             name = name.ToLower();
             if (this.automationActionData.AttributeList != null && this.automationActionData.AttributeList.Count >0)
             {
@@ -47,7 +51,7 @@ namespace xSimulate.Action
                 {
                     if (attr.Name.ToLower() == name)
                     {
-                        return StringConvertTo.ConvertTo<T>(attr.Value);
+                        return StringConvertTo.ConvertTo<T>(attr.Value, defaultValue);
                     }
                 }
             }

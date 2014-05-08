@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using xSimulate.Action;
 using xSimulate.Browse;
+using xSimulate.Storage;
 
 namespace xSimulate.WebAutomationTasks
 {
@@ -12,19 +13,22 @@ namespace xSimulate.WebAutomationTasks
         public CommonTask(WebBrowserEx webBrowser)
         {
             this.webBrowser = webBrowser;
-
-            //this.webBrowser.DocumentCompleted += WebBrowser_DocumentCompleted;
         }
 
-        private void WebBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
-        {
-            OnDocumentCompleted();
-        }
-
+        #region ITask
         public virtual void Run(IAction action)
         {
             WaitForRun();
             OnProcess(action);
+
+            ActionBase actionBase = action as ActionBase;
+            if (actionBase != null)
+            {
+                if (!actionBase.SaveData)
+                {
+                    TaskStorage.Storage = null;
+                }
+            }
         }
 
         protected abstract void OnProcess(IAction action);
@@ -45,9 +49,13 @@ namespace xSimulate.WebAutomationTasks
         {
             return true;
         }
+        #endregion
 
-        protected virtual void OnDocumentCompleted()
+        #region Debug
+        protected void DebugElement(HtmlElement element)
         {
+            LoggerManager.Debug(LoggerManager.FormatElement(element));
         }
+        #endregion
     }
 }

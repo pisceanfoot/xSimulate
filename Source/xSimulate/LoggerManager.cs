@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace xSimulate
 {
@@ -17,6 +18,10 @@ namespace xSimulate
         /// <param name="args"></param>
         public static void Info(string message, params object[] args)
         {
+            if (string.IsNullOrEmpty(message))
+            {
+                return;
+            }
             Trace.WriteLine(string.Format(message, args));
         }
 
@@ -26,6 +31,10 @@ namespace xSimulate
         /// <param name="message"></param>
         public static void Info(string message)
         {
+            if (string.IsNullOrEmpty(message))
+            {
+                return;
+            }
             Trace.WriteLine(message);
         }
 
@@ -35,6 +44,10 @@ namespace xSimulate
         /// <param name="message"></param>
         public static void Debug(string message)
         {
+            if (string.IsNullOrEmpty(message))
+            {
+                return;
+            }
             System.Diagnostics.Debug.WriteLine(message);
         }
 
@@ -45,6 +58,10 @@ namespace xSimulate
         /// <param name="args"></param>
         public static void Debug(string message, params object[] args)
         {
+            if (string.IsNullOrEmpty(message))
+            {
+                return;
+            }
             System.Diagnostics.Debug.WriteLine(string.Format(message, args));
         }
 
@@ -54,6 +71,10 @@ namespace xSimulate
         /// <param name="message"></param>
         public static void Warning(string message)
         {
+            if (string.IsNullOrEmpty(message))
+            {
+                return;
+            }
             Trace.TraceWarning(message);
         }
 
@@ -64,6 +85,10 @@ namespace xSimulate
         /// <param name="args"></param>
         public static void Warning(string message, params object[] args)
         {
+            if (string.IsNullOrEmpty(message))
+            {
+                return;
+            }
             Trace.TraceWarning(string.Format(message, args));
         }
 
@@ -83,6 +108,10 @@ namespace xSimulate
         /// <param name="message"></param>
         public static void Error(string message)
         {
+            if (string.IsNullOrEmpty(message))
+            {
+                return;
+            }
             Trace.TraceError(message);
         }
 
@@ -93,6 +122,10 @@ namespace xSimulate
         /// <param name="args"></param>
         public static void Error(string message, params object[] args)
         {
+            if (string.IsNullOrEmpty(message))
+            {
+                return;
+            }
             Trace.TraceError(string.Format(message, args));
         }
 
@@ -112,6 +145,10 @@ namespace xSimulate
         /// <param name="message"></param>
         public static void Fatal(string message)
         {
+            if (string.IsNullOrEmpty(message))
+            {
+                return;
+            }
             Trace.Fail(message);
         }
 
@@ -122,6 +159,10 @@ namespace xSimulate
         /// <param name="args"></param>
         public static void Fatal(string message, params object[] args)
         {
+            if (string.IsNullOrEmpty(message))
+            {
+                return;
+            }
             Trace.Fail(string.Format(message, args));
         }
 
@@ -175,6 +216,17 @@ namespace xSimulate
             buffer.Append(ex.ToString()).Append(Environment.NewLine);
             buffer.Append("----------").Append(Environment.NewLine);
             return buffer.ToString();
+        }
+
+        public static string FormatElement(HtmlElement element)
+        {
+            string message = null;
+            if (element != null)
+            {
+                message = string.Format("Tag:{0},ID:{1},Html:{2}", element.TagName, element.Id, element.OuterHtml);
+            }
+
+            return message;
         }
     }
 }

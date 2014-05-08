@@ -44,6 +44,7 @@ namespace xSimulate
             this.timer.Enabled = false;
 
             trace = new MyTraceListener(this.TextBoxLog);
+
             //System.Diagnostics.Trace.Listeners.Add(trace);
             System.Diagnostics.Debug.Listeners.Add(trace);
         }
@@ -58,6 +59,11 @@ namespace xSimulate
         private void Run()
         {
             manager.LoadConfig();
+            manager.Run();
+        }
+
+        private void restartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             manager.Run();
         }
     }

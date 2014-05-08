@@ -10,7 +10,7 @@ using xSimulate.WebAutomationTasks;
 
 namespace xSimulate.WebAutomationTasks
 {
-    public class MouseTask : CommonTask
+    public class MouseTask : FindElementTask
     {
         public MouseTask(WebBrowserEx webBrowser)
             : base(webBrowser)
@@ -19,6 +19,8 @@ namespace xSimulate.WebAutomationTasks
 
         protected override void OnProcess(IAction action)
         {
+            base.OnProcess(action);
+
             HtmlElement element = TaskStorage.Storage as HtmlElement;
             if (element == null)
             {
@@ -33,16 +35,61 @@ namespace xSimulate.WebAutomationTasks
 
             if (mouseAction.Click)
             {
+                LoggerManager.Debug("MouseTask Trigger Click");
+
                 Click(element);
+            }
+            if (mouseAction.ClickNew)
+            {
+                LoggerManager.Debug("MouseTask Trigger ClickNew");
+
+                ClickNew(element);
             }
             if (mouseAction.MouseClick)
             {
-                ClickNew(element);
-            }
+                LoggerManager.Debug("MouseTask Trigger MouseClick");
 
-            if (!mouseAction.SaveData)
+                MouseClick(element);
+            }
+            if (mouseAction.Over)
             {
-                TaskStorage.Storage = null;
+                LoggerManager.Debug("MouseTask Trigger Mouse Over");
+                Over(element);
+            }
+            if (mouseAction.OverNew)
+            {
+                LoggerManager.Debug("MouseTask Trigger Mouse OverNew");
+                OverNew(element);
+            }
+            if (mouseAction.Down)
+            {
+                LoggerManager.Debug("MouseTask Trigger Mouse Down");
+                Down(element);
+            }
+            if (mouseAction.Up)
+            {
+                LoggerManager.Debug("MouseTask Trigger Mouse Up");
+                Up(element);
+            }
+            if (mouseAction.Focus)
+            {
+                LoggerManager.Debug("MouseTask Trigger Mouse Focus");
+                Focus(element);
+            }
+            if (mouseAction.Move)
+            {
+                LoggerManager.Debug("MouseTask Trigger Mouse Move");
+                Move(element);
+            }
+            if (mouseAction.MoveNew)
+            {
+                LoggerManager.Debug("MouseTask Trigger Mouse MoveNew");
+                MoveNew(element);
+            }
+            if (mouseAction.MoveEnter)
+            {
+                LoggerManager.Debug("MouseTask Trigger Mouse MoveEnter");
+                MoveEnter(element);
             }
         }
 
@@ -143,6 +190,11 @@ namespace xSimulate.WebAutomationTasks
             Over(h);
             Move(h);
             Win32API.SendMessage(handle, 0x200, zero, lParam);
+        }
+
+        public void MoveEnter(HtmlElement h)
+        {
+            h.InvokeMember("fireEvent", new object[] { "onmouseenter" });
         }
     }
 }

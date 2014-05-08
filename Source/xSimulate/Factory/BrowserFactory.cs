@@ -50,6 +50,10 @@ namespace xSimulate.Factory
             {
                 task = new WaitTask(webBrowser);
             }
+            else if (action.ActionType == ActionType.ClickAction)
+            {
+                task = new ClickTask(webBrowser);
+            }
 
             taskDic.Add(action.ActionType, task);
 

@@ -35,6 +35,7 @@ namespace xSimulate.WebAutomationTasks
                     return;
                 }
 
+                DebugElement(element);
                 element.SetAttribute("value", action.SetValue);
             }
         }

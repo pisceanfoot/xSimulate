@@ -12,7 +12,7 @@ namespace xSimulate.Action
         {
             this.Contains = GetAttributeValue<bool>("contains");
             this.ID = GetAttributeValue<string>("id");
-            this.ClassName = GetAttributeValue<string>("classname");
+            this.ClassName = GetAttributeValue<string>("class");
             this.XPath = GetAttributeValue<string>("xpath");
             this.TagName = GetAttributeValue<string>("tagname");
             this.Type = GetAttributeValue<string>("type");

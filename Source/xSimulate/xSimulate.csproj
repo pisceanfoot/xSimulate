@@ -18,7 +18,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Action\ActionBase.cs" />
+    <Compile Include="Action\ClickAction.cs" />
     <Compile Include="AutomationManagement.cs" />
     <Compile Include="Configuration\AutomationAction.cs" />
     <Compile Include="Configuration\AutomationActionAttribute.cs" />
@@ -59,7 +60,6 @@
     <Compile Include="Action\AttributeAction.cs" />
     <Compile Include="Action\BrowserAction.cs" />
     <Compile Include="Action\ClearDataAction.cs" />
-    <Compile Include="Action\ClickAction.cs" />
     <Compile Include="Action\FindElementAction.cs" />
     <Compile Include="Action\IAction.cs" />
     <Compile Include="Action\MouseAction.cs" />
@@ -81,6 +81,7 @@
     <Compile Include="Factory\BrowserFactory.cs" />
     <Compile Include="Storage\TaskStorage.cs" />
     <Compile Include="WebAutomationTasks\ClearDataTask.cs" />
+    <Compile Include="WebAutomationTasks\ClickTask.cs" />
     <Compile Include="WebAutomationTasks\HtmlHelp.cs" />
     <Compile Include="WebAutomationTasks\MouseTask.cs" />
     <Compile Include="WebAutomationTasks\FindElementTask.cs" />

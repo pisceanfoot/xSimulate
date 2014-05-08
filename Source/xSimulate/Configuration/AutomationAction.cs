@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
@@ -9,8 +10,16 @@ namespace xSimulate.Configuration
     [Serializable]
     public class AutomationAction
     {
+        public AutomationAction()
+        {
+            this.Enabled = true;
+        }
+
         [XmlAttribute("type")]
         public string Type { get; set; }
+
+        [XmlAttribute("enabled")]
+        public bool Enabled { get; set; }
 
         [XmlArray("attributes")]
         [XmlArrayItem("attribute")]

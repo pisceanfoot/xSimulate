@@ -92,6 +92,10 @@ namespace xSimulate
                 {
                     foreach (AutomationAction actionData in stepData.ActionList)
                     {
+                        if (!actionData.Enabled)
+                        {
+                            continue;
+                        }
                         IAction action = ConvertToAction(actionData);
                         if (step.ActionList == null)
                         {
@@ -113,6 +117,11 @@ namespace xSimulate
             {
                 foreach (AutomationAction childData in actionData.ChildActionList)
                 {
+                    if (!childData.Enabled)
+                    {
+                        continue;
+                    }
+
                     IAction childAction = ConvertToAction(childData);
                     if (action.NextAction == null)
                     {
@@ -143,6 +152,7 @@ namespace xSimulate
         #region Run
         public void Run()
         {
+            LoggerManager.Debug("Start Run Step");
             foreach (ActionStep step in this.actionStepList)
             {
                 RunStep(step);
@@ -151,6 +161,8 @@ namespace xSimulate
 
         private void RunStep(ActionStep step)
         {
+            LoggerManager.Info("Step:{0}", step.Name);
+            
             if (step.ActionList == null || step.ActionList.Count == 0)
             {
                 return;
@@ -158,6 +170,8 @@ namespace xSimulate
 
             foreach (IAction action in step.ActionList)
             {
+                LoggerManager.Debug("Start Run Action:{0}", action.ActionType);
+
                 RunAction(action);
             }
         }
@@ -176,6 +190,7 @@ namespace xSimulate
             {
                 foreach (IAction child in action.NextAction)
                 {
+                    LoggerManager.Debug("Start Run Child Action:{0}", child.ActionType);
                     RunAction(child);
                 }
             }

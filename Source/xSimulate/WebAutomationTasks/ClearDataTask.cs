@@ -18,6 +18,8 @@ namespace xSimulate.WebAutomationTasks
 
         protected override void OnProcess(Action.IAction action)
         {
+            LoggerManager.Debug("Clear TaskStorage.Storage");
+
             TaskStorage.Storage = null;
         }
     }

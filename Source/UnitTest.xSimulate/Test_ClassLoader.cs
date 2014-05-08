@@ -28,11 +28,11 @@ namespace UnitTest.xSimulate
         public void Test_LoadBrowserAction()
         {
             AutomationAction actionConfig = new AutomationAction();
-            actionConfig.Type = "Click";
+            actionConfig.Type = "Mouse";
             IAction action = ClassLoader.LoadAction(actionConfig);
 
             Assert.IsNotNull(action);
-            Assert.AreEqual(action.ActionType, ActionType.ClickAction);
+            Assert.AreEqual(action.ActionType, ActionType.MouseAction);
         }
     }
 }

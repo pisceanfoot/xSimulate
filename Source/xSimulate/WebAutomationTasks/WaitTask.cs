@@ -19,6 +19,8 @@ namespace xSimulate.WebAutomationTasks
                 return;
             }
 
+            LoggerManager.Debug("WaitTask");
+
             if (waitAction.Seconds > 0)
             {
                 Thread.Sleep(waitAction.Seconds * 1000);

@@ -18,7 +18,7 @@ namespace xSimulate.Action
 
         public override ActionType ActionType
         {
-            get { return ActionType.ClearDataAction; ; }
+            get { return ActionType.ClearDataAction; }
         }
     }
 }

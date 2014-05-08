@@ -37,6 +37,8 @@ namespace xSimulate.WebAutomationTasks
         {
             if (!string.IsNullOrEmpty(findElementAction.ID))
             {
+                LoggerManager.Debug("FindElementTask FindID");
+
                 HtmlElement element = TaskStorage.Storage as HtmlElement;
                 if (element == null)
                 {
@@ -84,6 +86,8 @@ namespace xSimulate.WebAutomationTasks
             {
                 return;
             }
+
+            LoggerManager.Debug("FindElementTask FindClassName");
 
             wholeWordRegex = new Regex(string.Format("\\b{0}\\b", findElementAction.ClassName));
 
@@ -136,6 +140,8 @@ namespace xSimulate.WebAutomationTasks
                 return;
             }
 
+            LoggerManager.Debug("FindElementTask FindUrl");
+
             HtmlElement element = TaskStorage.Storage as HtmlElement;
             if (element == null)
             {
@@ -164,6 +170,8 @@ namespace xSimulate.WebAutomationTasks
             {
                 return;
             }
+
+            LoggerManager.Debug("FindElementTask FindXPath");
 
             HtmlElement element = TaskStorage.Storage as HtmlElement;
             if (element == null)

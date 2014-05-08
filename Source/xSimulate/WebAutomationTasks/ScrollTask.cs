@@ -35,6 +35,8 @@ namespace xSimulate.WebAutomationTasks
                 return;
             }
 
+            LoggerManager.Debug("ScrollTask");
+
             // page
             if (scrollAction.Position == Position.None)
             {
