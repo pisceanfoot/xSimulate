@@ -21,7 +21,7 @@ namespace xSimulate.Browser
         protected override void OnProcess(IAction action)
         {
             PageAction pageAction = action as PageAction;
-            webBrowser.Navigate(pageAction.Uri);
+            webBrowser.Navigate(pageAction.Url);
         }
 
         public override bool IsComplete()

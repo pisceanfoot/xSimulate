@@ -1,13 +1,13 @@
 ﻿using System;
+using System.Xml.Serialization;
 
 namespace xSimulate.Action
 {
-    [Serializable]
     public class PageAction : ActionBase
     {
         public string Name { get; set; }
 
-        public string Uri { get; set; }
+        public string Url { get; set; }
 
         public override ActionType ActionType
         {

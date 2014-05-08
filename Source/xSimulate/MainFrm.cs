@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using xSimulate.Action;
 using xSimulate.Browse;
+using xSimulate.Configuration;
 using xSimulate.Factory;
 
 namespace xSimulate
@@ -15,6 +16,7 @@ namespace xSimulate
 
         public MainFrm()
         {
+            Config();
             InitializeComponent();
 
             InitWebBrowser();
@@ -53,10 +55,47 @@ namespace xSimulate
             this.tabPageWebBrowser.Controls.Add(this.webBrowser);
         }
 
+        private void Config()
+        {
+            WebAutomationConfig config = new WebAutomationConfig();
+            config.AutomationStepList = new System.Collections.Generic.List<AutomationStep>();
+
+            AutomationStep step = new AutomationStep();
+            config.AutomationStepList.Add(step);
+
+            step.Name = "aaa";
+            step.AutomationActionList = new System.Collections.Generic.List<AutomationAction>();
+
+            AutomationAction action = new AutomationAction();
+            action.Type = "Wait";
+            action.AutomationActionAttributeList = new System.Collections.Generic.List<AutomationActionAttribute>();
+
+            AutomationActionAttribute attr = new AutomationActionAttribute();
+            attr.Name = "name";
+            attr.Value = "value";
+            action.AutomationActionAttributeList.Add(attr);
+
+            AutomationAction childAction = new AutomationAction();
+            childAction.Type = "Wait";
+            childAction.AutomationActionAttributeList = new System.Collections.Generic.List<AutomationActionAttribute>();
+            childAction.AutomationActionAttributeList.Add(attr);
+            action.ChildActionList = new System.Collections.Generic.List<AutomationAction>();
+            action.ChildActionList.Add(childAction);
+
+            step.AutomationActionList.Add(action);
+
+            WebAutomationConfig.Save(config);
+        }
+
         private void Run()
         {
+            WebAutomationConfig config = new WebAutomationConfig();
+            //config.ActionSetpList = new System.Collections.Generic.List<ActionStep>();
+
+            
+
             PageAction action = new PageAction();
-            action.Uri = "http://www.newegg.cn";
+            action.Url = "http://www.newegg.cn";
 
             FindElementAction findElementAction = new FindElementAction();
             findElementAction.ID = "topSearch";
@@ -70,28 +109,36 @@ namespace xSimulate
             attributeAction.SetValue = "手机";
             action.AddNext(attributeAction);
 
-            //mouseAction = new MouseAction();
-            //mouseAction.Click = true;
-            //mouseAction.SaveData = false;
-            //action.AddNext(mouseAction);
+            mouseAction = new MouseAction();
+            mouseAction.Click = true;
+            mouseAction.SaveData = false;
+            action.AddNext(mouseAction);
 
-            //
-            //findElementAction = new FindElementAction();
-            //findElementAction.ClassName = "btn_search";
-            //action.AddNext(findElementAction);
 
-            //findElementAction = new FindElementAction();
-            //findElementAction.Url = "http://www.newegg.cn/Product/A36-296-C0S-02.htm?&neg_sp=Home-_-A36-296-C0S-02-_-HotSaleArea";
-            //action.AddNext(findElementAction);
+            findElementAction = new FindElementAction();
+            findElementAction.ClassName = "btn_search";
+            action.AddNext(findElementAction);
 
-            //mouseAction = new MouseAction();
-            //mouseAction.Click = true;
-            //action.AddNext(mouseAction);
+            findElementAction = new FindElementAction();
+            findElementAction.Url = "http://www.newegg.cn/Product/A36-296-C0S-02.htm?&neg_sp=Home-_-A36-296-C0S-02-_-HotSaleArea";
+            action.AddNext(findElementAction);
+
+            mouseAction = new MouseAction();
+            mouseAction.Click = true;
+            action.AddNext(mouseAction);
 
             ScrollAction scrollAction = new ScrollAction();
             scrollAction.Position = Position.PageBottom;
-            action.AddNext(scrollAction);
 
+            ActionStep step = new ActionStep();
+            step.Name = "aa";
+            step.ActionList = new System.Collections.Generic.List<ActionBase>();
+            step.ActionList.Add(action);
+            step.ActionList.Add(scrollAction);
+            //config.ActionSetpList.Add(step);
+
+            WebAutomationConfig.Save(config);
+            return;
             factory.Run(action);
         }
     }

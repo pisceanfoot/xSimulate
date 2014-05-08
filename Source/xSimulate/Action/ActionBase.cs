@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace xSimulate.Action
 {
-    [Serializable]
     public abstract class ActionBase : IAction
     {
         public ActionBase()
         {
-            this.SaveData = true;
         }
 
         public abstract ActionType ActionType { get; }

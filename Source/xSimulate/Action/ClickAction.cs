@@ -1,6 +1,9 @@
-﻿namespace xSimulate.Action
+﻿using System;
+using System.Xml.Serialization;
+
+namespace xSimulate.Action
 {
-    public class ClickAction : ActionBase
+    public class ClickAction : FindElementAction
     {
         public override ActionType ActionType
         {

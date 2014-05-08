@@ -50,6 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Action\ActionBase.cs" />
+    <Compile Include="Configuration\AutomationAction.cs" />
+    <Compile Include="Configuration\AutomationActionAttribute.cs" />
+    <Compile Include="Configuration\AutomationStep.cs" />
+    <Compile Include="Configuration\WebAutomationConfig.cs" />
     <Compile Include="Action\ActionType.cs" />
     <Compile Include="Action\AttributeAction.cs" />
     <Compile Include="Action\BrowserAction.cs" />
@@ -64,9 +68,11 @@
     <Compile Include="Browse\WebBrowserEx.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Action\ActionStep.cs" />
     <Compile Include="LoggerManager.cs" />
     <Compile Include="Trace\MyTraceListener.cs" />
     <Compile Include="Util\Win32API.cs" />
+    <Compile Include="Util\XmlSerializerHelper.cs" />
     <Compile Include="WebAutomationTasks\AttributeTask.cs" />
     <Compile Include="Factory\BrowserFactory.cs" />
     <Compile Include="Storage\TaskStorage.cs" />

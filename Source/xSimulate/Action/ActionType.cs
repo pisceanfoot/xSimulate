@@ -1,5 +1,7 @@
-﻿namespace xSimulate.Action
+﻿using System;
+namespace xSimulate.Action
 {
+    [Serializable]
     public enum ActionType
     {
         BrowserAction,
