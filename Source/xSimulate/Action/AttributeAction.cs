@@ -4,7 +4,7 @@ using xSimulate.Configuration;
 
 namespace xSimulate.Action
 {
-    public class AttributeAction : FindElementAction
+    public class AttributeAction : FindAction
     {
         public AttributeAction(AutomationAction automationActionData)
             : base(automationActionData)

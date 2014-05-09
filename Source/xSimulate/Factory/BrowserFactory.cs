@@ -30,9 +30,9 @@ namespace xSimulate.Factory
             {
                 task = new BrowserTask(webBrowser);
             }
-            else if (action.ActionType == ActionType.FindElementAction)
+            else if (action.ActionType == ActionType.FindAction)
             {
-                task = new FindElementTask(webBrowser);
+                task = new FindTask(webBrowser);
             }
             else if (action.ActionType == ActionType.MouseAction)
             {
@@ -57,6 +57,14 @@ namespace xSimulate.Factory
             else if (action.ActionType == ActionType.ClickAction)
             {
                 task = new ClickTask(webBrowser);
+            }
+            else if (action.ActionType == ActionType.KeyboardAction)
+            {
+                task = new KeyboardTask(webBrowser);
+            }
+            else if (action.ActionType == ActionType.SendKeyAction)
+            {
+                task = new SendKeyTask(webBrowser);
             }
 
             taskDic.Add(action.ActionType, task);

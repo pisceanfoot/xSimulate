@@ -5,7 +5,7 @@ namespace xSimulate.Action
     public enum ActionType
     {
         BrowserAction,
-        FindElementAction,
+        FindAction,
         PageAction,
         ScrollAction,
         MouseAction,
@@ -13,6 +13,8 @@ namespace xSimulate.Action
         ClearDataAction,
         WaitAction,
         ClickAction,
-        ScriptAction
+        ScriptAction,
+        KeyboardAction,
+        SendKeyAction
     }
 }

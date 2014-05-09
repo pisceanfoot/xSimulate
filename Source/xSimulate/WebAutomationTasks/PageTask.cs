@@ -13,11 +13,6 @@ namespace xSimulate.Browser
         {
         }
 
-        public override void Run(IAction action)
-        {
-            OnProcess(action);
-        }
-
         protected override void OnProcess(IAction action)
         {
             PageAction pageAction = action as PageAction;

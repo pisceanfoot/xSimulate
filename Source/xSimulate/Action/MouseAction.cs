@@ -2,7 +2,7 @@
 
 namespace xSimulate.Action
 {
-    public class MouseAction : FindElementAction
+    public class MouseAction : FindAction
     {
         public MouseAction(AutomationAction automationActionData)
             : base(automationActionData)

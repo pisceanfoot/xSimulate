@@ -7,7 +7,7 @@ using xSimulate.Configuration;
 
 namespace xSimulate.Action
 {
-    public class ClickAction : ActionBase
+    public class ClickAction : FindAction
     {
         public ClickAction(AutomationAction automationActionData)
             : base(automationActionData)

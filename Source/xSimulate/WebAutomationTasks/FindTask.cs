@@ -8,21 +8,22 @@ using System.Text.RegularExpressions;
 using xSimulate.Browse;
 using System.Collections.Generic;
 using xSimulate.Util;
+using mshtml;
 
 namespace xSimulate.WebAutomationTasks
 {
-    public class FindElementTask : CommonTask
+    public class FindTask : CommonTask
     {
         private Regex wholeWordRegex = null;
 
-        public FindElementTask(WebBrowserEx webBrowser)
+        public FindTask(WebBrowserEx webBrowser)
             : base(webBrowser)
         {
         }
 
         protected override void OnProcess(IAction action)
         {
-            FindElementAction findElementAction = action as FindElementAction;
+            FindAction findElementAction = action as FindAction;
             if (findElementAction == null)
             {
                 return;
@@ -42,7 +43,7 @@ namespace xSimulate.WebAutomationTasks
         }
 
         #region Help
-        private bool AssertEqual(FindElementAction findElementAction, string x, string y)
+        private bool AssertEqual(FindAction findElementAction, string x, string y)
         {
             bool result = false;
             if (string.IsNullOrEmpty(x) == null || string.IsNullOrEmpty(y) == null)
@@ -72,8 +73,41 @@ namespace xSimulate.WebAutomationTasks
         }
         #endregion
 
+        #region Context
+        private HtmlDocument GetHtmlDocument(FindAction findElementAction)
+        {
+            if (findElementAction.ActionContext != null)
+            {
+                HtmlWindow htmlWindow = null;
+                if (findElementAction.ActionContext.FrameIndex >= 0)
+                {
+                    htmlWindow = this.webBrowser.Document.Window.Frames[findElementAction.ActionContext.FrameIndex];
+                }
+                else if(!string.IsNullOrEmpty(findElementAction.ActionContext.FrameName))
+                {
+                    htmlWindow = this.webBrowser.Document.Window.Frames[findElementAction.ActionContext.FrameName];
+                }
+
+                if (htmlWindow == null)
+                {
+                    return null;
+                }
+
+                //IHTMLWindow2 htmlWindow2 = (IHTMLWindow2)htmlWindow.DomWindow;
+                //IHTMLDocument2 document2 = CrossFrameIE.GetDocumentFromWindow(htmlWindow2);
+                //mshtml.HTMLDocument d = (mshtml.HTMLDocument)document2;
+
+                return htmlWindow.Document;
+            }
+            else
+            {
+                return this.webBrowser.Document;
+            }
+        } 
+        #endregion
+
         #region Combine
-        private void FindContidion(FindElementAction findElementAction)
+        private void FindContidion(FindAction findElementAction)
         {
             LoggerManager.Debug("FindElementTask FindContidion");
             if (!AssertCanFindContidion(findElementAction))
@@ -90,7 +124,14 @@ namespace xSimulate.WebAutomationTasks
 
             if (saveElement == null)
             {
-                htmlElementCollection = this.webBrowser.Document.GetElementsByTagName(findElementAction.TagName);
+                HtmlDocument document = GetHtmlDocument(findElementAction);
+                if (document == null)
+                {
+                    LoggerManager.Debug("FindElementTask HtmlDocument document Error");
+                    return;
+                }
+
+                htmlElementCollection = document.GetElementsByTagName(findElementAction.TagName);
             }
             else
             {
@@ -174,7 +215,7 @@ namespace xSimulate.WebAutomationTasks
             }
         }
 
-        private bool AssertCanFindContidion(FindElementAction findElementAction)
+        private bool AssertCanFindContidion(FindAction findElementAction)
         {
             if (string.IsNullOrEmpty(findElementAction.TagName))
             {
@@ -197,17 +238,23 @@ namespace xSimulate.WebAutomationTasks
         #endregion
 
         #region Find ID
-        private HtmlElement FindID(FindElementAction findElementAction)
+        private void FindID(FindAction findElementAction)
         {
-            HtmlElement element = null;
             if (!string.IsNullOrEmpty(findElementAction.ID))
             {
                 LoggerManager.Debug("FindElementTask FindID");
 
-                element = TaskStorage.Storage as HtmlElement;
+                HtmlElement element = TaskStorage.Storage as HtmlElement;
                 if (element == null)
                 {
-                    element = this.webBrowser.Document.GetElementById(findElementAction.ID);
+                    HtmlDocument document = GetHtmlDocument(findElementAction);
+                    if (document == null)
+                    {
+                        LoggerManager.Debug("FindElementTask HtmlDocument document Error");
+                        return;
+                    }
+
+                    element = document.GetElementById(findElementAction.ID);
                 }
                 else
                 {
@@ -216,8 +263,6 @@ namespace xSimulate.WebAutomationTasks
 
                 TaskStorage.Storage = element;
             }
-
-            return element;
         }
 
         private HtmlElement FindIDRecusive(HtmlElement element, string id)
@@ -249,7 +294,7 @@ namespace xSimulate.WebAutomationTasks
         #endregion
 
         #region Find ClassName
-        private void FindClassName(FindElementAction findElementAction)
+        private void FindClassName(FindAction findElementAction)
         {
             if (string.IsNullOrEmpty(findElementAction.ClassName))
             {
@@ -263,7 +308,14 @@ namespace xSimulate.WebAutomationTasks
             HtmlElement element = TaskStorage.Storage as HtmlElement;
             if (element == null)
             {
-                element = this.webBrowser.Document.Body;
+                HtmlDocument document = GetHtmlDocument(findElementAction);
+                if (document == null)
+                {
+                    LoggerManager.Debug("FindElementTask HtmlDocument document Error");
+                    return;
+                }
+
+                element = document.Body;
                 TaskStorage.Storage = FindClassRecusive(element, findElementAction.ClassName);
             }
             else
@@ -302,7 +354,7 @@ namespace xSimulate.WebAutomationTasks
         #endregion
 
         #region Find Url
-        private void FindUrl(FindElementAction findElementAction)
+        private void FindUrl(FindAction findElementAction)
         {
             if (string.IsNullOrEmpty(findElementAction.Url))
             {
@@ -314,7 +366,14 @@ namespace xSimulate.WebAutomationTasks
             HtmlElement element = TaskStorage.Storage as HtmlElement;
             if (element == null)
             {
-                element = this.webBrowser.Document.Body;
+                HtmlDocument document = GetHtmlDocument(findElementAction);
+                if (document == null)
+                {
+                    LoggerManager.Debug("FindElementTask HtmlDocument document Error");
+                    return;
+                }
+
+                element = document.Body;
             }
 
             HtmlElementCollection elementCollection = element.GetElementsByTagName("a");
@@ -333,7 +392,7 @@ namespace xSimulate.WebAutomationTasks
         #endregion
 
         #region XPath
-        private void FindXPath(FindElementAction findElementAction)
+        private void FindXPath(FindAction findElementAction)
         {
             if (string.IsNullOrEmpty(findElementAction.XPath))
             {
@@ -345,7 +404,14 @@ namespace xSimulate.WebAutomationTasks
             HtmlElement element = TaskStorage.Storage as HtmlElement;
             if (element == null)
             {
-                element = this.webBrowser.Document.Body;
+                HtmlDocument document = GetHtmlDocument(findElementAction);
+                if (document == null)
+                {
+                    LoggerManager.Debug("FindElementTask HtmlDocument document Error");
+                    return;
+                }
+
+                element = document.Body;
             }
 
             TaskStorage.Storage = HtmlHelp.SelectHtmlNode(findElementAction.XPath, element);

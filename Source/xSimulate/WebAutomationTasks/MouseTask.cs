@@ -10,7 +10,7 @@ using xSimulate.WebAutomationTasks;
 
 namespace xSimulate.WebAutomationTasks
 {
-    public class MouseTask : FindElementTask
+    public class MouseTask : FindTask
     {
         public MouseTask(WebBrowserEx webBrowser)
             : base(webBrowser)
@@ -95,8 +95,8 @@ namespace xSimulate.WebAutomationTasks
 
         public void Click(HtmlElement h)
         {
+            Focus(h); 
             Over(h);
-            //Focus(h);
             Down(h);
             h.InvokeMember("click");
         }
@@ -164,7 +164,7 @@ namespace xSimulate.WebAutomationTasks
 
         public void Focus(HtmlElement h)
         {
-            h.InvokeMember("fireEvent", new object[] { "onfocus" });
+            h.Focus();
         }
 
         public void Move(HtmlElement h)

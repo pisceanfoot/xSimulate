@@ -21,11 +21,17 @@ namespace xSimulate.Configuration
         [XmlAttribute("enabled")]
         public bool Enabled { get; set; }
 
+        [XmlElement("saveData")]
+        public string SaveData { get; set; }
+
         [XmlElement("saveDataKey")]
         public string SaveDataKey { get; set; }
 
         [XmlElement("getDataKey")]
         public string GetDataKey { get; set; }
+
+        [XmlElement("context")]
+        public AutomationContext Context { get; set; }
 
         [XmlArray("attributes")]
         [XmlArrayItem("attribute")]

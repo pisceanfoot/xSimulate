@@ -6,9 +6,9 @@ using xSimulate.Configuration;
 
 namespace xSimulate.Action
 {
-    public class FindElementAction : ActionBase
+    public class FindAction : ActionBase
     {
-        public FindElementAction(AutomationAction automationActionData)
+        public FindAction(AutomationAction automationActionData)
             : base(automationActionData)
         {
             this.Combine = GetAttributeValue<bool>("combine");
@@ -76,7 +76,7 @@ namespace xSimulate.Action
 
         public override ActionType ActionType
         {
-            get { return ActionType.FindElementAction; }
+            get { return ActionType.FindAction; }
         }
     }
 }

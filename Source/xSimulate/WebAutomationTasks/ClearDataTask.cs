@@ -20,7 +20,7 @@ namespace xSimulate.WebAutomationTasks
         {
             LoggerManager.Debug("Clear TaskStorage.Storage");
 
-            TaskStorage.Storage = null;
+            TaskStorage.Clear();
         }
     }
 }

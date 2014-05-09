@@ -47,18 +47,21 @@ namespace xSimulate
             timer.Enabled = false;
             if(!string.IsNullOrEmpty(this.webBrowser.NextUrl))
             {
-                this.webBrowser.Navigate(this.webBrowser.NextUrl, null, null, string.Format("Referer: {0}\r\n", this.webBrowser.Url.ToString()));
+                string nextUrl = this.webBrowser.NextUrl;
                 this.webBrowser.NextUrl = null;
+                this.webBrowser.Navigate(nextUrl, null, null, string.Format("Referer: {0}\r\n", this.webBrowser.Url.ToString()));
+                this.webBrowser.Busy = false;
             }
         }
 
         private void webBrowser_NewWindow3(object sender, WebBrowserNewWindowEventArgs e)
         {
+            e.Cancel = true;
+
             if (!string.IsNullOrEmpty(e.Url))
             {
-                e.Cancel = true;
-
                 this.webBrowser.NextUrl = e.Url;
+                this.webBrowser.Busy = true;
                 timer.Enabled = true;
             }
         }
@@ -87,6 +90,11 @@ namespace xSimulate
 
             foreach (AutomationStep stepData in config.StepList)
             {
+                if (!stepData.Enabled)
+                {
+                    continue;
+                }
+
                 ActionStep step = ConvertToStep(stepData);
                 if (stepData.ActionList != null)
                 {
@@ -152,6 +160,8 @@ namespace xSimulate
         #region Run
         public void Run()
         {
+            Storage.TaskStorage.Clear();
+
             LoggerManager.Debug("Start Run Step");
             foreach (ActionStep step in this.actionStepList)
             {
@@ -161,6 +171,7 @@ namespace xSimulate
 
         private void RunStep(ActionStep step)
         {
+            WaitBrowserBusy();
             LoggerManager.Info("Step:{0}", step.Name);
             
             if (step.ActionList == null || step.ActionList.Count == 0)
@@ -178,12 +189,13 @@ namespace xSimulate
 
         private void RunAction(IAction action)
         {
+            WaitBrowserBusy();
             ITask task = BrowserFactory.Create(action, this.webBrowser);
             task.Run(action);
             while (!task.IsComplete())
             {
                 Application.DoEvents();
-                Thread.Sleep(500);
+                Thread.Sleep(10);
             }
 
             if (action.HasChild)
@@ -192,6 +204,18 @@ namespace xSimulate
                 {
                     LoggerManager.Debug("Start Run Child Action:{0}", child.ActionType);
                     RunAction(child);
+                }
+            }
+        }
+
+        private void WaitBrowserBusy()
+        {
+            if (this.webBrowser.Busy)
+            {
+                while (this.webBrowser.Busy)
+                {
+                    Application.DoEvents();
+                    Thread.Sleep(10);
                 }
             }
         }

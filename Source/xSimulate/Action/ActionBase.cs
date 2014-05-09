@@ -14,18 +14,45 @@ namespace xSimulate.Action
         {
             this.automationActionData = automationActionData;
 
-            this.SaveData = GetAttributeValue<bool>("savedata", true);
+            if (this.automationActionData.Context != null)
+            {
+                string strFrame = this.automationActionData.Context.Frame;
+
+                if (!string.IsNullOrEmpty(strFrame))
+                {
+                    this.ActionContext = new ActionContext();
+                    int frameIndex;
+                    if (int.TryParse(strFrame, out frameIndex))
+                    {
+                        this.ActionContext.FrameIndex = frameIndex;
+                    }
+                    else
+                    {
+                        this.ActionContext.FrameIndex = -1;
+                        this.ActionContext.FrameName = strFrame;
+                    }
+                }
+            }
+
+            this.SaveData = StringConvertTo.ConvertTo<bool>(automationActionData.SaveData, true);
             this.GetDatakey = GetAttributeValue<string>("getDatakey");
             this.SaveDatakey = GetAttributeValue<string>("saveDatakey");
+            this.Wait = GetAttributeValue<int>("wait", 0);
         }
 
         public abstract ActionType ActionType { get; }
+
+        #region Data
+        public ActionContext ActionContext { get; set; }
 
         public bool SaveData { get; set; }
 
         public string GetDatakey { get; set; }
 
         public string SaveDatakey { get; set; }
+
+        public int Wait { get; set; }
+        #endregion
 
         #region Action
         public List<IAction> NextAction { get; set; }
@@ -76,7 +103,7 @@ namespace xSimulate.Action
 
         protected List<T> GetAttributeValueStartWith<T>(string name, T defaultValue)
         {
-            List<T> list = new List<T>();
+            List<T> list = null;
 
             name = name.ToLower();
             if (this.automationActionData.AttributeList != null && this.automationActionData.AttributeList.Count > 0)
@@ -85,6 +112,11 @@ namespace xSimulate.Action
                 {
                     if (attr.Name.ToLower().StartsWith(name))
                     {
+                        if (list == null)
+                        {
+                            list = new List<T>();
+                        }
+
                         list.Add(StringConvertTo.ConvertTo<T>(attr.Value, defaultValue));
                     }
                 }

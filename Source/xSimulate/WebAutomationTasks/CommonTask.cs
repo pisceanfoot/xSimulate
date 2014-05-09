@@ -28,6 +28,23 @@ namespace xSimulate.WebAutomationTasks
                 {
                     TaskStorage.Clear();
                 }
+                if (actionBase.Wait > 0)
+                {
+                    int count = 0;
+                    int step = 10;
+
+                    while (count <= actionBase.Wait)
+                    {
+                        Thread.Sleep(step);
+                        Application.DoEvents();
+
+                        count += step;
+                        if (count < actionBase.Wait && count + step > actionBase.Wait)
+                        {
+                            step = actionBase.Wait - count;
+                        }
+                    }
+                }
             }
         }
 
@@ -40,7 +57,7 @@ namespace xSimulate.WebAutomationTasks
                 while (this.webBrowser.ReadyState != WebBrowserReadyState.Complete)
                 {
                     Application.DoEvents();
-                    Thread.Sleep(500);
+                    Thread.Sleep(10);
                 }
             }
         }

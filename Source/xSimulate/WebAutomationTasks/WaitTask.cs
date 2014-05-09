@@ -1,4 +1,5 @@
 ﻿using System.Threading;
+using System.Windows.Forms;
 using xSimulate.Action;
 using xSimulate.Browse;
 
@@ -23,11 +24,29 @@ namespace xSimulate.WebAutomationTasks
 
             if (waitAction.Seconds > 0)
             {
-                Thread.Sleep(waitAction.Seconds * 1000);
+                Sleep(waitAction.Seconds * 1000);
             }
             if (waitAction.Milliseconds > 0)
             {
-                Thread.Sleep(waitAction.Milliseconds);
+                Sleep(waitAction.Milliseconds);
+            }
+        }
+
+        private void Sleep(int wait)
+        {
+            int count = 0;
+            int step = 10;
+
+            while (count <= wait)
+            {
+                Application.DoEvents();
+                Thread.Sleep(step);
+
+                count += step;
+                if (count < wait && count + step > wait)
+                {
+                    step = wait - count;
+                }
             }
         }
     }

@@ -10,17 +10,17 @@ using xSimulate.Storage;
 
 namespace xSimulate.WebAutomationTasks
 {
-    public class KeyboardTask : CommonTask
+    public class SendKeyTask : FindTask
     {
-        public KeyboardTask(WebBrowserEx webBrowser)
+        public SendKeyTask(WebBrowserEx webBrowser)
             : base(webBrowser)
         {
         }
 
         protected override void OnProcess(Action.IAction action)
         {
-            KeyboardAction keyboardAction = action as KeyboardAction;
-            if (keyboardAction == null)
+            SendKeyAction sendKeyAction = action as SendKeyAction;
+            if (sendKeyAction == null)
             {
                 return;
             }
@@ -32,25 +32,19 @@ namespace xSimulate.WebAutomationTasks
                 return;
             }
 
-            if (keyboardAction.KeyDown)
-            {
-                Down(element);
-            }
-
-            if (keyboardAction.KeyUp)
-            {
-                Up(element);
-            }
+            element.Focus();
+            SendKey(sendKeyAction);
         }
 
-        public void Down(HtmlElement h)
+        private void SendKey(SendKeyAction sendKeyAction)
         {
-            h.InvokeMember("fireEvent", new object[] { "onkeydown" });
-        }
-
-        public void Up(HtmlElement h)
-        {
-            h.InvokeMember("fireEvent", new object[] { "onkeyup" });
+            if (sendKeyAction.Keys != null && sendKeyAction.Keys.Count > 0)
+            {
+                foreach (string key in sendKeyAction.Keys)
+                {
+                    System.Windows.Forms.SendKeys.Send(key);
+                }
+            }
         }
     }
 }

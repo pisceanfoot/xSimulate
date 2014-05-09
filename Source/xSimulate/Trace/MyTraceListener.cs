@@ -29,6 +29,10 @@ namespace xSimulate
 
         public override void Write(string message)
         {
+            if (this.output.IsDisposed)
+            {
+                return;
+            }
 
             System.Action append = delegate()
             {
