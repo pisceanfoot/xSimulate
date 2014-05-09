@@ -7,7 +7,7 @@ using xSimulate.Configuration;
 
 namespace xSimulate.Action
 {
-    public class SendKeyAction : ActionBase
+    public class SendKeyAction : FindAction
     {
         public SendKeyAction(AutomationAction automationActionData)
             : base(automationActionData)
