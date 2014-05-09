@@ -26,6 +26,10 @@ namespace xSimulate.Factory
             {
                 task = new PageTask(webBrowser);
             }
+            else if (action.ActionType == ActionType.BrowserAction)
+            {
+                task = new BrowserTask(webBrowser);
+            }
             else if (action.ActionType == ActionType.FindElementAction)
             {
                 task = new FindElementTask(webBrowser);

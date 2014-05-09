@@ -21,12 +21,18 @@ namespace xSimulate.Configuration
         [XmlAttribute("enabled")]
         public bool Enabled { get; set; }
 
+        [XmlElement("saveDataKey")]
+        public string SaveDataKey { get; set; }
+
+        [XmlElement("getDataKey")]
+        public string GetDataKey { get; set; }
+
         [XmlArray("attributes")]
         [XmlArrayItem("attribute")]
         public List<AutomationActionAttribute> AttributeList { get; set; }
 
         [XmlArray("childActions")]
-        [XmlArrayItem("childAction")]
+        [XmlArrayItem("action")]
         public List<AutomationAction> ChildActionList { get; set; }
 
         public void Add(AutomationActionAttribute attribute)

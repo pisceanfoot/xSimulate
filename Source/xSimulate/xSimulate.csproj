@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Action\ActionBase.cs" />
     <Compile Include="Action\ClickAction.cs" />
+    <Compile Include="Action\ScriptAction.cs" />
     <Compile Include="AutomationManagement.cs" />
     <Compile Include="Configuration\AutomationAction.cs" />
     <Compile Include="Configuration\AutomationActionAttribute.cs" />
@@ -75,17 +76,22 @@
     <Compile Include="Util\ClassLoader.cs" />
     <Compile Include="Util\Converter.cs" />
     <Compile Include="Util\StringConvertTo.cs" />
+    <Compile Include="Util\WildCard.cs" />
     <Compile Include="Util\Win32API.cs" />
     <Compile Include="Util\XmlSerializerHelper.cs" />
     <Compile Include="WebAutomationTasks\AttributeTask.cs" />
     <Compile Include="Factory\BrowserFactory.cs" />
     <Compile Include="Storage\TaskStorage.cs" />
+    <Compile Include="WebAutomationTasks\BrowserTask.cs" />
     <Compile Include="WebAutomationTasks\ClearDataTask.cs" />
     <Compile Include="WebAutomationTasks\ClickTask.cs" />
     <Compile Include="WebAutomationTasks\HtmlHelp.cs" />
+    <Compile Include="WebAutomationTasks\ImageCopyTask.cs" />
+    <Compile Include="WebAutomationTasks\KeyboardTask.cs" />
     <Compile Include="WebAutomationTasks\MouseTask.cs" />
     <Compile Include="WebAutomationTasks\FindElementTask.cs" />
     <Compile Include="WebAutomationTasks\PageTask.cs" />
+    <Compile Include="WebAutomationTasks\ScriptTask.cs" />
     <Compile Include="WebAutomationTasks\ScrollTask.cs" />
     <Compile Include="MainFrm.cs">
       <SubType>Form</SubType>

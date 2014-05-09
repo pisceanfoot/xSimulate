@@ -12,6 +12,7 @@ namespace xSimulate.Action
         AttributeAction,
         ClearDataAction,
         WaitAction,
-        ClickAction
+        ClickAction,
+        ScriptAction
     }
 }

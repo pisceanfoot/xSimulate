@@ -26,7 +26,7 @@ namespace xSimulate.WebAutomationTasks
             {
                 if (!actionBase.SaveData)
                 {
-                    TaskStorage.Storage = null;
+                    TaskStorage.Clear();
                 }
             }
         }
@@ -51,10 +51,17 @@ namespace xSimulate.WebAutomationTasks
         }
         #endregion
 
+        #region Storage
+
+        #endregion
+
         #region Debug
         protected void DebugElement(HtmlElement element)
         {
+#if DEBUG
             LoggerManager.Debug(LoggerManager.FormatElement(element));
+#endif
+            
         }
         #endregion
     }
