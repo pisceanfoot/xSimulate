@@ -69,7 +69,41 @@ namespace xSimulate.WebAutomationTasks
         #endregion
 
         #region Storage
+        protected void SaveData(IAction action, HtmlElement element)
+        {
+            ActionBase actionBase = action as ActionBase;
+            if (actionBase == null)
+            {
+                return;
+            }
 
+            if (string.IsNullOrEmpty(actionBase.SaveDatakey))
+            {
+                TaskStorage.Storage = element;
+            }
+            else
+            {
+                TaskStorage.SetKey(actionBase.SaveDatakey, element);
+            }
+        }
+
+        protected object GetData(IAction action)
+        {
+            ActionBase actionBase = action as ActionBase;
+            if (actionBase == null)
+            {
+                return null;
+            }
+
+            if (string.IsNullOrEmpty(actionBase.GetDatakey))
+            {
+                return TaskStorage.Storage;
+            }
+            else
+            {
+                return TaskStorage.GetKey(actionBase.GetDatakey);
+            }
+        }
         #endregion
 
         #region Debug

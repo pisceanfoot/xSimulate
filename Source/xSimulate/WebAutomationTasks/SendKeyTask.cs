@@ -25,7 +25,7 @@ namespace xSimulate.WebAutomationTasks
                 return;
             }
 
-            HtmlElement element = TaskStorage.Storage as HtmlElement;
+            HtmlElement element = this.GetData(action) as HtmlElement;
             if (element == null)
             {
                 LoggerManager.Error("Element Not Found");

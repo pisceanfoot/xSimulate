@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using xSimulate.Action;
 using xSimulate.Browse;
+using xSimulate.Storage;
 using xSimulate.WebAutomationTasks;
 
 namespace xSimulate.WebAutomationTasks
@@ -11,10 +12,10 @@ namespace xSimulate.WebAutomationTasks
     {
         private Timer timer;
         private Random random;
-        private int step = 100;
         private int bottom = 0;
         private bool running = true;
         private int lastY = -1;
+        private bool positive = true;
 
         public ScrollTask(WebBrowserEx webBrowser)
             : base(webBrowser)
@@ -25,6 +26,13 @@ namespace xSimulate.WebAutomationTasks
             timer.Enabled = false;
 
             random = new Random();
+        }
+
+        #region Task
+        private void InitScroll()
+        {
+            lastY = -1;
+            running = true;
         }
 
         protected override void OnProcess(Action.IAction action)
@@ -43,12 +51,42 @@ namespace xSimulate.WebAutomationTasks
                 return;
             }
 
-            lastY = -1;
-            running = true;
+            InitScroll();
+
             if (scrollAction.Position == Position.PageBottom)
             {
                 bottom = GetMaxPosition();
-                step = random.Next(100, 200);
+            }
+            else if (scrollAction.Position == Position.Element)
+            {
+                HtmlElement element = this.GetData(action) as HtmlElement;
+                if (element == null)
+                {
+                    LoggerManager.Error("Element Not Found");
+                    return;
+                }
+                bottom = GetY(element);
+
+                if (bottom == 0)
+                {
+                    bottom = GetYoffset(element);
+                }
+            }
+
+            int current = GetY();
+            if (bottom == current)
+            {
+                return;
+            }
+            else if (bottom > current)
+            {
+                positive = true;
+                bottom += scrollAction.Offset;
+            }
+            else
+            {
+                positive = false;
+                bottom -= scrollAction.Offset;
             }
 
             this.timer.Start();
@@ -56,11 +94,19 @@ namespace xSimulate.WebAutomationTasks
 
         public override bool IsComplete()
         {
+            if (!running)
+            {
+                this.scrollAction = null;
+            }
+
             return !running;
         }
+        #endregion
 
+        #region Scroll
         private void timer_Tick(object sender, EventArgs e)
         {
+            Application.DoEvents();
             this.timer.Stop();
             if (Process())
             {
@@ -74,13 +120,31 @@ namespace xSimulate.WebAutomationTasks
         private bool Process()
         {
             int y = GetY();
+
             if (lastY == y)
             {
                 return true;
             }
-            lastY = y;
-            if (bottom >= y)
+
+            if (positive)
             {
+                if (y >= bottom)
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                if (y <= bottom)
+                {
+                    return true;
+                }
+            }
+            
+            lastY = y;
+            if (bottom != y)
+            {
+                int step = random.Next(positive ? 100 : -200, positive ? 200 : -100);
                 ToY(y + step);
 
                 return false;
@@ -88,7 +152,9 @@ namespace xSimulate.WebAutomationTasks
 
             return true;
         }
+        #endregion
 
+        #region Get Position
         private int GetMaxPosition()
         {
             return this.webBrowser.Document.Window.Size.Height;
@@ -96,12 +162,50 @@ namespace xSimulate.WebAutomationTasks
 
         private int GetY()
         {
-            return int.Parse(this.webBrowser.Document.GetElementsByTagName("HTML")[0].ScrollTop.ToString());
+            return this.webBrowser.Document.GetElementsByTagName("HTML")[0].ScrollTop;
+        }
+
+        private int GetY(HtmlElement element)
+        {
+            return element.ScrollTop;
         }
 
         private void ToY(int y)
         {
-            this.webBrowser.Document.Window.ScrollTo(new Point(0, y));
+            this.webBrowser.Document.Window.ScrollTo(0, y);
         }
+
+        public int GetXoffset(HtmlElement el)
+        {
+            //get element pos
+            int xPos = el.OffsetRectangle.Left;
+
+            //get the parents pos
+            HtmlElement tempEl = el.OffsetParent;
+            while (tempEl != null)
+            {
+                xPos += tempEl.OffsetRectangle.Left;
+                tempEl = tempEl.OffsetParent;
+            }
+
+            return xPos;
+        }
+
+        public int GetYoffset(HtmlElement el)
+        {
+            //get element pos
+            int yPos = el.OffsetRectangle.Top;
+
+            //get the parents pos
+            HtmlElement tempEl = el.OffsetParent;
+            while (tempEl != null)
+            {
+                yPos += tempEl.OffsetRectangle.Top;
+                tempEl = tempEl.OffsetParent;
+            }
+
+            return yPos;
+        }
+        #endregion
     }
 }

@@ -5,7 +5,8 @@ namespace xSimulate.Action
 {
     public enum Position
     {
-        None,
+        None = 0,
+        Element,
         PageBottom
     }
 
@@ -15,6 +16,7 @@ namespace xSimulate.Action
             : base(automationActionData)
         {
             this.Position = GetAttributeValue<Position>("position");
+            this.Offset = GetAttributeValue<int>("offset");
         }
 
         public override ActionType ActionType
@@ -23,5 +25,7 @@ namespace xSimulate.Action
         }
 
         public Position Position { get; set; }
+
+        public int Offset { get; set; }
     }
 }

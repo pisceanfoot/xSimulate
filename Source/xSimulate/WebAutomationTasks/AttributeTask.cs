@@ -29,15 +29,37 @@ namespace xSimulate.WebAutomationTasks
         {
             if (!string.IsNullOrEmpty(action.SetValue))
             {
-                HtmlElement element = TaskStorage.Storage as HtmlElement;
-                if (element == null)
+                HtmlElementCollection elementCollection = GetData(action) as HtmlElementCollection;
+                if (elementCollection != null)
                 {
-                    return;
+                    SetValue(elementCollection, "value", action.SetValue);
                 }
+                else
+                {
+                    HtmlElement element = GetData(action) as HtmlElement;
+                    if (element == null)
+                    {
+                        LoggerManager.Error("Element Not Found");
+                        return;
+                    }
 
-                DebugElement(element);
-                element.SetAttribute("value", action.SetValue);
+                    SetValue(element, "value", action.SetValue);
+                }
             }
+        }
+
+        private void SetValue(HtmlElementCollection elementCollection, string attr, string attrValue)
+        {
+            foreach (HtmlElement element in elementCollection)
+            {
+                SetValue(element, attr, attrValue);
+            }
+        }
+
+        private void SetValue(HtmlElement element, string attr, string attrValue)
+        {
+            DebugElement(element);
+            element.SetAttribute(attr, attrValue);
         }
     }
 }

@@ -165,6 +165,7 @@ namespace xSimulate
             LoggerManager.Debug("Start Run Step");
             foreach (ActionStep step in this.actionStepList)
             {
+                Application.DoEvents();
                 RunStep(step);
             }
         }
@@ -189,6 +190,8 @@ namespace xSimulate
 
         private void RunAction(IAction action)
         {
+            Application.DoEvents();
+
             WaitBrowserBusy();
             ITask task = BrowserFactory.Create(action, this.webBrowser);
             task.Run(action);
@@ -215,7 +218,7 @@ namespace xSimulate
                 while (this.webBrowser.Busy)
                 {
                     Application.DoEvents();
-                    Thread.Sleep(10);
+                    //Thread.Sleep(10);
                 }
             }
         }

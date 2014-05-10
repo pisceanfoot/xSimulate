@@ -46,7 +46,7 @@ namespace xSimulate.WebAutomationTasks
         private bool AssertEqual(FindAction findElementAction, string x, string y)
         {
             bool result = false;
-            if (string.IsNullOrEmpty(x) == null || string.IsNullOrEmpty(y) == null)
+            if (string.IsNullOrEmpty(x) || string.IsNullOrEmpty(y))
             {
                 return result;
             }
@@ -119,7 +119,7 @@ namespace xSimulate.WebAutomationTasks
             // TagName type id name xxxx
             HtmlElement findElement = null;
 
-            HtmlElement saveElement = TaskStorage.Storage as HtmlElement;
+            HtmlElement saveElement = this.GetData(findElementAction) as HtmlElement;
             HtmlElementCollection htmlElementCollection;
 
             if (saveElement == null)
@@ -210,7 +210,7 @@ namespace xSimulate.WebAutomationTasks
                         findElement = tmpHtmlElementList[0];
                     }
 
-                    TaskStorage.Storage = findElement;
+                    this.SaveData(findElementAction, findElement);
                 }
             }
         }
@@ -244,7 +244,7 @@ namespace xSimulate.WebAutomationTasks
             {
                 LoggerManager.Debug("FindElementTask FindID");
 
-                HtmlElement element = TaskStorage.Storage as HtmlElement;
+                HtmlElement element = this.GetData(findElementAction) as HtmlElement;
                 if (element == null)
                 {
                     HtmlDocument document = GetHtmlDocument(findElementAction);
@@ -261,7 +261,7 @@ namespace xSimulate.WebAutomationTasks
                     element = FindIDRecusive(element, findElementAction.ID);    
                 }
 
-                TaskStorage.Storage = element;
+                this.SaveData(findElementAction, element);
             }
         }
 
@@ -305,7 +305,7 @@ namespace xSimulate.WebAutomationTasks
 
             wholeWordRegex = new Regex(string.Format("\\b{0}\\b", findElementAction.ClassName));
 
-            HtmlElement element = TaskStorage.Storage as HtmlElement;
+            HtmlElement element = this.GetData(findElementAction) as HtmlElement;
             if (element == null)
             {
                 HtmlDocument document = GetHtmlDocument(findElementAction);
@@ -316,11 +316,11 @@ namespace xSimulate.WebAutomationTasks
                 }
 
                 element = document.Body;
-                TaskStorage.Storage = FindClassRecusive(element, findElementAction.ClassName);
+                this.SaveData(findElementAction, FindClassRecusive(element, findElementAction.ClassName));
             }
             else
             {
-                TaskStorage.Storage = FindClassRecusive(element, findElementAction.ClassName);
+                this.SaveData(findElementAction, FindClassRecusive(element, findElementAction.ClassName));
             }
         }
 
@@ -363,7 +363,7 @@ namespace xSimulate.WebAutomationTasks
 
             LoggerManager.Debug("FindElementTask FindUrl");
 
-            HtmlElement element = TaskStorage.Storage as HtmlElement;
+            HtmlElement element = this.GetData(findElementAction) as HtmlElement;
             if (element == null)
             {
                 HtmlDocument document = GetHtmlDocument(findElementAction);
@@ -383,7 +383,7 @@ namespace xSimulate.WebAutomationTasks
                 {
                     if (find.GetAttribute("href") == findElementAction.Url)
                     {
-                        TaskStorage.Storage = find;
+                        this.SaveData(findElementAction, find);
                         break;
                     }
                 }
@@ -401,7 +401,7 @@ namespace xSimulate.WebAutomationTasks
 
             LoggerManager.Debug("FindElementTask FindXPath");
 
-            HtmlElement element = TaskStorage.Storage as HtmlElement;
+            HtmlElement element = this.GetData(findElementAction) as HtmlElement;
             if (element == null)
             {
                 HtmlDocument document = GetHtmlDocument(findElementAction);
@@ -414,7 +414,8 @@ namespace xSimulate.WebAutomationTasks
                 element = document.Body;
             }
 
-            TaskStorage.Storage = HtmlHelp.SelectHtmlNode(findElementAction.XPath, element);
+            element = HtmlHelp.SelectHtmlNode(findElementAction.XPath, element);
+            this.SaveData(findElementAction, element);
         }
         #endregion
     }
