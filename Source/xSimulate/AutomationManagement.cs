@@ -17,20 +17,20 @@ namespace xSimulate
     public class AutomationManagement
     {
         private WebBrowserEx webBrowser;
-        private System.Windows.Forms.Timer timer;
+        private WebBrowserTimer timer;
 
         private List<ActionStep> actionStepList;
 
         public AutomationManagement()
         {
-            timer = new System.Windows.Forms.Timer();
-            timer.Tick += timer_Tick;
-            timer.Interval = 10;
-            timer.Enabled = false;
-
             this.webBrowser = new WebBrowserEx();
             this.webBrowser.ScriptErrorsSuppressed = false;
             this.webBrowser.NewWindow3 += webBrowser_NewWindow3;
+
+            timer = new WebBrowserTimer(this.webBrowser);
+            timer.Tick += timer_Tick;
+            timer.Interval = 10;
+            timer.Enabled = false;
         }
 
         public WebBrowser Browser
@@ -131,11 +131,11 @@ namespace xSimulate
                     }
 
                     IAction childAction = ConvertToAction(childData);
-                    if (action.NextAction == null)
+                    if (action.ChildAction == null)
                     {
-                        action.NextAction = new List<IAction>();
+                        action.ChildAction = new List<IAction>();
                     }
-                    action.NextAction.Add(childAction);
+                    action.ChildAction.Add(childAction);
 
                     LoadChildAction(childAction, childData);
                 }
@@ -201,12 +201,19 @@ namespace xSimulate
                 Thread.Sleep(10);
             }
 
-            if (action.HasChild)
+            if (action.HasChild && task.CanChildRun(action))
             {
-                foreach (IAction child in action.NextAction)
+                foreach (IAction child in action.ChildAction)
                 {
                     LoggerManager.Debug("Start Run Child Action:{0}", child.ActionType);
                     RunAction(child);
+                }
+
+                if (!task.ChildComplete(action))
+                {
+                    // retry
+                    LoggerManager.Debug("Regry Action:{0}", action.ActionType);
+                    RunAction(action);
                 }
             }
         }

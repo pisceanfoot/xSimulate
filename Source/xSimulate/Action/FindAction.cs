@@ -21,6 +21,7 @@ namespace xSimulate.Action
             this.ClassName = GetAttributeValue<string>("class");
             this.TagName = GetAttributeValue<string>("tagname");
             this.Type = GetAttributeValue<string>("type");
+            this.Title = GetAttributeValue<string>("title");
             this.Url = GetAttributeValue<string>("href");
             this.InnerText = GetAttributeValue<string>("innertext");
 
@@ -65,6 +66,8 @@ namespace xSimulate.Action
         public string TagName { get; set; }
 
         public string Type { get; set; }
+
+        public string Title { get; set; }
 
         public int Index { get; set; }
 

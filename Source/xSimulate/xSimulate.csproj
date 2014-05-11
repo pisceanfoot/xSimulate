@@ -56,10 +56,14 @@
     <Compile Include="Action\ActionBase.cs" />
     <Compile Include="Action\ActionContext.cs" />
     <Compile Include="Action\ClickAction.cs" />
+    <Compile Include="Action\ConditionAction.cs" />
     <Compile Include="Action\KeyboardAction.cs" />
     <Compile Include="Action\ScriptAction.cs" />
     <Compile Include="Action\SendKeyAction.cs" />
     <Compile Include="AutomationManagement.cs" />
+    <Compile Include="Browse\WebBrowserTimer.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Configuration\AutomationAction.cs" />
     <Compile Include="Configuration\AutomationActionAttribute.cs" />
     <Compile Include="Configuration\AutomationContext.cs" />
@@ -94,6 +98,7 @@
     <Compile Include="WebAutomationTasks\BrowserTask.cs" />
     <Compile Include="WebAutomationTasks\ClearDataTask.cs" />
     <Compile Include="WebAutomationTasks\ClickTask.cs" />
+    <Compile Include="WebAutomationTasks\ConditionTask.cs" />
     <Compile Include="WebAutomationTasks\HtmlHelp.cs" />
     <Compile Include="WebAutomationTasks\ImageCopyTask.cs" />
     <Compile Include="WebAutomationTasks\KeyboardTask.cs" />

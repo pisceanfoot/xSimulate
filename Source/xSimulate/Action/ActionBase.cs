@@ -55,21 +55,21 @@ namespace xSimulate.Action
         #endregion
 
         #region Action
-        public List<IAction> NextAction { get; set; }
+        public List<IAction> ChildAction { get; set; }
 
         public void AddNext(IAction action)
         {
-            if (this.NextAction == null)
+            if (this.ChildAction == null)
             {
-                this.NextAction = new List<IAction>();
+                this.ChildAction = new List<IAction>();
             }
 
-            this.NextAction.Add(action);
+            this.ChildAction.Add(action);
         }
 
         public bool HasChild
         {
-            get { return this.NextAction != null && this.NextAction.Count > 0; }
+            get { return this.ChildAction != null && this.ChildAction.Count > 0; }
         }
         #endregion
 

@@ -7,7 +7,7 @@ namespace xSimulate.Action
     {
         ActionType ActionType { get; }
 
-        List<IAction> NextAction { get; set; }
+        List<IAction> ChildAction { get; set; }
 
         bool HasChild { get; }
     }

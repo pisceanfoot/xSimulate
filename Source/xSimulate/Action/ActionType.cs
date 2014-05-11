@@ -15,6 +15,7 @@ namespace xSimulate.Action
         ClickAction,
         ScriptAction,
         KeyboardAction,
-        SendKeyAction
+        SendKeyAction,
+        ConditionAction
     }
 }

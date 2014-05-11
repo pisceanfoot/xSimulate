@@ -10,7 +10,7 @@ namespace xSimulate.WebAutomationTasks
 {
     public class ScrollTask : CommonTask
     {
-        private Timer timer;
+        private WebBrowserTimer timer;
         private Random random;
         private int bottom = 0;
         private bool running = true;
@@ -20,7 +20,7 @@ namespace xSimulate.WebAutomationTasks
         public ScrollTask(WebBrowserEx webBrowser)
             : base(webBrowser)
         {
-            timer = new Timer();
+            timer = new WebBrowserTimer(webBrowser);
             timer.Interval = 500;
             timer.Tick += timer_Tick;
             timer.Enabled = false;
@@ -94,11 +94,6 @@ namespace xSimulate.WebAutomationTasks
 
         public override bool IsComplete()
         {
-            if (!running)
-            {
-                this.scrollAction = null;
-            }
-
             return !running;
         }
         #endregion

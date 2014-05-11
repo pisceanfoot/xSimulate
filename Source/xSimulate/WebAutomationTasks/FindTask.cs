@@ -152,6 +152,10 @@ namespace xSimulate.WebAutomationTasks
                     {
                         continue;
                     }
+                    if (!string.IsNullOrEmpty(findElementAction.Title) && !AssertEqual(findElementAction, element.GetAttribute("title"), findElementAction.Title))
+                    {
+                        continue;
+                    }
                     if (!string.IsNullOrEmpty(findElementAction.ClassName) && !AssertEqual(findElementAction, element.GetAttribute("className"), findElementAction.ClassName))
                     {
                         continue;
@@ -224,6 +228,7 @@ namespace xSimulate.WebAutomationTasks
 
             if (string.IsNullOrEmpty(findElementAction.ID) &&
                 string.IsNullOrEmpty(findElementAction.Type) &&
+                string.IsNullOrEmpty(findElementAction.Title) &&
                 string.IsNullOrEmpty(findElementAction.ClassName) &&
                 string.IsNullOrEmpty(findElementAction.Name) &&
                 string.IsNullOrEmpty(findElementAction.Url) &&

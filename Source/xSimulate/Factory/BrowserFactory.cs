@@ -66,6 +66,10 @@ namespace xSimulate.Factory
             {
                 task = new SendKeyTask(webBrowser);
             }
+            else if (action.ActionType == ActionType.ConditionAction)
+            {
+                task = new ConditionTask(webBrowser);
+            }
 
             taskDic.Add(action.ActionType, task);
 

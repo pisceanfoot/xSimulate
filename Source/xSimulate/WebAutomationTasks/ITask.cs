@@ -8,5 +8,9 @@ namespace xSimulate.WebAutomationTasks
         void Run(IAction action);
 
         bool IsComplete();
+
+        bool CanChildRun(IAction action);
+
+        bool ChildComplete(IAction action);
     }
 }

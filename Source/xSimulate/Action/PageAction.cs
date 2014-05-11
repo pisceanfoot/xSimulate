@@ -4,18 +4,12 @@ using xSimulate.Configuration;
 
 namespace xSimulate.Action
 {
-    public class PageAction : ActionBase
+    public class PageAction : ClickAction
     {
         public PageAction(AutomationAction automationActionData)
             : base(automationActionData)
         {
-            this.Name = GetAttributeValue<string>("name");
-            this.Url = GetAttributeValue<string>("url");
         }
-
-        public string Name { get; set; }
-
-        public string Url { get; set; }
 
         public override ActionType ActionType
         {

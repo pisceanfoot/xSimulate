@@ -19,6 +19,7 @@ namespace xSimulate.WebAutomationTasks
         public virtual void Run(IAction action)
         {
             WaitForRun();
+
             OnProcess(action);
 
             ActionBase actionBase = action as ActionBase;
@@ -52,7 +53,7 @@ namespace xSimulate.WebAutomationTasks
 
         protected void WaitForRun()
         {
-            if (this.webBrowser.ReadyState != WebBrowserReadyState.Uninitialized)
+            if (!this.webBrowser.IsDisposed && this.webBrowser.ReadyState != WebBrowserReadyState.Uninitialized)
             {
                 while (this.webBrowser.ReadyState != WebBrowserReadyState.Complete)
                 {
@@ -63,6 +64,16 @@ namespace xSimulate.WebAutomationTasks
         }
 
         public virtual bool IsComplete()
+        {
+            return true;
+        }
+
+        public virtual bool CanChildRun(IAction action)
+        {
+            return true;
+        }
+
+        public virtual bool ChildComplete(IAction action)
         {
             return true;
         }

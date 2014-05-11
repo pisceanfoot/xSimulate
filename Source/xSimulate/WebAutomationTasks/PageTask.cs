@@ -6,7 +6,7 @@ using xSimulate.WebAutomationTasks;
 
 namespace xSimulate.Browser
 {
-    public class PageTask : CommonTask
+    public class PageTask : ClickTask
     {
         public PageTask(WebBrowserEx webBrowser)
             : base(webBrowser)
@@ -15,10 +15,25 @@ namespace xSimulate.Browser
 
         protected override void OnProcess(IAction action)
         {
-            PageAction pageAction = action as PageAction;
-            webBrowser.Navigate(pageAction.Url);
+        }
 
-            LoggerManager.Debug("Browser: {0}", pageAction.Url);
+        public override bool ChildComplete(IAction action)
+        {
+            PageAction pageAction = action as PageAction;
+
+            HtmlElement element = this.GetData(action) as HtmlElement;
+            if (element == null)
+            {
+                base.OnProcess(action);
+                return false;
+            }
+
+            return true;
+        }
+
+        private void Run(PageAction pageAction)
+        {
+
         }
 
         public override bool IsComplete()
