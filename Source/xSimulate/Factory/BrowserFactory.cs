@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Windows.Forms;
+﻿using System.Collections.Generic;
 using xSimulate.Action;
 using xSimulate.Browse;
 using xSimulate.Browser;
@@ -11,7 +8,7 @@ namespace xSimulate.Factory
 {
     public class BrowserFactory
     {
-        private static Dictionary<ActionType, ITask> taskDic = new Dictionary<ActionType,ITask>();
+        private static Dictionary<ActionType, ITask> taskDic = new Dictionary<ActionType, ITask>();
 
         public static ITask Create(IAction action, WebBrowserEx webBrowser)
         {

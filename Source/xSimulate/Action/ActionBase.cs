@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Xml.Serialization;
+﻿using System.Collections.Generic;
 using xSimulate.Configuration;
 using xSimulate.Util;
 
@@ -43,6 +41,7 @@ namespace xSimulate.Action
         public abstract ActionType ActionType { get; }
 
         #region Data
+
         public ActionContext ActionContext { get; set; }
 
         public bool SaveData { get; set; }
@@ -52,9 +51,11 @@ namespace xSimulate.Action
         public string SaveDatakey { get; set; }
 
         public int Wait { get; set; }
-        #endregion
+
+        #endregion Data
 
         #region Action
+
         public List<IAction> ChildAction { get; set; }
 
         public void AddNext(IAction action)
@@ -71,9 +72,11 @@ namespace xSimulate.Action
         {
             get { return this.ChildAction != null && this.ChildAction.Count > 0; }
         }
-        #endregion
+
+        #endregion Action
 
         #region GetAttributeValue
+
         protected T GetAttributeValue<T>(string name)
         {
             return GetAttributeValue<T>(name, default(T));
@@ -82,7 +85,7 @@ namespace xSimulate.Action
         protected T GetAttributeValue<T>(string name, T defaultValue)
         {
             name = name.ToLower();
-            if (this.automationActionData.AttributeList != null && this.automationActionData.AttributeList.Count >0)
+            if (this.automationActionData.AttributeList != null && this.automationActionData.AttributeList.Count > 0)
             {
                 foreach (AutomationActionAttribute attr in this.automationActionData.AttributeList)
                 {
@@ -124,6 +127,7 @@ namespace xSimulate.Action
 
             return list;
         }
-        #endregion
+
+        #endregion GetAttributeValue
     }
 }

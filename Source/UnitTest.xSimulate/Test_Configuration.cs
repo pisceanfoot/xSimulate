@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using xSimulate.Configuration;
 
 namespace UnitTest.xSimulate
@@ -35,7 +30,7 @@ namespace UnitTest.xSimulate
             AutomationAction childAction = new AutomationAction();
             childAction.Type = "Click";
             childAction.Add(attr);
-            
+
             action.AddChild(childAction);
             step.Add(action);
 

@@ -1,6 +1,5 @@
-﻿using System;
-using System.Xml.Serialization;
-using xSimulate.Configuration;
+﻿using xSimulate.Configuration;
+
 namespace xSimulate.Action
 {
     public enum Position

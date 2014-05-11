@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
-using xSimulate.Action;
 using xSimulate.Util;
 
 namespace xSimulate.Configuration
@@ -40,7 +36,7 @@ namespace xSimulate.Configuration
 
             this.StepList.Add(step);
         }
-        
+
         public static WebAutomationConfig Load()
         {
             if (actionConfig == null)

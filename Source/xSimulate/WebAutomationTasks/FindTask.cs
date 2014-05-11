@@ -1,14 +1,9 @@
-﻿using System.Windows.Forms;
-using System.Linq;
-
-using xSimulate.Action;
-using xSimulate.Storage;
-using xSimulate.WebAutomationTasks;
+﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
+using xSimulate.Action;
 using xSimulate.Browse;
-using System.Collections.Generic;
 using xSimulate.Util;
-using mshtml;
 
 namespace xSimulate.WebAutomationTasks
 {
@@ -43,6 +38,7 @@ namespace xSimulate.WebAutomationTasks
         }
 
         #region Help
+
         private bool AssertEqual(FindAction findElementAction, string x, string y)
         {
             bool result = false;
@@ -71,9 +67,11 @@ namespace xSimulate.WebAutomationTasks
 
             return result;
         }
-        #endregion
+
+        #endregion Help
 
         #region Context
+
         private HtmlDocument GetHtmlDocument(FindAction findElementAction)
         {
             if (findElementAction.ActionContext != null)
@@ -83,7 +81,7 @@ namespace xSimulate.WebAutomationTasks
                 {
                     htmlWindow = this.webBrowser.Document.Window.Frames[findElementAction.ActionContext.FrameIndex];
                 }
-                else if(!string.IsNullOrEmpty(findElementAction.ActionContext.FrameName))
+                else if (!string.IsNullOrEmpty(findElementAction.ActionContext.FrameName))
                 {
                     htmlWindow = this.webBrowser.Document.Window.Frames[findElementAction.ActionContext.FrameName];
                 }
@@ -103,10 +101,12 @@ namespace xSimulate.WebAutomationTasks
             {
                 return this.webBrowser.Document;
             }
-        } 
-        #endregion
+        }
+
+        #endregion Context
 
         #region Combine
+
         private void FindContidion(FindAction findElementAction)
         {
             LoggerManager.Debug("FindElementTask FindContidion");
@@ -144,6 +144,7 @@ namespace xSimulate.WebAutomationTasks
                 foreach (HtmlElement element in htmlElementCollection)
                 {
                     #region Condition Check
+
                     if (!string.IsNullOrEmpty(findElementAction.ID) && !AssertEqual(findElementAction, element.Id, findElementAction.ID))
                     {
                         continue;
@@ -191,7 +192,8 @@ namespace xSimulate.WebAutomationTasks
                             continue;
                         }
                     }
-                    #endregion
+
+                    #endregion Condition Check
 
                     tmpHtmlElementList.Add(element);
                 }
@@ -240,9 +242,11 @@ namespace xSimulate.WebAutomationTasks
 
             return true;
         }
-        #endregion
+
+        #endregion Combine
 
         #region Find ID
+
         private void FindID(FindAction findElementAction)
         {
             if (!string.IsNullOrEmpty(findElementAction.ID))
@@ -263,7 +267,7 @@ namespace xSimulate.WebAutomationTasks
                 }
                 else
                 {
-                    element = FindIDRecusive(element, findElementAction.ID);    
+                    element = FindIDRecusive(element, findElementAction.ID);
                 }
 
                 this.SaveData(findElementAction, element);
@@ -296,9 +300,11 @@ namespace xSimulate.WebAutomationTasks
 
             return null;
         }
-        #endregion
+
+        #endregion Find ID
 
         #region Find ClassName
+
         private void FindClassName(FindAction findElementAction)
         {
             if (string.IsNullOrEmpty(findElementAction.ClassName))
@@ -346,7 +352,7 @@ namespace xSimulate.WebAutomationTasks
             {
                 foreach (HtmlElement child in element.Children)
                 {
-                    HtmlElement find =  FindClassRecusive(child, className);
+                    HtmlElement find = FindClassRecusive(child, className);
                     if (find != null)
                     {
                         return find;
@@ -356,9 +362,11 @@ namespace xSimulate.WebAutomationTasks
 
             return null;
         }
-        #endregion
+
+        #endregion Find ClassName
 
         #region Find Url
+
         private void FindUrl(FindAction findElementAction)
         {
             if (string.IsNullOrEmpty(findElementAction.Url))
@@ -394,9 +402,11 @@ namespace xSimulate.WebAutomationTasks
                 }
             }
         }
-        #endregion
+
+        #endregion Find Url
 
         #region XPath
+
         private void FindXPath(FindAction findElementAction)
         {
             if (string.IsNullOrEmpty(findElementAction.XPath))
@@ -422,6 +432,7 @@ namespace xSimulate.WebAutomationTasks
             element = HtmlHelp.SelectHtmlNode(findElementAction.XPath, element);
             this.SaveData(findElementAction, element);
         }
-        #endregion
+
+        #endregion XPath
     }
 }

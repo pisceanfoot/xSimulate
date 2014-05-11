@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using xSimulate.Action;
 using xSimulate.Browse;
@@ -42,10 +39,11 @@ namespace xSimulate
         }
 
         #region New Window
+
         private void timer_Tick(object sender, EventArgs e)
         {
             timer.Enabled = false;
-            if(!string.IsNullOrEmpty(this.webBrowser.NextUrl))
+            if (!string.IsNullOrEmpty(this.webBrowser.NextUrl))
             {
                 string nextUrl = this.webBrowser.NextUrl;
                 this.webBrowser.NextUrl = null;
@@ -65,9 +63,11 @@ namespace xSimulate
                 timer.Enabled = true;
             }
         }
-        #endregion
+
+        #endregion New Window
 
         #region Load Config && Convert To IAction
+
         public void LoadConfig()
         {
             WebAutomationConfig config = WebAutomationConfig.Load();
@@ -85,7 +85,7 @@ namespace xSimulate
                 return;
             }
 
-            // conver to 
+            // conver to
             actionStepList = new List<ActionStep>();
 
             foreach (AutomationStep stepData in config.StepList)
@@ -155,9 +155,11 @@ namespace xSimulate
         {
             return ClassLoader.LoadAction(actionData);
         }
-        #endregion
+
+        #endregion Load Config && Convert To IAction
 
         #region Run
+
         public void Run()
         {
             Storage.TaskStorage.Clear();
@@ -174,7 +176,7 @@ namespace xSimulate
         {
             WaitBrowserBusy();
             LoggerManager.Info("Step:{0}", step.Name);
-            
+
             if (step.ActionList == null || step.ActionList.Count == 0)
             {
                 return;
@@ -229,6 +231,7 @@ namespace xSimulate
                 }
             }
         }
-        #endregion
+
+        #endregion Run
     }
 }

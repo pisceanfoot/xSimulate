@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using xSimulate.Action;
-using xSimulate.Browse;
-using xSimulate.Configuration;
-using xSimulate.Factory;
 
 namespace xSimulate
 {
@@ -17,7 +13,7 @@ namespace xSimulate
         public MainFrm()
         {
             InitializeComponent();
-            
+
             Init();
             InitWebBrowser();
         }

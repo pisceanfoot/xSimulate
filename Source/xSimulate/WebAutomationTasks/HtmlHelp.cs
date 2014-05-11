@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using mshtml;
 
@@ -34,7 +29,7 @@ namespace xSimulate.WebAutomationTasks
             int indexOfElement;
 
             //get string representation of current Tag.
-            if (xPath.Substring(1, xPath.Length - 2).Contains('/'))
+            if (xPath.Substring(1, xPath.Length - 2).Contains("/"))
                 currentNode = xPath.Substring(1, xPath.IndexOf('/', 1) - 1);
             else
                 currentNode = xPath.Substring(1, xPath.Length - 1);

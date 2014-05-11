@@ -1,7 +1,6 @@
 ﻿using System.Windows.Forms;
 using xSimulate.Action;
 using xSimulate.Browse;
-using xSimulate.Storage;
 using xSimulate.WebAutomationTasks;
 
 namespace xSimulate.Browser
@@ -33,7 +32,6 @@ namespace xSimulate.Browser
 
         private void Run(PageAction pageAction)
         {
-
         }
 
         public override bool IsComplete()

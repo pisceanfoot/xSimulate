@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Drawing;
 using System.Windows.Forms;
 using xSimulate.Action;
 using xSimulate.Browse;
-using xSimulate.Storage;
-using xSimulate.WebAutomationTasks;
 
 namespace xSimulate.WebAutomationTasks
 {
@@ -29,6 +26,7 @@ namespace xSimulate.WebAutomationTasks
         }
 
         #region Task
+
         private void InitScroll()
         {
             lastY = -1;
@@ -96,9 +94,11 @@ namespace xSimulate.WebAutomationTasks
         {
             return !running;
         }
-        #endregion
+
+        #endregion Task
 
         #region Scroll
+
         private void timer_Tick(object sender, EventArgs e)
         {
             Application.DoEvents();
@@ -111,7 +111,7 @@ namespace xSimulate.WebAutomationTasks
 
             this.timer.Start();
         }
-        
+
         private bool Process()
         {
             int y = GetY();
@@ -135,7 +135,7 @@ namespace xSimulate.WebAutomationTasks
                     return true;
                 }
             }
-            
+
             lastY = y;
             if (bottom != y)
             {
@@ -147,9 +147,11 @@ namespace xSimulate.WebAutomationTasks
 
             return true;
         }
-        #endregion
+
+        #endregion Scroll
 
         #region Get Position
+
         private int GetMaxPosition()
         {
             return this.webBrowser.Document.Window.Size.Height;
@@ -201,6 +203,7 @@ namespace xSimulate.WebAutomationTasks
 
             return yPos;
         }
-        #endregion
+
+        #endregion Get Position
     }
 }

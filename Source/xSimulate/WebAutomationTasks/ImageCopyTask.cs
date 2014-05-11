@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace xSimulate.WebAutomationTasks
+﻿namespace xSimulate.WebAutomationTasks
 {
-    class ImageCopyTask
+    internal class ImageCopyTask
     {
         //public Image CopyImg(WebBrowser WebCtl, HtmlElement ImgeTag)
         //{

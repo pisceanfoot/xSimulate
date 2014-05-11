@@ -8,17 +8,17 @@ namespace xSimulate.Storage
         private static string DefaultKey = Guid.NewGuid().ToString("N");
 
         [ThreadStatic]
-        private static Dictionary<string, object> storageDictory = new Dictionary<string,object>();
-        
+        private static Dictionary<string, object> storageDictory = new Dictionary<string, object>();
+
         public static object Storage
         {
-            get 
+            get
             {
                 return GetKey(DefaultKey);
             }
-            set 
+            set
             {
-                SetKey(DefaultKey, value); 
+                SetKey(DefaultKey, value);
             }
         }
 

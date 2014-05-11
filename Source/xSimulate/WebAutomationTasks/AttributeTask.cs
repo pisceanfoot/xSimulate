@@ -1,7 +1,6 @@
 ﻿using System.Windows.Forms;
 using xSimulate.Action;
 using xSimulate.Browse;
-using xSimulate.Storage;
 
 namespace xSimulate.WebAutomationTasks
 {

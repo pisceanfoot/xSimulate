@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
-using xSimulate.Configuration;
+﻿using xSimulate.Configuration;
 
 namespace xSimulate.Action
 {
@@ -13,7 +7,6 @@ namespace xSimulate.Action
         public ClearDataAction(AutomationAction automationActionData)
             : base(automationActionData)
         {
-
         }
 
         public override ActionType ActionType

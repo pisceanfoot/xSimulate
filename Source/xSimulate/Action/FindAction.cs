@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using System.Xml.Serialization;
+﻿using System.Collections.Generic;
 using xSimulate.Configuration;
 
 namespace xSimulate.Action

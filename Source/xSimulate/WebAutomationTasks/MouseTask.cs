@@ -4,9 +4,7 @@ using System.Windows.Forms;
 using mshtml;
 using xSimulate.Action;
 using xSimulate.Browse;
-using xSimulate.Storage;
 using xSimulate.Util;
-using xSimulate.WebAutomationTasks;
 
 namespace xSimulate.WebAutomationTasks
 {
@@ -96,7 +94,7 @@ namespace xSimulate.WebAutomationTasks
 
         public void Click(HtmlElement h)
         {
-            Focus(h); 
+            Focus(h);
             Over(h);
             Down(h);
             h.InvokeMember("click");

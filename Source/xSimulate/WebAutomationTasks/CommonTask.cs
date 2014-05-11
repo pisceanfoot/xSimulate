@@ -16,6 +16,7 @@ namespace xSimulate.WebAutomationTasks
         }
 
         #region ITask
+
         public virtual void Run(IAction action)
         {
             WaitForRun();
@@ -77,9 +78,11 @@ namespace xSimulate.WebAutomationTasks
         {
             return true;
         }
-        #endregion
+
+        #endregion ITask
 
         #region Storage
+
         protected void SaveData(IAction action, HtmlElement element)
         {
             ActionBase actionBase = action as ActionBase;
@@ -115,16 +118,18 @@ namespace xSimulate.WebAutomationTasks
                 return TaskStorage.GetKey(actionBase.GetDatakey);
             }
         }
-        #endregion
+
+        #endregion Storage
 
         #region Debug
+
         protected void DebugElement(HtmlElement element)
         {
 #if DEBUG
             LoggerManager.Debug(LoggerManager.FormatElement(element));
 #endif
-            
         }
-        #endregion
+
+        #endregion Debug
     }
 }

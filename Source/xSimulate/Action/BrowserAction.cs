@@ -1,4 +1,5 @@
 ﻿using xSimulate.Configuration;
+
 namespace xSimulate.Action
 {
     public class BrowserAction : ActionBase

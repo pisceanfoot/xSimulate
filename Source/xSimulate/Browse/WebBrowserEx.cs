@@ -11,7 +11,6 @@ namespace xSimulate.Browse
     Guid("34A715A0-6587-11D0-924A-0020AFC7AC4D")]
     public interface DWebBrowserEvents2
     {
-
         /// <summary>
         ///
         /// </summary>
@@ -48,7 +47,7 @@ namespace xSimulate.Browse
         public event EventHandler<WebBrowserNewWindowEventArgs> NewWindow3;
 
         [PermissionSetAttribute(SecurityAction.LinkDemand, Name = "FullTrust")]
-        public WebBrowserEx() 
+        public WebBrowserEx()
         {
         }
 
@@ -61,7 +60,7 @@ namespace xSimulate.Browse
         /// handle control events including NewWindow3 event.
         /// </summary>
         [PermissionSetAttribute(SecurityAction.LinkDemand, Name = "FullTrust")]
-        protected override void CreateSink() 
+        protected override void CreateSink()
         {
             base.CreateSink();
 
@@ -77,7 +76,7 @@ namespace xSimulate.Browse
         [PermissionSetAttribute(SecurityAction.LinkDemand, Name = "FullTrust")]
         protected override void DetachSink()
         {
-            if (cookie != null) 
+            if (cookie != null)
             {
                 cookie.Disconnect();
                 cookie = null;
@@ -90,7 +89,7 @@ namespace xSimulate.Browse
         /// </summary>
         protected virtual void OnNewWindow3(WebBrowserNewWindowEventArgs e)
         {
-            if (this.NewWindow3 != null) 
+            if (this.NewWindow3 != null)
             {
                 this.NewWindow3(this, e);
             }
@@ -100,7 +99,7 @@ namespace xSimulate.Browse
         {
             private WebBrowserEx parent;
 
-            public DWebBrowserEvent2Helper(WebBrowserEx parent) 
+            public DWebBrowserEvent2Helper(WebBrowserEx parent)
             {
                 this.parent = parent;
             }
@@ -112,7 +111,7 @@ namespace xSimulate.Browse
             /// fired in the ActiveX control.
             /// </summary>
             public void NewWindow3(ref object ppDisp, ref bool Cancel, uint dwFlags,
-                string bstrUrlContext, string bstrUrl) 
+                string bstrUrlContext, string bstrUrl)
             {
                 var e = new WebBrowserNewWindowEventArgs(bstrUrl, Cancel);
                 this.parent.OnNewWindow3(e);
@@ -123,7 +122,6 @@ namespace xSimulate.Browse
 
     public class WebBrowserNewWindowEventArgs : EventArgs
     {
-
         public String Url { get; set; }
 
         public Boolean Cancel { get; set; }
