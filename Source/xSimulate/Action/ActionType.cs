@@ -17,6 +17,7 @@ namespace xSimulate.Action
         ScriptAction,
         KeyboardAction,
         SendKeyAction,
-        ConditionAction
+        ConditionAction,
+        TimerAction
     }
 }

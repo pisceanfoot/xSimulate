@@ -37,6 +37,16 @@ namespace xSimulate.Configuration
             this.StepList.Add(step);
         }
 
+        public static WebAutomationConfig Load(string file)
+        {
+            if (actionConfig == null)
+            {
+                actionConfig = XmlSerializerHelper.LoadFromXml<WebAutomationConfig>(file);
+            }
+
+            return actionConfig;
+        }
+
         public static WebAutomationConfig Load()
         {
             if (actionConfig == null)
