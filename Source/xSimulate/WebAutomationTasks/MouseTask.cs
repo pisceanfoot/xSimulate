@@ -35,60 +35,57 @@ namespace xSimulate.WebAutomationTasks
             if (mouseAction.Click)
             {
                 LoggerManager.Debug("MouseTask Trigger Click");
-
-                Click(element);
+                this.Call<HtmlElement>(Click, element);
             }
             if (mouseAction.ClickNew)
             {
                 LoggerManager.Debug("MouseTask Trigger ClickNew");
-
-                ClickNew(element);
+                this.Call<HtmlElement>(ClickNew, element);
             }
             if (mouseAction.MouseClick)
             {
                 LoggerManager.Debug("MouseTask Trigger MouseClick");
-
-                MouseClick(element);
+                this.Call<HtmlElement>(MouseClick, element);
             }
             if (mouseAction.Over)
             {
                 LoggerManager.Debug("MouseTask Trigger Mouse Over");
-                Over(element);
+                this.Call<HtmlElement>(Over, element);
             }
             if (mouseAction.OverNew)
             {
                 LoggerManager.Debug("MouseTask Trigger Mouse OverNew");
-                OverNew(element);
+                this.Call<HtmlElement>(OverNew, element);
             }
             if (mouseAction.Down)
             {
                 LoggerManager.Debug("MouseTask Trigger Mouse Down");
-                Down(element);
+                this.Call<HtmlElement>(Down, element);
             }
             if (mouseAction.Up)
             {
                 LoggerManager.Debug("MouseTask Trigger Mouse Up");
-                Up(element);
+                this.Call<HtmlElement>(Up, element);
             }
             if (mouseAction.Focus)
             {
                 LoggerManager.Debug("MouseTask Trigger Mouse Focus");
-                Focus(element);
+                this.Call<HtmlElement>(Focus, element);
             }
             if (mouseAction.Move)
             {
                 LoggerManager.Debug("MouseTask Trigger Mouse Move");
-                Move(element);
+                this.Call<HtmlElement>(Move, element);
             }
             if (mouseAction.MoveNew)
             {
                 LoggerManager.Debug("MouseTask Trigger Mouse MoveNew");
-                MoveNew(element);
+                this.Call<HtmlElement>(MoveNew, element);
             }
             if (mouseAction.MoveEnter)
             {
                 LoggerManager.Debug("MouseTask Trigger Mouse MoveEnter");
-                MoveEnter(element);
+                this.Call<HtmlElement>(MoveEnter, element);
             }
         }
 

@@ -28,12 +28,12 @@ namespace xSimulate.WebAutomationTasks
 
             if (keyboardAction.KeyDown)
             {
-                Down(element);
+                this.Call<HtmlElement>(Down, element);
             }
 
             if (keyboardAction.KeyUp)
             {
-                Up(element);
+                this.Call<HtmlElement>(Up, element);
             }
         }
 

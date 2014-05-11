@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Windows.Forms;
 using xSimulate.Action;
 using xSimulate.Browse;
@@ -7,7 +8,8 @@ namespace xSimulate.WebAutomationTasks
 {
     public class ScrollTask : CommonTask
     {
-        private WebBrowserTimer timer;
+        //private WebBrowserTimer timer;
+        private System.Threading.Timer timer;
         private Random random;
         private int bottom = 0;
         private bool running = true;
@@ -17,10 +19,13 @@ namespace xSimulate.WebAutomationTasks
         public ScrollTask(WebBrowserEx webBrowser)
             : base(webBrowser)
         {
-            timer = new WebBrowserTimer(webBrowser);
-            timer.Interval = 500;
-            timer.Tick += timer_Tick;
-            timer.Enabled = false;
+            //timer = new WebBrowserTimer(webBrowser);
+            //timer.Interval = 500;
+            //timer.Tick += timer_Tick;
+            //timer.Enabled = false;
+
+            timer = new System.Threading.Timer(new TimerCallback(timer_Tick));
+            timer.Change(Timeout.Infinite, Timeout.Infinite);
 
             random = new Random();
         }
@@ -87,7 +92,7 @@ namespace xSimulate.WebAutomationTasks
                 bottom -= scrollAction.Offset;
             }
 
-            this.timer.Start();
+            timer.Change(0, Timeout.Infinite);
         }
 
         public override bool IsComplete()
@@ -99,17 +104,18 @@ namespace xSimulate.WebAutomationTasks
 
         #region Scroll
 
-        private void timer_Tick(object sender, EventArgs e)
+        private void timer_Tick(object obj)
         {
-            Application.DoEvents();
-            this.timer.Stop();
+            timer.Change(Timeout.Infinite, Timeout.Infinite);
+            //Application.DoEvents();
+            //this.timer.Stop();
             if (Process())
             {
                 running = false;
                 return;
             }
 
-            this.timer.Start();
+            timer.Change(500, Timeout.Infinite);
         }
 
         private bool Process()
@@ -154,54 +160,72 @@ namespace xSimulate.WebAutomationTasks
 
         private int GetMaxPosition()
         {
-            return this.webBrowser.Document.Window.Size.Height;
+            return this.Call<WebBrowserEx, int>(delegate(WebBrowserEx ex)
+            {
+                return ex.Document.Window.Size.Height;
+            }, this.webBrowser);
         }
 
         private int GetY()
         {
-            return this.webBrowser.Document.GetElementsByTagName("HTML")[0].ScrollTop;
+            return this.Call<WebBrowserEx, int>(delegate(WebBrowserEx ex)
+            {
+                return ex.Document.GetElementsByTagName("HTML")[0].ScrollTop;
+            }, this.webBrowser);
         }
 
         private int GetY(HtmlElement element)
         {
-            return element.ScrollTop;
+            return this.Call<HtmlElement, int>(delegate(HtmlElement ex)
+            {
+                return ex.ScrollTop;
+            }, element);
         }
 
         private void ToY(int y)
         {
-            this.webBrowser.Document.Window.ScrollTo(0, y);
+            this.Call<WebBrowserEx>(delegate(WebBrowserEx ex)
+            {
+                ex.Document.Window.ScrollTo(0, y);
+            }, this.webBrowser);
         }
 
-        public int GetXoffset(HtmlElement el)
+        public int GetXoffset(HtmlElement element)
         {
-            //get element pos
-            int xPos = el.OffsetRectangle.Left;
-
-            //get the parents pos
-            HtmlElement tempEl = el.OffsetParent;
-            while (tempEl != null)
+            return this.Call<HtmlElement, int>(delegate(HtmlElement el)
             {
-                xPos += tempEl.OffsetRectangle.Left;
-                tempEl = tempEl.OffsetParent;
-            }
+                //get element pos
+                int xPos = el.OffsetRectangle.Left;
 
-            return xPos;
+                //get the parents pos
+                HtmlElement tempEl = el.OffsetParent;
+                while (tempEl != null)
+                {
+                    xPos += tempEl.OffsetRectangle.Left;
+                    tempEl = tempEl.OffsetParent;
+                }
+
+                return xPos;
+            }, element);
         }
 
-        public int GetYoffset(HtmlElement el)
+        public int GetYoffset(HtmlElement element)
         {
-            //get element pos
-            int yPos = el.OffsetRectangle.Top;
-
-            //get the parents pos
-            HtmlElement tempEl = el.OffsetParent;
-            while (tempEl != null)
+            return this.Call<HtmlElement, int>(delegate(HtmlElement el)
             {
-                yPos += tempEl.OffsetRectangle.Top;
-                tempEl = tempEl.OffsetParent;
-            }
+                //get element pos
+                int yPos = el.OffsetRectangle.Top;
 
-            return yPos;
+                //get the parents pos
+                HtmlElement tempEl = el.OffsetParent;
+                while (tempEl != null)
+                {
+                    yPos += tempEl.OffsetRectangle.Top;
+                    tempEl = tempEl.OffsetParent;
+                }
+
+                return yPos;
+            }, element);
         }
 
         #endregion Get Position

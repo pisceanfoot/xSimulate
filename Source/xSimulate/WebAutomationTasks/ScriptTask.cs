@@ -23,7 +23,11 @@ namespace xSimulate.WebAutomationTasks
                 object[] args = new object[1];
                 args[0] = scriptAction.ScriptContent;
 
-                this.webBrowser.Document.InvokeScript("eval", args);
+                this.Call<WebBrowserEx>(delegate(WebBrowserEx ex)
+                {
+                    ex.Document.InvokeScript("eval", args);
+                }, this.webBrowser);
+                
             }
         }
     }

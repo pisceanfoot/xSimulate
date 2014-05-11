@@ -31,7 +31,7 @@ namespace xSimulate.WebAutomationTasks
                 return true;
             }
 
-            return this.webBrowser.ReadyState == WebBrowserReadyState.Complete;
+            return !this.webBrowser.Busy;
         }
     }
 }

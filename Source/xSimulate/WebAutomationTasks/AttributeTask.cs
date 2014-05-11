@@ -58,7 +58,11 @@ namespace xSimulate.WebAutomationTasks
         private void SetValue(HtmlElement element, string attr, string attrValue)
         {
             DebugElement(element);
-            element.SetAttribute(attr, attrValue);
+
+            this.Call<HtmlElement>(delegate(HtmlElement e)
+            {
+                e.SetAttribute(attr, attrValue);
+            }, element);
         }
     }
 }

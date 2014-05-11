@@ -34,20 +34,21 @@ namespace xSimulate.WebAutomationTasks
 
         private void Sleep(int wait)
         {
-            int count = 0;
-            int step = 10;
+            Thread.Sleep(wait);
+            //int count = 0;
+            //int step = 10;
 
-            while (count <= wait)
-            {
-                Application.DoEvents();
-                Thread.Sleep(step);
+            //while (count <= wait)
+            //{
+            //    //Application.DoEvents();
+            //    Thread.Sleep(step);
 
-                count += step;
-                if (count < wait && count + step > wait)
-                {
-                    step = wait - count;
-                }
-            }
+            //    count += step;
+            //    if (count < wait && count + step > wait)
+            //    {
+            //        step = wait - count;
+            //    }
+            //}
         }
     }
 }

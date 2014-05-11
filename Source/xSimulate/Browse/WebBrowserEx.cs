@@ -55,6 +55,20 @@ namespace xSimulate.Browse
 
         public bool Busy { get; set; }
 
+        protected override void OnNavigating(WebBrowserNavigatingEventArgs e)
+        {
+            this.Busy = true;
+
+            base.OnNavigating(e);
+        }
+
+        protected override void OnDocumentCompleted(WebBrowserDocumentCompletedEventArgs e)
+        {
+            this.Busy = false;
+
+            base.OnDocumentCompleted(e);
+        }
+
         /// <summary>
         /// Associates the underlying ActiveX control with a client that can
         /// handle control events including NewWindow3 event.

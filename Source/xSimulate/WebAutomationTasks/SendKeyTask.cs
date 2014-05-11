@@ -26,8 +26,11 @@ namespace xSimulate.WebAutomationTasks
                 return;
             }
 
-            element.Focus();
-            SendKey(sendKeyAction);
+            this.Call<HtmlElement>(delegate(HtmlElement e)
+            {
+                e.Focus();
+                SendKey(sendKeyAction);
+            }, element);
         }
 
         private void SendKey(SendKeyAction sendKeyAction)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Threading;
 using System.Windows.Forms;
 using xSimulate.Action;
@@ -15,6 +16,7 @@ namespace xSimulate
     {
         private WebBrowserEx webBrowser;
         private WebBrowserTimer timer;
+        private BackgroundWorker backgroundWorker;
 
         private List<ActionStep> actionStepList;
 
@@ -28,6 +30,22 @@ namespace xSimulate
             timer.Tick += timer_Tick;
             timer.Interval = 10;
             timer.Enabled = false;
+
+            this.backgroundWorker = new BackgroundWorker();
+            this.backgroundWorker.WorkerSupportsCancellation = true;
+            this.backgroundWorker.DoWork += backgroundWorker_DoWork;
+        }
+
+        private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Storage.TaskStorage.Clear();
+
+            LoggerManager.Debug("Start Run Step");
+            foreach (ActionStep step in this.actionStepList)
+            {
+                //Application.DoEvents();
+                RunStep(step);
+            }
         }
 
         public WebBrowser Browser
@@ -48,7 +66,7 @@ namespace xSimulate
                 string nextUrl = this.webBrowser.NextUrl;
                 this.webBrowser.NextUrl = null;
                 this.webBrowser.Navigate(nextUrl, null, null, string.Format("Referer: {0}\r\n", this.webBrowser.Url.ToString()));
-                this.webBrowser.Busy = false;
+                //this.webBrowser.Busy = false;
             }
         }
 
@@ -162,14 +180,14 @@ namespace xSimulate
 
         public void Run()
         {
-            Storage.TaskStorage.Clear();
+            Stop();
+            
+            this.backgroundWorker.RunWorkerAsync();
+        }
 
-            LoggerManager.Debug("Start Run Step");
-            foreach (ActionStep step in this.actionStepList)
-            {
-                Application.DoEvents();
-                RunStep(step);
-            }
+        public void Stop()
+        {
+            this.backgroundWorker.CancelAsync();
         }
 
         private void RunStep(ActionStep step)
@@ -192,15 +210,15 @@ namespace xSimulate
 
         private void RunAction(IAction action)
         {
-            Application.DoEvents();
+            //Application.DoEvents();
 
             WaitBrowserBusy();
             ITask task = BrowserFactory.Create(action, this.webBrowser);
             task.Run(action);
             while (!task.IsComplete())
             {
-                Application.DoEvents();
-                Thread.Sleep(10);
+                //Application.DoEvents();
+                Thread.Sleep(100);
             }
 
             if (action.HasChild && task.CanChildRun(action))
@@ -226,8 +244,8 @@ namespace xSimulate
             {
                 while (this.webBrowser.Busy)
                 {
-                    Application.DoEvents();
-                    //Thread.Sleep(10);
+                    //Application.DoEvents();
+                    Thread.Sleep(10);
                 }
             }
         }

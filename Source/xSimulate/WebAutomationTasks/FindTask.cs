@@ -99,7 +99,10 @@ namespace xSimulate.WebAutomationTasks
             }
             else
             {
-                return this.webBrowser.Document;
+                return this.Call<WebBrowserEx, HtmlDocument>(delegate(WebBrowserEx ex)
+                {
+                    return ex.Document;
+                }, this.webBrowser);
             }
         }
 

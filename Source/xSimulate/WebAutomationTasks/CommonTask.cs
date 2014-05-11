@@ -32,20 +32,21 @@ namespace xSimulate.WebAutomationTasks
                 }
                 if (actionBase.Wait > 0)
                 {
-                    int count = 0;
-                    int step = 10;
+                    Thread.Sleep(actionBase.Wait);
+                    //int count = 0;
+                    //int step = 10;
 
-                    while (count <= actionBase.Wait)
-                    {
-                        Thread.Sleep(step);
-                        Application.DoEvents();
+                    //while (count <= actionBase.Wait)
+                    //{
+                    //    Thread.Sleep(step);
+                    //    //Application.DoEvents();
 
-                        count += step;
-                        if (count < actionBase.Wait && count + step > actionBase.Wait)
-                        {
-                            step = actionBase.Wait - count;
-                        }
-                    }
+                    //    count += step;
+                    //    if (count < actionBase.Wait && count + step > actionBase.Wait)
+                    //    {
+                    //        step = actionBase.Wait - count;
+                    //    }
+                    //}
                 }
             }
         }
@@ -54,14 +55,18 @@ namespace xSimulate.WebAutomationTasks
 
         protected void WaitForRun()
         {
-            if (!this.webBrowser.IsDisposed && this.webBrowser.ReadyState != WebBrowserReadyState.Uninitialized)
+            bool runing = false;
+
+            do
             {
-                while (this.webBrowser.ReadyState != WebBrowserReadyState.Complete)
+                runing = this.webBrowser.Busy;
+
+                if (runing)
                 {
-                    Application.DoEvents();
                     Thread.Sleep(10);
                 }
             }
+            while (runing);
         }
 
         public virtual bool IsComplete()
@@ -131,5 +136,31 @@ namespace xSimulate.WebAutomationTasks
         }
 
         #endregion Debug
+
+        #region UI
+        protected void Call<T>(Callback<T> action, T obj)
+        {
+            if (this.webBrowser.InvokeRequired)
+            {
+                this.webBrowser.Invoke(action, obj);
+            }
+            else
+            {
+                action(obj);
+            }
+        }
+
+        protected R Call<T, R>(Callback<T, R> action, T obj)
+        {
+            if (this.webBrowser.InvokeRequired)
+            {
+                return (R)this.webBrowser.Invoke(action, obj);
+            }
+            else
+            {
+                return (R)action(obj);
+            }
+        }
+        #endregion
     }
 }

@@ -33,15 +33,5 @@ namespace xSimulate.Browser
         private void Run(PageAction pageAction)
         {
         }
-
-        public override bool IsComplete()
-        {
-            if (this.webBrowser.IsDisposed)
-            {
-                return true;
-            }
-
-            return this.webBrowser.ReadyState == WebBrowserReadyState.Complete;
-        }
     }
 }

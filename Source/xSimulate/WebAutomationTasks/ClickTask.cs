@@ -35,17 +35,17 @@ namespace xSimulate.WebAutomationTasks
             if (clickAction.Click)
             {
                 LoggerManager.Debug("Trigger Click");
-                Click(element);
+                this.Call<HtmlElement>(Click, element);
             }
             if (clickAction.ClickNew)
             {
                 LoggerManager.Debug("Trigger ClickNew");
-                ClickNew(element);
+                this.Call<HtmlElement>(ClickNew, element);
             }
             if (clickAction.MouseClick)
             {
                 LoggerManager.Debug("Trigger MouseClick");
-                MouseClick(element);
+                this.Call<HtmlElement>(MouseClick, element);
             }
         }
 
