@@ -8,6 +8,8 @@ namespace xSimulate.Action
 
         List<IAction> ChildAction { get; set; }
 
+        List<IAction> ConditoinAction { get; set; }
+
         bool HasChild { get; }
     }
 }

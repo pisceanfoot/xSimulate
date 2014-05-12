@@ -8,14 +8,20 @@ namespace xSimulate.WebAutomationTasks
 {
     public abstract class CommonTask : ITask
     {
+        private AutomationManagement manager;
         protected WebBrowserEx webBrowser;
 
-        public CommonTask(WebBrowserEx webBrowser)
+        public CommonTask(AutomationManagement manager)
         {
-            this.webBrowser = webBrowser;
+            this.webBrowser = (WebBrowserEx)manager.Browser;
+            this.manager = manager;
         }
 
         #region ITask
+        public void RunAction(IAction action)
+        {
+            this.manager.RunAction(action);
+        }
 
         public virtual void Run(IAction action)
         {
@@ -28,25 +34,11 @@ namespace xSimulate.WebAutomationTasks
             {
                 if (!actionBase.SaveData)
                 {
-                    TaskStorage.Clear();
+                    ClearData();
                 }
                 if (actionBase.Wait > 0)
                 {
                     Thread.Sleep(actionBase.Wait);
-                    //int count = 0;
-                    //int step = 10;
-
-                    //while (count <= actionBase.Wait)
-                    //{
-                    //    Thread.Sleep(step);
-                    //    //Application.DoEvents();
-
-                    //    count += step;
-                    //    if (count < actionBase.Wait && count + step > actionBase.Wait)
-                    //    {
-                    //        step = actionBase.Wait - count;
-                    //    }
-                    //}
                 }
             }
         }
@@ -63,7 +55,7 @@ namespace xSimulate.WebAutomationTasks
 
                 if (runing)
                 {
-                    Thread.Sleep(10);
+                    Thread.Sleep(100);
                 }
             }
             while (runing);
@@ -87,6 +79,10 @@ namespace xSimulate.WebAutomationTasks
         #endregion ITask
 
         #region Storage
+        public void ClearData()
+        {
+            this.manager.ClearData();
+        }
 
         protected void SaveData(IAction action, HtmlElement element)
         {
@@ -98,12 +94,35 @@ namespace xSimulate.WebAutomationTasks
 
             if (string.IsNullOrEmpty(actionBase.SaveDatakey))
             {
-                TaskStorage.Storage = element;
+                this.manager.SaveData(element);
             }
             else
             {
-                TaskStorage.SetKey(actionBase.SaveDatakey, element);
+                this.manager.SaveData(actionBase.SaveDatakey, element);
             }
+        }
+
+        protected void SaveData<T>(IAction action, T obj)
+        {
+            ActionBase actionBase = action as ActionBase;
+            if (actionBase == null)
+            {
+                return;
+            }
+
+            if (string.IsNullOrEmpty(actionBase.SaveDatakey))
+            {
+                this.manager.SaveData(obj);
+            }
+            else
+            {
+                this.manager.SaveData(actionBase.SaveDatakey, obj);
+            }
+        }
+
+        protected void SaveData<T>(string key, T obj)
+        {
+            this.manager.SaveData(key, obj);
         }
 
         protected object GetData(IAction action)
@@ -116,12 +135,17 @@ namespace xSimulate.WebAutomationTasks
 
             if (string.IsNullOrEmpty(actionBase.GetDatakey))
             {
-                return TaskStorage.Storage;
+                return this.manager.GetData();
             }
             else
             {
-                return TaskStorage.GetKey(actionBase.GetDatakey);
+                return this.manager.GetData(actionBase.GetDatakey);
             }
+        }
+
+        protected object GetData(string key)
+        {
+            return this.manager.GetData(key);
         }
 
         #endregion Storage

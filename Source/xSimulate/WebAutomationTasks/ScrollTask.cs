@@ -8,22 +8,17 @@ namespace xSimulate.WebAutomationTasks
 {
     public class ScrollTask : CommonTask
     {
-        //private WebBrowserTimer timer;
         private System.Threading.Timer timer;
         private Random random;
         private int bottom = 0;
         private bool running = true;
         private int lastY = -1;
         private bool positive = true;
+        private int period = 0;
 
-        public ScrollTask(WebBrowserEx webBrowser)
-            : base(webBrowser)
+        public ScrollTask(AutomationManagement manager)
+            : base(manager)
         {
-            //timer = new WebBrowserTimer(webBrowser);
-            //timer.Interval = 500;
-            //timer.Tick += timer_Tick;
-            //timer.Enabled = false;
-
             timer = new System.Threading.Timer(new TimerCallback(timer_Tick));
             timer.Change(Timeout.Infinite, Timeout.Infinite);
 
@@ -34,8 +29,8 @@ namespace xSimulate.WebAutomationTasks
 
         private void InitScroll()
         {
-            lastY = -1;
-            running = true;
+            this.lastY = -1;
+            this.running = true;
         }
 
         protected override void OnProcess(Action.IAction action)
@@ -56,6 +51,8 @@ namespace xSimulate.WebAutomationTasks
 
             InitScroll();
 
+            this.period = scrollAction.Period;
+
             if (scrollAction.Position == Position.PageBottom)
             {
                 bottom = GetMaxPosition();
@@ -66,7 +63,7 @@ namespace xSimulate.WebAutomationTasks
                 if (element == null)
                 {
                     LoggerManager.Error("Element Not Found");
-                    return;
+                    throw new ElementNoFoundException("Element Not Found", action);
                 }
                 bottom = GetY(element);
 
@@ -92,7 +89,7 @@ namespace xSimulate.WebAutomationTasks
                 bottom -= scrollAction.Offset;
             }
 
-            timer.Change(0, Timeout.Infinite);
+            timer.Change(this.period, Timeout.Infinite);
         }
 
         public override bool IsComplete()
@@ -107,15 +104,13 @@ namespace xSimulate.WebAutomationTasks
         private void timer_Tick(object obj)
         {
             timer.Change(Timeout.Infinite, Timeout.Infinite);
-            //Application.DoEvents();
-            //this.timer.Stop();
             if (Process())
             {
                 running = false;
                 return;
             }
 
-            timer.Change(500, Timeout.Infinite);
+            timer.Change(this.period, Timeout.Infinite);
         }
 
         private bool Process()

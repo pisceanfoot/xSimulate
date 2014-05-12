@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Action\ActionBase.cs" />
     <Compile Include="Action\ActionContext.cs" />
+    <Compile Include="Action\ClearHistoryAction.cs" />
     <Compile Include="Action\ClickAction.cs" />
     <Compile Include="Action\ConditionAction.cs" />
     <Compile Include="Action\KeyboardAction.cs" />
@@ -82,6 +83,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Action\ActionStep.cs" />
+    <Compile Include="Exception\ElementNoFoundException.cs" />
     <Compile Include="LoggerManager.cs" />
     <Compile Include="Trace\MyTraceListener.cs" />
     <Compile Include="Util\ClassLoader.cs" />
@@ -96,6 +98,7 @@
     <Compile Include="Storage\TaskStorage.cs" />
     <Compile Include="WebAutomationTasks\BrowserTask.cs" />
     <Compile Include="WebAutomationTasks\ClearDataTask.cs" />
+    <Compile Include="WebAutomationTasks\ClearHistoryTask.cs" />
     <Compile Include="WebAutomationTasks\ClickTask.cs" />
     <Compile Include="WebAutomationTasks\ConditionTask.cs" />
     <Compile Include="WebAutomationTasks\HtmlHelp.cs" />
@@ -119,6 +122,7 @@
     <Compile Include="WebAutomationTasks\SendKeyTask.cs" />
     <Compile Include="WebAutomationTasks\TimerTask.cs" />
     <Compile Include="WebAutomationTasks\WaitTask.cs" />
+    <Compile Include="xSimulateArgument.cs" />
     <Compile Include="xSimulateDelegate.cs" />
     <EmbeddedResource Include="MainFrm.resx">
       <DependentUpon>MainFrm.cs</DependentUpon>

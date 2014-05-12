@@ -11,8 +11,8 @@ namespace xSimulate.WebAutomationTasks
     {
         private Regex wholeWordRegex = null;
 
-        public FindTask(WebBrowserEx webBrowser)
-            : base(webBrowser)
+        public FindTask(AutomationManagement manager)
+            : base(manager)
         {
         }
 

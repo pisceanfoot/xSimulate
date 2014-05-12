@@ -8,9 +8,16 @@ namespace xSimulate.Factory
 {
     public class BrowserFactory
     {
-        private static Dictionary<ActionType, ITask> taskDic = new Dictionary<ActionType, ITask>();
+        private AutomationManagement manager;
 
-        public static ITask Create(IAction action, WebBrowserEx webBrowser)
+        public BrowserFactory(AutomationManagement manager)
+        {
+            this.manager = manager;
+        }
+
+        private Dictionary<ActionType, ITask> taskDic = new Dictionary<ActionType, ITask>();
+
+        public ITask Create(IAction action)
         {
             ITask task = null;
 
@@ -21,51 +28,55 @@ namespace xSimulate.Factory
 
             if (action.ActionType == ActionType.PageAction)
             {
-                task = new PageTask(webBrowser);
+                task = new PageTask(manager);
             }
             else if (action.ActionType == ActionType.BrowserAction)
             {
-                task = new BrowserTask(webBrowser);
+                task = new BrowserTask(manager);
             }
             else if (action.ActionType == ActionType.FindAction)
             {
-                task = new FindTask(webBrowser);
+                task = new FindTask(manager);
             }
             else if (action.ActionType == ActionType.MouseAction)
             {
-                task = new MouseTask(webBrowser);
+                task = new MouseTask(manager);
             }
             else if (action.ActionType == ActionType.AttributeAction)
             {
-                task = new AttributeTask(webBrowser);
+                task = new AttributeTask(manager);
             }
             else if (action.ActionType == ActionType.ScrollAction)
             {
-                task = new ScrollTask(webBrowser);
+                task = new ScrollTask(manager);
             }
             else if (action.ActionType == ActionType.ClearDataAction)
             {
-                task = new ClearDataTask(webBrowser);
+                task = new ClearDataTask(manager);
             }
             else if (action.ActionType == ActionType.WaitAction)
             {
-                task = new WaitTask(webBrowser);
+                task = new WaitTask(manager);
             }
             else if (action.ActionType == ActionType.ClickAction)
             {
-                task = new ClickTask(webBrowser);
+                task = new ClickTask(manager);
             }
             else if (action.ActionType == ActionType.KeyboardAction)
             {
-                task = new KeyboardTask(webBrowser);
+                task = new KeyboardTask(manager);
             }
             else if (action.ActionType == ActionType.SendKeyAction)
             {
-                task = new SendKeyTask(webBrowser);
+                task = new SendKeyTask(manager);
             }
             else if (action.ActionType == ActionType.ConditionAction)
             {
-                task = new ConditionTask(webBrowser);
+                task = new ConditionTask(manager);
+            }
+            else if (action.ActionType == ActionType.ClearHistoryAction)
+            {
+                task = new ClearHistoryTask(manager);
             }
 
             taskDic.Add(action.ActionType, task);

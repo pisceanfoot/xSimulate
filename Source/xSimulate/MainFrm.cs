@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace xSimulate
@@ -32,6 +33,7 @@ namespace xSimulate
         public void Init()
         {
             manager = new AutomationManagement();
+            manager.ErrorMessage += manager_ErrorMessage;   
 
             this.Load += MainFrm_Load;
             this.timer = new Timer();
@@ -42,7 +44,7 @@ namespace xSimulate
             trace = new MyTraceListener(this.TextBoxLog);
 
             //System.Diagnostics.Trace.Listeners.Add(trace);
-            System.Diagnostics.Debug.Listeners.Add(trace);
+            //System.Diagnostics.Debug.Listeners.Add(trace);
         }
 
         private void InitWebBrowser()
@@ -54,13 +56,25 @@ namespace xSimulate
 
         private void Run()
         {
-            manager.LoadConfig();
-            manager.Run();
+            try
+            {
+                manager.LoadConfig();
+                manager.Run();
+            }
+            catch
+            {
+                Application.Exit();
+            }
         }
 
         private void restartToolStripMenuItem_Click(object sender, EventArgs e)
         {
             manager.Run();
+        }
+
+        private void manager_ErrorMessage(string obj, string obje1)
+        {
+
         }
     }
 }

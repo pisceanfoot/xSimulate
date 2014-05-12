@@ -10,8 +10,8 @@ namespace xSimulate.WebAutomationTasks
 {
     public class ClickTask : FindTask
     {
-        public ClickTask(WebBrowserEx webBrowser)
-            : base(webBrowser)
+        public ClickTask(AutomationManagement manager)
+            : base(manager)
         {
         }
 
@@ -23,7 +23,7 @@ namespace xSimulate.WebAutomationTasks
             if (element == null)
             {
                 LoggerManager.Error("Element Not Found");
-                return;
+                throw new ElementNoFoundException("Element Not Found", action);
             }
 
             ClickAction clickAction = action as ClickAction;

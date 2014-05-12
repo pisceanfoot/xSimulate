@@ -5,8 +5,8 @@ namespace xSimulate.WebAutomationTasks
 {
     public class ScriptTask : CommonTask
     {
-        public ScriptTask(WebBrowserEx webBrowser)
-            : base(webBrowser)
+        public ScriptTask(AutomationManagement manager)
+            : base(manager)
         {
         }
 

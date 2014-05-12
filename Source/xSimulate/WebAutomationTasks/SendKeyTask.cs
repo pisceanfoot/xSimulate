@@ -6,8 +6,8 @@ namespace xSimulate.WebAutomationTasks
 {
     public class SendKeyTask : FindTask
     {
-        public SendKeyTask(WebBrowserEx webBrowser)
-            : base(webBrowser)
+        public SendKeyTask(AutomationManagement manager)
+            : base(manager)
         {
         }
 
@@ -23,7 +23,7 @@ namespace xSimulate.WebAutomationTasks
             if (element == null)
             {
                 LoggerManager.Error("Element Not Found");
-                return;
+                throw new ElementNoFoundException("Element Not Found", action);
             }
 
             this.Call<HtmlElement>(delegate(HtmlElement e)

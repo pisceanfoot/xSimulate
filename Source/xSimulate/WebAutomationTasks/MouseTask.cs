@@ -10,8 +10,8 @@ namespace xSimulate.WebAutomationTasks
 {
     public class MouseTask : FindTask
     {
-        public MouseTask(WebBrowserEx webBrowser)
-            : base(webBrowser)
+        public MouseTask(AutomationManagement manager)
+            : base(manager)
         {
         }
 
@@ -23,7 +23,7 @@ namespace xSimulate.WebAutomationTasks
             if (element == null)
             {
                 LoggerManager.Error("Element Not Found");
-                return;
+                throw new ElementNoFoundException("Element Not Found", action);
             }
 
             MouseAction mouseAction = action as MouseAction;

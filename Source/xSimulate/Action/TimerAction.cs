@@ -11,7 +11,6 @@ namespace xSimulate.Action
             : base(automationActionData)
         {
             this.Seconds = GetAttributeValue<int>("seconds");
-            this.Milliseconds = GetAttributeValue<int>("milliseconds");
         }
 
         public override ActionType ActionType
@@ -20,7 +19,5 @@ namespace xSimulate.Action
         }
 
         public int Seconds { get; set; }
-
-        public int Milliseconds { get; set; }
     }
 }

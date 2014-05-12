@@ -7,6 +7,7 @@ using xSimulate.Action;
 using xSimulate.Browse;
 using xSimulate.Configuration;
 using xSimulate.Factory;
+using xSimulate.Storage;
 using xSimulate.Util;
 using xSimulate.WebAutomationTasks;
 
@@ -14,17 +15,33 @@ namespace xSimulate
 {
     public class AutomationManagement
     {
+        #region Field
         private WebBrowserEx webBrowser;
+        private TaskStorage storage;
+        private BrowserFactory factory;
         private WebBrowserTimer timer;
         private BackgroundWorker backgroundWorker;
 
         private List<ActionStep> actionStepList;
+        #endregion
+
+        #region Event
+        public event MessageHandle<string, string> ErrorMessage;
+
+        public event MessageHandle<string, string> PageChanged;
+
+        public event MessageHandle<string, string> RuningInfo;
+        #endregion
 
         public AutomationManagement()
         {
+            this.storage = new TaskStorage();
+            this.factory = new BrowserFactory(this);
+
             this.webBrowser = new WebBrowserEx();
             this.webBrowser.ScriptErrorsSuppressed = false;
             this.webBrowser.NewWindow3 += webBrowser_NewWindow3;
+            this.webBrowser.DocumentCompleted += webBrowser_DocumentCompleted;
 
             timer = new WebBrowserTimer(this.webBrowser);
             timer.Tick += timer_Tick;
@@ -38,12 +55,12 @@ namespace xSimulate
 
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            Storage.TaskStorage.Clear();
+            ClearData();
 
             LoggerManager.Debug("Start Run Step");
             foreach (ActionStep step in this.actionStepList)
             {
-                //Application.DoEvents();
+                
                 RunStep(step);
             }
         }
@@ -55,6 +72,21 @@ namespace xSimulate
                 return this.webBrowser;
             }
         }
+
+        #region Document Complete
+        private string lastUrl = null;
+        private string lastTitle = null;
+        private void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            if(this.webBrowser.ReadyState == WebBrowserReadyState.Complete && this.lastUrl != e.Url.ToString())
+            {
+                if (this.PageChanged != null)
+                {
+                    this.PageChanged(lastTitle, this.webBrowser.DocumentTitle);
+                }
+            }
+        }
+        #endregion
 
         #region New Window
 
@@ -130,6 +162,7 @@ namespace xSimulate
                         step.ActionList.Add(action);
 
                         LoadChildAction(action, actionData);
+                        LoadConditionAction(action, actionData);
                     }
                 }
 
@@ -160,6 +193,29 @@ namespace xSimulate
             }
         }
 
+        private void LoadConditionAction(IAction action, AutomationAction actionData)
+        {
+            if (actionData.ConditionActionList != null && actionData.ConditionActionList.Count > 0)
+            {
+                foreach (AutomationAction childData in actionData.ConditionActionList)
+                {
+                    if (!childData.Enabled)
+                    {
+                        continue;
+                    }
+
+                    IAction childAction = ConvertToAction(childData);
+                    if (action.ConditoinAction == null)
+                    {
+                        action.ConditoinAction = new List<IAction>();
+                    }
+                    action.ConditoinAction.Add(childAction);
+
+                    LoadConditionAction(childAction, childData);
+                }
+            }
+        }
+
         private ActionStep ConvertToStep(AutomationStep stepData)
         {
             ActionStep step = new ActionStep();
@@ -176,6 +232,13 @@ namespace xSimulate
 
         #endregion Load Config && Convert To IAction
 
+        #region Action
+        public ITask BuildTask(IAction action)
+        {
+            return factory.Create(action);
+        }
+        #endregion
+
         #region Run
 
         public void Run()
@@ -190,7 +253,7 @@ namespace xSimulate
             this.backgroundWorker.CancelAsync();
         }
 
-        private void RunStep(ActionStep step)
+        public void RunStep(ActionStep step)
         {
             WaitBrowserBusy();
             LoggerManager.Info("Step:{0}", step.Name);
@@ -204,20 +267,30 @@ namespace xSimulate
             {
                 LoggerManager.Debug("Start Run Action:{0}", action.ActionType);
 
-                RunAction(action);
+                try
+                {
+                    RunAction(action);
+                }
+                catch(ElementNoFoundException ex)
+                {
+                    // report fatal
+                    if (ErrorMessage != null)
+                    {
+                        ErrorMessage(ex.Message, ex.Action.ToString());
+                    }
+
+                    return;
+                }
             }
         }
 
-        private void RunAction(IAction action)
+        public void RunAction(IAction action)
         {
-            //Application.DoEvents();
-
             WaitBrowserBusy();
-            ITask task = BrowserFactory.Create(action, this.webBrowser);
+            ITask task = BuildTask(action);
             task.Run(action);
             while (!task.IsComplete())
             {
-                //Application.DoEvents();
                 Thread.Sleep(100);
             }
 
@@ -244,12 +317,37 @@ namespace xSimulate
             {
                 while (this.webBrowser.Busy)
                 {
-                    //Application.DoEvents();
-                    Thread.Sleep(10);
+                    Thread.Sleep(100);
                 }
             }
         }
-
         #endregion Run
+
+        #region Storage
+        public void SaveData(object value)
+        {
+            this.storage.Storage = value;
+        }
+
+        public void SaveData(string key, object value)
+        {
+            this.storage.SetKey(key, value);
+        }
+
+        public object GetData()
+        {
+            return this.storage.Storage;
+        }
+
+        public object GetData(string key)
+        {
+            return this.storage.GetKey(key);
+        }
+
+        public void ClearData()
+        {
+            this.storage.Clear();
+        }
+        #endregion
     }
 }

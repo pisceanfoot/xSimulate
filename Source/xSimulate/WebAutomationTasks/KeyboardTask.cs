@@ -6,8 +6,8 @@ namespace xSimulate.WebAutomationTasks
 {
     public class KeyboardTask : CommonTask
     {
-        public KeyboardTask(WebBrowserEx webBrowser)
-            : base(webBrowser)
+        public KeyboardTask(AutomationManagement manager)
+            : base(manager)
         {
         }
 
@@ -23,7 +23,7 @@ namespace xSimulate.WebAutomationTasks
             if (element == null)
             {
                 LoggerManager.Error("Element Not Found");
-                return;
+                throw new ElementNoFoundException("Element Not Found", action);
             }
 
             if (keyboardAction.KeyDown)

@@ -16,6 +16,7 @@ namespace xSimulate.Action
         {
             this.Position = GetAttributeValue<Position>("position");
             this.Offset = GetAttributeValue<int>("offset");
+            this.Period = GetAttributeValue<int>("period", 500);
         }
 
         public override ActionType ActionType
@@ -26,5 +27,7 @@ namespace xSimulate.Action
         public Position Position { get; set; }
 
         public int Offset { get; set; }
+
+        public int Period { get; set; }
     }
 }

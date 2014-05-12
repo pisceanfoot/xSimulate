@@ -7,8 +7,8 @@ namespace xSimulate.WebAutomationTasks
 {
     public class WaitTask : CommonTask
     {
-        public WaitTask(WebBrowserEx webBrowser)
-            : base(webBrowser)
+        public WaitTask(AutomationManagement manager)
+            : base(manager)
         {
         }
 
@@ -35,20 +35,6 @@ namespace xSimulate.WebAutomationTasks
         private void Sleep(int wait)
         {
             Thread.Sleep(wait);
-            //int count = 0;
-            //int step = 10;
-
-            //while (count <= wait)
-            //{
-            //    //Application.DoEvents();
-            //    Thread.Sleep(step);
-
-            //    count += step;
-            //    if (count < wait && count + step > wait)
-            //    {
-            //        step = wait - count;
-            //    }
-            //}
         }
     }
 }

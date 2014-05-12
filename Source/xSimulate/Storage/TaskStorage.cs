@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace xSimulate.Storage
 {
-    public static class TaskStorage
+    public class TaskStorage
     {
-        private static string DefaultKey = Guid.NewGuid().ToString("N");
+        private string DefaultKey = Guid.NewGuid().ToString("N");
 
-        private static Dictionary<string, object> storageDictory = new Dictionary<string, object>();
+        private Dictionary<string, object> storageDictory = new Dictionary<string, object>();
 
-        public static object Storage
+        public object Storage
         {
             get
             {
@@ -21,12 +21,12 @@ namespace xSimulate.Storage
             }
         }
 
-        public static void SetKey(string key, object value)
+        public void SetKey(string key, object value)
         {
             storageDictory[key] = value;
         }
 
-        public static object GetKey(string key)
+        public object GetKey(string key)
         {
             object obj;
             storageDictory.TryGetValue(DefaultKey, out obj);
@@ -34,7 +34,7 @@ namespace xSimulate.Storage
             return obj;
         }
 
-        public static void Clear()
+        public void Clear()
         {
             storageDictory.Clear();
         }

@@ -1,12 +1,13 @@
-﻿using xSimulate.Browse;
+﻿using xSimulate.Action;
+using xSimulate.Browse;
 using xSimulate.Storage;
 
 namespace xSimulate.WebAutomationTasks
 {
     public class ClearDataTask : CommonTask
     {
-        public ClearDataTask(WebBrowserEx webBrowser)
-            : base(webBrowser)
+        public ClearDataTask(AutomationManagement manager)
+            : base(manager)
         {
         }
 
@@ -14,7 +15,7 @@ namespace xSimulate.WebAutomationTasks
         {
             LoggerManager.Debug("Clear TaskStorage.Storage");
 
-            TaskStorage.Clear();
+            this.ClearData();
         }
     }
 }

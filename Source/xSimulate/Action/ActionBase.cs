@@ -58,6 +58,8 @@ namespace xSimulate.Action
 
         public List<IAction> ChildAction { get; set; }
 
+        public List<IAction> ConditoinAction { get; set; }
+
         public void AddNext(IAction action)
         {
             if (this.ChildAction == null)

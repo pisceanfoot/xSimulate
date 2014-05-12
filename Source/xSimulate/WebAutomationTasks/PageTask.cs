@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Text.RegularExpressions;
+using System.Windows.Forms;
 using xSimulate.Action;
 using xSimulate.Browse;
 using xSimulate.WebAutomationTasks;
@@ -7,8 +8,8 @@ namespace xSimulate.Browser
 {
     public class PageTask : ClickTask
     {
-        public PageTask(WebBrowserEx webBrowser)
-            : base(webBrowser)
+        public PageTask(AutomationManagement manager)
+            : base(manager)
         {
         }
 
@@ -23,6 +24,8 @@ namespace xSimulate.Browser
             HtmlElement element = this.GetData(action) as HtmlElement;
             if (element == null)
             {
+                RunConditionAction(pageAction);
+
                 base.OnProcess(action);
                 return false;
             }
@@ -30,8 +33,33 @@ namespace xSimulate.Browser
             return true;
         }
 
-        private void Run(PageAction pageAction)
+        private void RunConditionAction(PageAction pageAction)
         {
+            if (pageAction.ConditoinAction == null || pageAction.ConditoinAction.Count == 0)
+            {
+                return;
+            }
+
+            foreach (IAction action in pageAction.ConditoinAction)
+            {
+                this.RunAction(action);
+            }
+
+            int pageIndex = 0;
+            int pageCount = 0;
+
+            if (pageIndex < 1)
+            {
+                throw new ElementNoFoundException("PageTask No Result", pageAction);
+            }
+
+            int max = pageAction.MaxPageIndex > pageCount ? pageCount : pageAction.MaxPageIndex;
+            if (pageIndex < max)
+            {
+                return;
+            }
+
+            throw new ElementNoFoundException("PageTask Element Not Found", pageAction);
         }
     }
 }

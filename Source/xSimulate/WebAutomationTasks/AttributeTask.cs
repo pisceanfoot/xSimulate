@@ -6,8 +6,8 @@ namespace xSimulate.WebAutomationTasks
 {
     public class AttributeTask : FindTask
     {
-        public AttributeTask(WebBrowserEx webBrowser)
-            : base(webBrowser)
+        public AttributeTask(AutomationManagement manager)
+            : base(manager)
         {
         }
 
@@ -39,7 +39,7 @@ namespace xSimulate.WebAutomationTasks
                     if (element == null)
                     {
                         LoggerManager.Error("Element Not Found");
-                        return;
+                        throw new ElementNoFoundException("Element Not Found", action);
                     }
 
                     SetValue(element, "value", action.SetValue);
