@@ -82,6 +82,10 @@ namespace xSimulate.Factory
             {
                 task = new TextTask(manager);
             }
+            else if (action.ActionType == ActionType.ScriptAction)
+            {
+                task = new ScriptTask(manager);
+            }
 
             taskDic.Add(action.ActionType, task);
 
