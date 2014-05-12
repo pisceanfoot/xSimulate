@@ -49,7 +49,7 @@ namespace xSimulate.Browse
         [PermissionSetAttribute(SecurityAction.LinkDemand, Name = "FullTrust")]
         public WebBrowserEx()
         {
-            this.ScriptErrorsSuppressed = false;
+            this.ScriptErrorsSuppressed = true;
         }
 
         public string NextUrl { get; set; }

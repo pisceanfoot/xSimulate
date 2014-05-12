@@ -40,7 +40,6 @@ namespace xSimulate
             this.factory = new BrowserFactory(this);
 
             this.webBrowser = new WebBrowserEx();
-            this.webBrowser.ScriptErrorsSuppressed = false;
             this.webBrowser.NewWindow3 += webBrowser_NewWindow3;
             this.webBrowser.DocumentCompleted += webBrowser_DocumentCompleted;
 
