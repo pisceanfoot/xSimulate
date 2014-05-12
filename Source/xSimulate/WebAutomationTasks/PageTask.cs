@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using xSimulate.Action;
 using xSimulate.Browse;
+using xSimulate.Util;
 using xSimulate.WebAutomationTasks;
 
 namespace xSimulate.Browser
@@ -45,10 +46,15 @@ namespace xSimulate.Browser
                 this.RunAction(action);
             }
 
-            int pageIndex = 0;
-            int pageCount = 0;
+
+            int pageIndex = StringConvertTo.ConvertTo<int>(this.GetData<string>("conditionActions_page_Index"));
+            int pageCount = StringConvertTo.ConvertTo<int>(this.GetData<string>("conditionActions_page_Count"));
 
             if (pageIndex < 1)
+            {
+                throw new ElementNoFoundException("PageTask No Result", pageAction);
+            }
+            if (pageCount < 1)
             {
                 throw new ElementNoFoundException("PageTask No Result", pageAction);
             }

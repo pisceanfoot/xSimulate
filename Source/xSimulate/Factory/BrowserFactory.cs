@@ -78,6 +78,10 @@ namespace xSimulate.Factory
             {
                 task = new ClearHistoryTask(manager);
             }
+            else if (action.ActionType == ActionType.TextAction)
+            {
+                task = new TextTask(manager);
+            }
 
             taskDic.Add(action.ActionType, task);
 

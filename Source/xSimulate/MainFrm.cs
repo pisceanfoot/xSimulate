@@ -44,7 +44,7 @@ namespace xSimulate
             trace = new MyTraceListener(this.TextBoxLog);
 
             //System.Diagnostics.Trace.Listeners.Add(trace);
-            //System.Diagnostics.Debug.Listeners.Add(trace);
+            System.Diagnostics.Debug.Listeners.Add(trace);
         }
 
         private void InitWebBrowser()
@@ -61,8 +61,9 @@ namespace xSimulate
                 manager.LoadConfig();
                 manager.Run();
             }
-            catch
+            catch(Exception ex)
             {
+                MessageBox.Show(ex.Message);
                 Application.Exit();
             }
         }
@@ -74,7 +75,8 @@ namespace xSimulate
 
         private void manager_ErrorMessage(string obj, string obje1)
         {
-
+            MessageBox.Show(obj);
+            Application.Exit();
         }
     }
 }

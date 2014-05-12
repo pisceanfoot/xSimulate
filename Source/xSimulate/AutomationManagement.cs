@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
 using xSimulate.Action;
@@ -63,6 +64,8 @@ namespace xSimulate
                 
                 RunStep(step);
             }
+
+            //Application.Exit();
         }
 
         public WebBrowser Browser
@@ -276,7 +279,7 @@ namespace xSimulate
                     // report fatal
                     if (ErrorMessage != null)
                     {
-                        ErrorMessage(ex.Message, ex.Action.ToString());
+                        ErrorMessage(ex.Message, ex.Action.AutomationActionData.ToString());
                     }
 
                     return;

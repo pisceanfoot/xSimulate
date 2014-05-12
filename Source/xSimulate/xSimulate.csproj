@@ -59,6 +59,7 @@
     <Compile Include="Action\KeyboardAction.cs" />
     <Compile Include="Action\ScriptAction.cs" />
     <Compile Include="Action\SendKeyAction.cs" />
+    <Compile Include="Action\TextAction.cs" />
     <Compile Include="Action\TimerAction.cs" />
     <Compile Include="AutomationManagement.cs" />
     <Compile Include="Browse\WebBrowserTimer.cs">
@@ -120,6 +121,7 @@
     <Compile Include="WebAutomationTasks\CommonTask.cs" />
     <Compile Include="WebAutomationTasks\ITask.cs" />
     <Compile Include="WebAutomationTasks\SendKeyTask.cs" />
+    <Compile Include="WebAutomationTasks\TextTask.cs" />
     <Compile Include="WebAutomationTasks\TimerTask.cs" />
     <Compile Include="WebAutomationTasks\WaitTask.cs" />
     <Compile Include="xSimulateArgument.cs" />

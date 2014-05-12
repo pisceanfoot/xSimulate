@@ -67,7 +67,7 @@ namespace xSimulate.Util
         /// <returns></returns>
         public static T ConvertTo<T>(string value, CultureInfo culture)
         {
-            return ConvertTo<T>(value, culture, default(T), true);
+            return ConvertTo<T>(value, culture, default(T), false);
         }
 
         /// <summary>

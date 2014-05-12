@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using xSimulate.Configuration;
 
 namespace xSimulate.Action
 {
@@ -11,5 +12,7 @@ namespace xSimulate.Action
         List<IAction> ConditoinAction { get; set; }
 
         bool HasChild { get; }
+
+        AutomationAction AutomationActionData { get; }
     }
 }

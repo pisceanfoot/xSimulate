@@ -29,7 +29,7 @@ namespace xSimulate.Storage
         public object GetKey(string key)
         {
             object obj;
-            storageDictory.TryGetValue(DefaultKey, out obj);
+            storageDictory.TryGetValue(key, out obj);
 
             return obj;
         }

@@ -19,6 +19,7 @@ namespace xSimulate.Action
         SendKeyAction,
         ConditionAction,
         TimerAction,
-        ClearHistoryAction
+        ClearHistoryAction,
+        TextAction
     }
 }

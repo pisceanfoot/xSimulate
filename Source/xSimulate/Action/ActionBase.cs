@@ -54,6 +54,10 @@ namespace xSimulate.Action
 
         #endregion Data
 
+        public AutomationAction AutomationActionData
+        {
+            get { return this.automationActionData; }
+        }
         #region Action
 
         public List<IAction> ChildAction { get; set; }

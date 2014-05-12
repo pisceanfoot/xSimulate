@@ -143,9 +143,9 @@ namespace xSimulate.WebAutomationTasks
             }
         }
 
-        protected object GetData(string key)
+        protected T GetData<T>(string key)
         {
-            return this.manager.GetData(key);
+            return (T)this.manager.GetData(key);
         }
 
         #endregion Storage

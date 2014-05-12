@@ -27,7 +27,7 @@ namespace xSimulate.Util
                 Type find = type.GetInterface(fullName);
                 if (find != null && find.IsPublic && !type.IsAbstract)
                 {
-                    if (type.Name.EndsWith(actionConfig.Type + "Action"))
+                    if (type.Name == actionConfig.Type + "Action")
                     {
                         T obj = (T)Activator.CreateInstance(type, actionConfig);
                         return obj;
