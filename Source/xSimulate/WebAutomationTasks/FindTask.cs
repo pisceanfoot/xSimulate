@@ -139,6 +139,9 @@ namespace xSimulate.WebAutomationTasks
             else
             {
                 htmlElementCollection = saveElement.GetElementsByTagName(findElementAction.TagName);
+                
+                // clear
+                this.SaveData(findElementAction, null);
             }
 
             if (htmlElementCollection != null && htmlElementCollection.Count > 0)
