@@ -1,0 +1,13 @@
+﻿<action type="Mouse">
+    <attributes>
+    <attribute name="focus">true</attribute>
+    <attribute name="id">mq</attribute>
+    </attributes>
+</action>
+<action type="Attribute">
+    <saveData>false</saveData>
+    <attributes>
+    <!-- 替换搜索关键词 -->
+    <attribute name="value">{0}</attribute>
+    </attributes>
+</action>
