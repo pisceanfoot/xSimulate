@@ -117,6 +117,11 @@ namespace xSimulate.UI.Config
 
         public static string Create(FileGenerator fileGenerator)
         {
+            return Tmall(fileGenerator);
+        }
+
+        private static string Tmall(FileGenerator fileGenerator)
+        {
             StringBuilder builder = new StringBuilder();
             builder.AppendLine(Read("Header.txt"));
 
