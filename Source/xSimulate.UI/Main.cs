@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using xSimulate.UI.Config;
 
 namespace xSimulate.UI
 {
@@ -68,7 +70,18 @@ namespace xSimulate.UI
             file.ItemBrowserTime = ItemBrowserTimes.Value.ToString();
             file.ClickReview = checkBoxItemClickReview.Checked.ToString();
 
+            string content = ConfigHelper.Create(file);
+            File.WriteAllText("a.config", content);
+        }
 
+        private void checkBoxQuJian_CheckedChanged(object sender, EventArgs e)
+        {
+            PriceFrom.Enabled = PriceTo.Enabled = checkBoxQuJian.Checked;
+        }
+
+        private void checkBoxDiZhi_CheckedChanged(object sender, EventArgs e)
+        {
+            Province.Enabled = City.Enabled = checkBoxDiZhi.Checked;
         }
 
     }

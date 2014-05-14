@@ -1,0 +1,83 @@
+﻿ <action type="Page">
+    <attributes>
+    <attribute name="combine">true</attribute>
+    <attribute name="trim">true</attribute>
+    <attribute name="tagname">a</attribute>
+    <attribute name="class">ui-page-next</attribute>
+    <attribute name="innerText"><![CDATA[下一页>>]]></attribute>
+
+    <attribute name="click">true</attribute>
+    <attribute name="wait">1000</attribute>
+
+    <!-- 替换最大页数 -->
+    <attribute name="max">{0}</attribute>
+    </attributes>
+
+    <childActions>
+    <action type="ClearData">
+    </action>
+    <action type="Scroll">
+        <attributes>
+        <attribute name="position">PageBottom</attribute>
+        <attribute name="wait">1000</attribute>
+        </attributes>
+    </action>
+    
+    {1}
+
+    <action type="Condition">
+        <childActions>
+        <action type="Scroll">
+            <attributes>
+            <attribute name="position">Element</attribute>
+            <attribute name="offset">300</attribute>
+            <attribute name="wait">1000</attribute>
+            </attributes>
+        </action>
+        <action type="Click">
+            <attributes>
+            <attribute name="click">true</attribute>
+            </attributes>
+        </action>
+        </childActions>
+    </action>
+    </childActions>
+    <conditionActions>
+    <action type="Text">
+        <attributes>
+        <attribute name="saveDatakey">conditionActions_page_Count</attribute>
+        <attribute name="getDatakey">conditionActions_page_Count</attribute>
+
+        <attribute name="textSaveDatakey">conditionActions_page_Count</attribute>
+
+        <attribute name="combine">true</attribute>
+        <attribute name="trim">true</attribute>
+        <attribute name="tagname">form</attribute>
+        <attribute name="name">filterPageForm</attribute>
+        <attribute name="index">0</attribute>
+
+        <attribute name="text_attr">innerText</attribute>
+        <attribute name="text_attr_regex">共(\d+)页</attribute>
+        </attributes>
+    </action>
+    <action type="Text">
+        <attributes>
+        <attribute name="saveDatakey">conditionActions_page_Index</attribute>
+        <attribute name="getDatakey">conditionActions_page_Index</attribute>
+
+        <attribute name="textSaveDatakey">conditionActions_page_Index</attribute>
+
+        <attribute name="combine">true</attribute>
+        <attribute name="trim">true</attribute>
+        <attribute name="tagname">input</attribute>
+        <attribute name="type">text</attribute>
+        <attribute name="name">jumpto</attribute>
+        <attribute name="index">0</attribute>
+
+        <attribute name="text_attr">value</attribute>
+        </attributes>
+    </action>
+    </conditionActions>
+</action>
+<action type="ClearData">
+</action>

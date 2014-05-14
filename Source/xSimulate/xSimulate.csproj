@@ -57,6 +57,7 @@
     <Compile Include="Action\ClickAction.cs" />
     <Compile Include="Action\ConditionAction.cs" />
     <Compile Include="Action\KeyboardAction.cs" />
+    <Compile Include="Action\PackageAction.cs" />
     <Compile Include="Action\ScriptAction.cs" />
     <Compile Include="Action\SendKeyAction.cs" />
     <Compile Include="Action\TextAction.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="WebAutomationTasks\KeyboardTask.cs" />
     <Compile Include="WebAutomationTasks\MouseTask.cs" />
     <Compile Include="WebAutomationTasks\FindTask.cs" />
+    <Compile Include="WebAutomationTasks\PackageTask.cs" />
     <Compile Include="WebAutomationTasks\PageTask.cs" />
     <Compile Include="WebAutomationTasks\ScriptTask.cs" />
     <Compile Include="WebAutomationTasks\ScrollTask.cs" />
@@ -154,7 +156,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Customer\" />

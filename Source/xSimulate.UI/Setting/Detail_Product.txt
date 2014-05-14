@@ -1,0 +1,87 @@
+﻿<action type="Wait">
+    <attributes>
+    <attribute name="milliseconds">1500</attribute>
+    </attributes>
+</action>
+<action type="Scroll">
+    <attributes>
+    <attribute name="position">Middle</attribute>
+    <attribute name="factor">5</attribute>
+    </attributes>
+</action>
+<action type="Find">
+    <attributes>
+    <attribute name="combine">true</attribute>
+    <attribute name="contains">true</attribute>
+    <attribute name="trim">true</attribute>
+    <attribute name="tagname">a</attribute>
+    <attribute name="href">#description</attribute>
+    <attribute name="innertext">商品详情</attribute>
+    <attribute name="index">0</attribute>
+    </attributes>
+</action>
+<action type="Scroll">
+    <saveData>false</saveData>
+    <attributes>
+    <attribute name="position">Element</attribute>
+    <attribute name="offset">300</attribute>
+    <attribute name="wait">1000</attribute>
+    </attributes>
+</action>
+<action type="Click">
+    <saveData>false</saveData>
+    <attributes>
+    <attribute name="click">true</attribute>
+    <attribute name="combine">true</attribute>
+    <attribute name="contains">true</attribute>
+    <attribute name="trim">true</attribute>
+    <attribute name="tagname">a</attribute>
+    <attribute name="href">#J_Reviews</attribute>
+    <attribute name="innertext">累计评价</attribute>
+    <attribute name="index">0</attribute>
+    <attribute name="wait">2500</attribute>
+    </attributes>
+</action>
+<action type="Click">
+    <saveData>false</saveData>
+    <attributes>
+    <attribute name="click">true</attribute>
+    <attribute name="combine">true</attribute>
+    <attribute name="contains">true</attribute>
+    <attribute name="trim">true</attribute>
+    <attribute name="tagname">a</attribute>
+    <attribute name="href">#J_DealRecord</attribute>
+    <attribute name="innertext">月成交记录</attribute>
+    <attribute name="index">0</attribute>
+    <attribute name="wait">2500</attribute>
+    </attributes>
+</action>
+<action type="Click">
+    <saveData>false</saveData>
+    <attributes>
+    <attribute name="click">true</attribute>
+    <attribute name="combine">true</attribute>
+    <attribute name="contains">true</attribute>
+    <attribute name="trim">true</attribute>
+    <attribute name="tagname">a</attribute>
+    <attribute name="href">#description</attribute>
+    <attribute name="innertext">商品详情</attribute>
+    <attribute name="index">0</attribute>
+    <attribute name="wait">500</attribute>
+    </attributes>
+</action>
+<action type="Scroll">
+    <attributes>
+    <attribute name="position">PageBottom</attribute>
+    </attributes>
+</action>
+<action type="Scroll">
+    <attributes>
+    <attribute name="position">PageBottom</attribute>
+    </attributes>
+</action>
+<action type="Scroll">
+    <attributes>
+    <attribute name="position">PageBottom</attribute>
+    </attributes>
+</action>

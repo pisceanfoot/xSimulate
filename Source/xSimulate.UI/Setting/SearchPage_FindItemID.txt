@@ -1,0 +1,11 @@
+﻿<action type="Find">
+    <attributes>
+    <attribute name="combine">true</attribute>
+    <attribute name="wildcard">true</attribute>
+    <attribute name="trim">true</attribute>
+    <attribute name="tagname">a</attribute>
+    <attribute name="index">0</attribute>
+    <!-- 替换宝贝 ID -->
+    <attribute name="href">http://detail.tmall.com/item.htm*id={0}&amp;*</attribute>
+    </attributes>
+</action>

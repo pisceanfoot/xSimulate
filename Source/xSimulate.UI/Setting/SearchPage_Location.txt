@@ -1,0 +1,39 @@
+﻿ <!-- 地理位置-->
+        <action type="Script" enabled="false">
+          <attributes>
+            <attribute name="script">
+              <![CDATA[
+              function getElementByClass (className, parent) {
+  parent || (parent = document);
+  var descendants= parent.getElementsByTagName('*'), i=-1, e, result=[];
+  while (e=descendants[++i]) {
+    ((' '+(e['class']||e.className)+' ').indexOf(' '+className+' ') > -1) && result.push(e);
+  }
+  return result;
+}
+              getElementByClass('fA-list')[0].style.display='block';]]>
+            </attribute>
+          </attributes>
+          <childActions>
+            <action type="Find">
+              <attributes>
+                <attribute name="combine">true</attribute>
+                <attribute name="trim">true</attribute>
+                <attribute name="tagname">div</attribute>
+                <attribute name="class">fA-list</attribute>
+                <attribute name="index">0</attribute>
+              </attributes>
+            </action>
+            <action type="Click">
+              <attributes>
+                <attribute name="combine">true</attribute>
+                <attribute name="trim">true</attribute>
+                <attribute name="tagname">a</attribute>
+                <attribute name="innertext">上海</attribute>
+                <attribute name="index">0</attribute>
+
+                <attribute name="click">true</attribute>
+              </attributes>
+            </action>
+          </childActions>
+        </action>

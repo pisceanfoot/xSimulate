@@ -57,6 +57,11 @@ namespace xSimulate.WebAutomationTasks
             {
                 bottom = GetMaxPosition();
             }
+            else if (scrollAction.Position == Position.Middle)
+            {
+                bottom = GetMaxPosition();
+                bottom = bottom / 2;
+            }
             else if (scrollAction.Position == Position.Element)
             {
                 HtmlElement element = this.GetData(action) as HtmlElement;
@@ -71,6 +76,11 @@ namespace xSimulate.WebAutomationTasks
                 {
                     bottom = GetYoffset(element);
                 }
+            }
+
+            if (scrollAction.Factor > 0)
+            {
+                bottom = bottom / scrollAction.Factor;
             }
 
             int current = GetY();

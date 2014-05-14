@@ -5,6 +5,7 @@ namespace xSimulate.Action
     [Serializable]
     public enum ActionType
     {
+        PackageAction,
         BrowserAction,
         FindAction,
         PageAction,

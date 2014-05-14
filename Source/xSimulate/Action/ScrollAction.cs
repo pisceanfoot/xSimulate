@@ -6,7 +6,8 @@ namespace xSimulate.Action
     {
         None = 0,
         Element,
-        PageBottom
+        PageBottom,
+        Middle
     }
 
     public class ScrollAction : ActionBase
@@ -17,6 +18,7 @@ namespace xSimulate.Action
             this.Position = GetAttributeValue<Position>("position");
             this.Offset = GetAttributeValue<int>("offset");
             this.Period = GetAttributeValue<int>("period", 500);
+            this.Factor = GetAttributeValue<int>("factor", 0);
         }
 
         public override ActionType ActionType
@@ -29,5 +31,7 @@ namespace xSimulate.Action
         public int Offset { get; set; }
 
         public int Period { get; set; }
+
+        public int Factor { get; set; }
     }
 }
