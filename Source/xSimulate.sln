@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xSimulate.UI", "xSimulate.U
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xSimulate.Common", "xSimulate.Common\xSimulate.Common.csproj", "{5638602E-F373-464B-A811-ED03C8BBFF1E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xSimulate.Web", "xSimulate.Web\xSimulate.Web.csproj", "{D2C41DD8-39D7-406C-BD74-ADF4379DBA43}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{5638602E-F373-464B-A811-ED03C8BBFF1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5638602E-F373-464B-A811-ED03C8BBFF1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5638602E-F373-464B-A811-ED03C8BBFF1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2C41DD8-39D7-406C-BD74-ADF4379DBA43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2C41DD8-39D7-406C-BD74-ADF4379DBA43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2C41DD8-39D7-406C-BD74-ADF4379DBA43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2C41DD8-39D7-406C-BD74-ADF4379DBA43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
