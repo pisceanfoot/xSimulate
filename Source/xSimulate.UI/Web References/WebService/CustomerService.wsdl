@@ -21,14 +21,35 @@
       <s:complexType name="CustomerAccount">
         <s:sequence>
           <s:element minOccurs="1" maxOccurs="1" name="CustomerSysNo" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="TotalAmount" type="s:decimal" />
-          <s:element minOccurs="1" maxOccurs="1" name="LockAmount" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="LockedAmount" type="s:decimal" />
         </s:sequence>
       </s:complexType>
       <s:element name="RegisterResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="RegisterResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RegisterResult" type="tns:ResponseInfoOfCustomer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResponseInfoOfCustomer">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="tns:Customer" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="customer" type="tns:Customer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginResult" type="tns:ResponseInfoOfCustomer" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -40,13 +61,23 @@
   <wsdl:message name="RegisterSoapOut">
     <wsdl:part name="parameters" element="tns:RegisterResponse" />
   </wsdl:message>
-  <wsdl:portType name="CustomerSoap">
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CustomerServiceSoap">
     <wsdl:operation name="Register">
       <wsdl:input message="tns:RegisterSoapIn" />
       <wsdl:output message="tns:RegisterSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="CustomerSoap" type="tns:CustomerSoap">
+  <wsdl:binding name="CustomerServiceSoap" type="tns:CustomerServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="Register">
       <soap:operation soapAction="http://tempuri.org/Register" style="document" />
@@ -57,8 +88,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
-  <wsdl:binding name="CustomerSoap12" type="tns:CustomerSoap">
+  <wsdl:binding name="CustomerServiceSoap12" type="tns:CustomerServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="Register">
       <soap12:operation soapAction="http://tempuri.org/Register" style="document" />
@@ -69,13 +109,22 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
-  <wsdl:service name="Customer">
-    <wsdl:port name="CustomerSoap" binding="tns:CustomerSoap">
-      <soap:address location="http://localhost:54706/Service/Customer.asmx" />
+  <wsdl:service name="CustomerService">
+    <wsdl:port name="CustomerServiceSoap" binding="tns:CustomerServiceSoap">
+      <soap:address location="http://localhost:54706/Service/CustomerService.asmx" />
     </wsdl:port>
-    <wsdl:port name="CustomerSoap12" binding="tns:CustomerSoap12">
-      <soap12:address location="http://localhost:54706/Service/Customer.asmx" />
+    <wsdl:port name="CustomerServiceSoap12" binding="tns:CustomerServiceSoap12">
+      <soap12:address location="http://localhost:54706/Service/CustomerService.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

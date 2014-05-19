@@ -59,7 +59,7 @@
     <Compile Include="RegisterFrm.Designer.cs">
       <DependentUpon>RegisterFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Web References\Services\Reference.cs">
+    <Compile Include="Web References\WebService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -76,6 +76,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RegisterFrm.resx">
+      <DependentUpon>RegisterFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -86,10 +89,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Web References\Services\Customer.wsdl" />
-    <None Include="Web References\Services\Reference.map">
+    <None Include="Web References\WebService\CustomerService.wsdl" />
+    <None Include="Web References\WebService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\WebService\ResponseInfoOfCustomer.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -141,22 +147,22 @@
     <Content Include="Setting\Step_End.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Web References\Services\Customer.disco" />
+    <None Include="Web References\WebService\CustomerService.disco" />
   </ItemGroup>
   <ItemGroup>
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:54706/Service/Customer.asmx">
+    <WebReferenceUrl Include="http://localhost:54706/Service/CustomerService.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\Services\</RelPath>
-      <UpdateFromURL>http://localhost:54706/Service/Customer.asmx</UpdateFromURL>
+      <RelPath>Web References\WebService\</RelPath>
+      <UpdateFromURL>http://localhost:54706/Service/CustomerService.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>xSimulate_UI_Services_Customer</CachedSettingsPropName>
+      <CachedSettingsPropName>xSimulate_UI_WebService_CustomerService</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

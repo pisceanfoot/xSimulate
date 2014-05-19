@@ -13,9 +13,20 @@ namespace xSimulate.UI
         public RegisterFrm()
         {
             InitializeComponent();
+        }
 
-            Services.Customer cus = new Services.Customer();
-            cus.Register(new Services.Customer1() { CustomerID = "111" });
+        private void BtnRegister_Click(object sender, EventArgs e)
+        {
+            string userName = TxtUserName.Text.Trim();
+            string password = TxtPassword.Text.Trim();
+
+            WebService.Customer customer = new WebService.Customer();
+            customer.CustomerID = userName;
+            customer.Password = password;
+
+            WebService.CustomerService customerService = new WebService.CustomerService();
+            customerService.Url = "http://localhost:54706/Service/CustomerService.asmx";
+            customerService.Register(customer);
         }
     }
 }

@@ -2,8 +2,8 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="xSimulate.UI.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="xSimulate_UI_Services_Customer" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://localhost:54706/Service/Customer.asmx</Value>
+    <Setting Name="xSimulate_UI_WebService_CustomerService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:54706/Service/CustomerService.asmx</Value>
     </Setting>
   </Settings>
 </SettingsFile>
