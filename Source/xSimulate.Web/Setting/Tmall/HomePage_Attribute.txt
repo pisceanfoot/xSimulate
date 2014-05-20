@@ -1,0 +1,40 @@
+﻿<action type="Mouse">
+    <attributes>
+    <attribute name="focus">true</attribute>
+    <attribute name="id">mq</attribute>
+    </attributes>
+</action>
+<action type="Attribute">
+    <saveData>false</saveData>
+    <attributes>
+    <!-- 替换搜索关键词 -->
+    <attribute name="value">{0}</attribute>
+    </attributes>
+</action>
+<action type="Wait">
+    <attributes>
+    <attribute name="milliseconds">1000</attribute>
+    </attributes>
+</action>
+<action type="Find">
+    <attributes>
+    <attribute name="combine">true</attribute>
+    <attribute name="trim">true</attribute>
+    <attribute name="tagname">form</attribute>
+    <attribute name="name">searchTop</attribute>
+    <attribute name="index">0</attribute>
+    </attributes>
+</action>
+<action type="Click">
+    <saveData>false</saveData>
+    <attributes>
+    <attribute name="combine">true</attribute>
+    <attribute name="trim">true</attribute>
+    <attribute name="tagname">button</attribute>
+    <attribute name="type">submit</attribute>
+    <attribute name="index">0</attribute>
+
+    <attribute name="click">true</attribute>
+    <attribute name="wait">1000</attribute>
+    </attributes>
+</action>

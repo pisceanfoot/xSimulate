@@ -1,0 +1,10 @@
+﻿<action type="Browser">
+    <attributes>
+    <attribute name="url">{0}</attribute>
+    </attributes>
+</action>
+<action type="Wait">
+    <attributes>
+    <attribute name="milliseconds">1000</attribute>
+    </attributes>
+</action>

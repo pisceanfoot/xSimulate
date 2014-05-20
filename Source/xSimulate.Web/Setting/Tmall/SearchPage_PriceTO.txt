@@ -1,0 +1,21 @@
+﻿<action type="Click">
+    <attributes>
+    <attribute name="combine">true</attribute>
+    <attribute name="trim">true</attribute>
+    <attribute name="tagname">input</attribute>
+    <attribute name="type">text</attribute>
+    <attribute name="name">end_price</attribute>
+
+    <attribute name="index">0</attribute>
+
+    <attribute name="click">true</attribute>
+    </attributes>
+</action>
+
+ <action type="Attribute">
+    <saveData>false</saveData>
+    <attributes>
+    <!-- 替换价格区间 -->
+    <attribute name="value">{0}</attribute>
+    </attributes>
+</action>

@@ -68,5 +68,11 @@ namespace xSimulate.Web.Service
 
             return response;
         }
+
+        [WebMethod]
+        public string GetCustomerSetting(int customerSysNo)
+        {
+            return CustomerSettingBLL.GetCustomerSetting(customerSysNo);
+        }
     }
 }

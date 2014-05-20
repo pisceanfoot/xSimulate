@@ -1,0 +1,11 @@
+﻿<action type="Find" enabled="false">
+    <attributes>
+    <attribute name="combine">true</attribute>
+    <attribute name="trim">true</attribute>
+    <attribute name="tagname">a</attribute>
+    <attribute name="class">productShop-name</attribute>
+    <!-- 替换店铺关键词 -->
+    <attribute name="innertext">{0}</attribute>
+    <attribute name="index">0</attribute>
+    </attributes>
+</action>

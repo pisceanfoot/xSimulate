@@ -1,0 +1,15 @@
+﻿<!-- 价格区间开始-->
+<action type="Package">
+    <childActions>
+        {0}
+        {1}
+        <action type="Click">
+            <saveData>false</saveData>
+            <attributes>
+            <attribute name="id">J_FPEnter</attribute>
+
+            <attribute name="click">true</attribute>
+            </attributes>
+        </action>
+    </childActions>
+</action>
