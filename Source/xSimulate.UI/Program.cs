@@ -14,7 +14,7 @@ namespace xSimulate.UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new RegisterFrm());
+            Application.Run(new MainFrm());
         }
     }
 }

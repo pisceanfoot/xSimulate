@@ -1,6 +1,6 @@
 ﻿namespace xSimulate.UI
 {
-    partial class Main
+    partial class CustomerSettingCtrl
     {
         /// <summary>
         /// Required designer variable.
@@ -618,11 +618,6 @@
             this.ClientSize = new System.Drawing.Size(650, 472);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.Name = "Main";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);

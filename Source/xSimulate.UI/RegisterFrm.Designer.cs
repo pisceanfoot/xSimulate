@@ -31,83 +31,132 @@
             this.label1 = new System.Windows.Forms.Label();
             this.TxtUserName = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.TxtQQ = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.TxtPassword = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.BtnRegister = new System.Windows.Forms.Button();
             this.BtnClose = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(28, 62);
+            this.label1.Location = new System.Drawing.Point(34, 57);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
+            this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 0;
             this.label1.Text = "用户名：";
             // 
             // TxtUserName
             // 
-            this.TxtUserName.Location = new System.Drawing.Point(98, 59);
+            this.TxtUserName.Location = new System.Drawing.Point(98, 54);
+            this.TxtUserName.MaxLength = 30;
             this.TxtUserName.Name = "TxtUserName";
-            this.TxtUserName.Size = new System.Drawing.Size(209, 20);
-            this.TxtUserName.TabIndex = 1;
+            this.TxtUserName.Size = new System.Drawing.Size(209, 21);
+            this.TxtUserName.TabIndex = 0;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.TxtQQ);
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.TxtPassword);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.TxtUserName);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(20, 22);
+            this.groupBox1.Location = new System.Drawing.Point(20, 20);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(395, 224);
+            this.groupBox1.Size = new System.Drawing.Size(408, 207);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "用户注册";
+            // 
+            // TxtQQ
+            // 
+            this.TxtQQ.Location = new System.Drawing.Point(98, 120);
+            this.TxtQQ.MaxLength = 30;
+            this.TxtQQ.Name = "TxtQQ";
+            this.TxtQQ.PasswordChar = '*';
+            this.TxtQQ.Size = new System.Drawing.Size(209, 21);
+            this.TxtQQ.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(58, 123);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(29, 12);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "QQ：";
+            // 
+            // TxtPassword
+            // 
+            this.TxtPassword.Location = new System.Drawing.Point(98, 87);
+            this.TxtPassword.MaxLength = 20;
+            this.TxtPassword.Name = "TxtPassword";
+            this.TxtPassword.PasswordChar = '*';
+            this.TxtPassword.Size = new System.Drawing.Size(209, 21);
+            this.TxtPassword.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(34, 97);
+            this.label2.Location = new System.Drawing.Point(34, 90);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 0;
             this.label2.Text = "密  码：";
             // 
-            // TxtPassword
-            // 
-            this.TxtPassword.Location = new System.Drawing.Point(98, 94);
-            this.TxtPassword.Name = "TxtPassword";
-            this.TxtPassword.PasswordChar = '*';
-            this.TxtPassword.Size = new System.Drawing.Size(209, 20);
-            this.TxtPassword.TabIndex = 1;
-            // 
             // BtnRegister
             // 
-            this.BtnRegister.Location = new System.Drawing.Point(227, 266);
+            this.BtnRegister.Location = new System.Drawing.Point(172, 245);
             this.BtnRegister.Name = "BtnRegister";
-            this.BtnRegister.Size = new System.Drawing.Size(75, 23);
-            this.BtnRegister.TabIndex = 3;
+            this.BtnRegister.Size = new System.Drawing.Size(75, 21);
+            this.BtnRegister.TabIndex = 0;
             this.BtnRegister.Text = "注册(&R)";
             this.BtnRegister.UseVisualStyleBackColor = true;
             this.BtnRegister.Click += new System.EventHandler(this.BtnRegister_Click);
             // 
             // BtnClose
             // 
-            this.BtnClose.Location = new System.Drawing.Point(324, 266);
+            this.BtnClose.Location = new System.Drawing.Point(269, 245);
             this.BtnClose.Name = "BtnClose";
-            this.BtnClose.Size = new System.Drawing.Size(75, 23);
-            this.BtnClose.TabIndex = 3;
+            this.BtnClose.Size = new System.Drawing.Size(75, 21);
+            this.BtnClose.TabIndex = 1;
             this.BtnClose.Text = "关闭(&C)";
             this.BtnClose.UseVisualStyleBackColor = true;
+            this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(319, 57);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(11, 12);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "*";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(319, 90);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(11, 12);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "*";
             // 
             // RegisterFrm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(438, 301);
+            this.ClientSize = new System.Drawing.Size(440, 278);
             this.Controls.Add(this.BtnClose);
             this.Controls.Add(this.BtnRegister);
             this.Controls.Add(this.groupBox1);
@@ -129,5 +178,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button BtnRegister;
         private System.Windows.Forms.Button BtnClose;
+        private System.Windows.Forms.TextBox TxtQQ;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
     }
 }

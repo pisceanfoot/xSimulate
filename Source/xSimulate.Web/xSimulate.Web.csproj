@@ -65,6 +65,7 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Service\CustomerService.asmx" />
+    <Content Include="Service\TasService.asmx" />
     <Content Include="Setting\Tmall\Detail_Product.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -131,6 +132,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\CustomerService.asmx.cs">
       <DependentUpon>CustomerService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Service\TasService.asmx.cs">
+      <DependentUpon>TasService.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Util\Logger.cs" />

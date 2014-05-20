@@ -10,6 +10,7 @@ namespace xSimulate.Web.DAL
             IDataCommand dataCommand = DataCommandManager.GetCommand("Customer_Register");
             dataCommand.SetParameter("@CustomerID", customer.CustomerID);
             dataCommand.SetParameter("@Name", customer.Name);
+            dataCommand.SetParameter("@QQ", customer.QQ);
             dataCommand.SetParameter("@Password", customer.Password);
 
             dataCommand.ExecuteNonQuery();

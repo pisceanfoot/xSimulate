@@ -10,9 +10,9 @@ using xSimulate.UI.Config;
 
 namespace xSimulate.UI
 {
-    public partial class Main : Form
+    public partial class CustomerSettingCtrl : UserControl
     {
-        public Main()
+        public CustomerSettingCtrl()
         {
             InitializeComponent();
 

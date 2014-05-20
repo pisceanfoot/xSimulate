@@ -42,15 +42,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\xSimulate.Web\Model\Customer.cs">
+      <Link>Model\Customer.cs</Link>
+    </Compile>
+    <Compile Include="..\xSimulate.Web\Model\CustomerAccount.cs">
+      <Link>Model\CustomerAccount.cs</Link>
+    </Compile>
+    <Compile Include="..\xSimulate.Web\Model\CustomerSetting.cs">
+      <Link>Model\CustomerSetting.cs</Link>
+    </Compile>
+    <Compile Include="..\xSimulate.Web\Model\ResponseInfo.cs">
+      <Link>Model\ResponseInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\xSimulate.Web\Model\Task.cs">
+      <Link>Model\Task.cs</Link>
+    </Compile>
     <Compile Include="Config\ConfigHelper.cs" />
     <Compile Include="Config\ConfigValidationException.cs" />
     <Compile Include="FileGenerator.cs" />
-    <Compile Include="Main.cs">
+    <Compile Include="LoginFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main.Designer.cs">
-      <DependentUpon>Main.cs</DependentUpon>
+    <Compile Include="LoginFrm.Designer.cs">
+      <DependentUpon>LoginFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomerSettingCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomerSettingCtrl.Designer.cs">
+      <DependentUpon>CustomerSettingCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainFrm.Designer.cs">
+      <DependentUpon>MainFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Test.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisterFrm.cs">
@@ -59,13 +87,18 @@
     <Compile Include="RegisterFrm.Designer.cs">
       <DependentUpon>RegisterFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Web References\WebService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Main.resx">
-      <DependentUpon>Main.cs</DependentUpon>
+    <Compile Include="Services\CustomerService.cs" />
+    <Compile Include="Services\ServiceManager.cs" />
+    <Compile Include="SessionContext.cs" />
+    <Compile Include="Util\MessageHelper.cs" />
+    <EmbeddedResource Include="LoginFrm.resx">
+      <DependentUpon>LoginFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerSettingCtrl.resx">
+      <DependentUpon>CustomerSettingCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFrm.resx">
+      <DependentUpon>MainFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -89,14 +122,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Web References\WebService\CustomerService.wsdl" />
-    <None Include="Web References\WebService\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\WebService\ResponseInfoOfCustomer.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -147,24 +172,8 @@
     <Content Include="Setting\Step_End.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Web References\WebService\CustomerService.disco" />
   </ItemGroup>
-  <ItemGroup>
-    <WebReferences Include="Web References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:54706/Service/CustomerService.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\WebService\</RelPath>
-      <UpdateFromURL>http://localhost:54706/Service/CustomerService.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>xSimulate_UI_WebService_CustomerService</CachedSettingsPropName>
-    </WebReferenceUrl>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

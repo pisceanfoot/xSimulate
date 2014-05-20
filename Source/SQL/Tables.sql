@@ -9,9 +9,10 @@ CREATE Table [dbo].[Customer]
 	NAME					NVARCHAR(50)		NULL,
 	[Password]				VARCHAR(50)			NOT NULL,
 	[Status]				CHAR(1)				NOT NULL,
-	InDate					DATETIME			NOT NULL,
+	[QQ]					VARCHAR(50)			NULL,
+	InDate					DATETIME			NULL,
 	InUser					VARCHAR(20)			NULL,
-	EditDate				DATETIME			NOT NULL,
+	EditDate				DATETIME			NULL,
 	EditUser				VARCHAR(20)			NULL,
 	CONSTRAINT [PK_Customer_SysNO] PRIMARY KEY CLUSTERED
 	(

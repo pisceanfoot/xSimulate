@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using NetFramework.DataAccess.EntityBuilder;
 
@@ -20,6 +19,9 @@ namespace xSimulate.Web.Model
 
         [DataMapping]
         public string Password { get; set; }
+
+        [DataMapping]
+        public string QQ { get; set; }
 
         [ReferencedEntity]
         public CustomerAccount Account { get; set; }
