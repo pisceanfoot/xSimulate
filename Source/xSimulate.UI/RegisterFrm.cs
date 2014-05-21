@@ -41,6 +41,11 @@ namespace xSimulate.UI
             {
                 MessageHelper.ShowMeesageBox(response.Message);
             }
+            else
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
         }
 
         private void BtnClose_Click(object sender, EventArgs e)

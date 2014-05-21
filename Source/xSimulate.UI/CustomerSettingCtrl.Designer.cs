@@ -313,7 +313,7 @@
             this.BtnRun.Name = "BtnRun";
             this.BtnRun.Size = new System.Drawing.Size(75, 25);
             this.BtnRun.TabIndex = 0;
-            this.BtnRun.Text = "执行任务";
+            this.BtnRun.Text = "保存任务";
             this.BtnRun.UseVisualStyleBackColor = true;
             this.BtnRun.Click += new System.EventHandler(this.BtnRun_Click);
             // 
@@ -611,13 +611,14 @@
             this.checkBoxItemClickReview.Text = "点击评价、成交记录";
             this.checkBoxItemClickReview.UseVisualStyleBackColor = true;
             // 
-            // Main
+            // CustomerSettingCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(650, 472);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
+            this.Name = "CustomerSettingCtrl";
+            this.Size = new System.Drawing.Size(650, 472);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);

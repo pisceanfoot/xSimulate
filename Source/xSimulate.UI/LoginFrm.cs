@@ -47,5 +47,20 @@ namespace xSimulate.UI
                 this.Close();
             }
         }
+
+        private void BtnRegister_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            RegisterFrm registerFrm = new RegisterFrm();
+            if (registerFrm.ShowDialog() == DialogResult.OK)
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                this.Show();
+            }
+        }
     }
 }
