@@ -1,4 +1,5 @@
 # git ignore file
+/Source/xSimulate.Web/Configs/Data/Database.config
 **/bin
 **/obj
 *.suo
