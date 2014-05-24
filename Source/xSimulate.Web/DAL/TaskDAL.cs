@@ -12,7 +12,18 @@ namespace xSimulate.Web.DAL
         {
             IDataCommand dataCommand = DataCommandManager.GetCommand("Task_CreateTask");
             dataCommand.SetParameter("@CustomerSysNo", task.CustomerSysNo);
-            dataCommand.SetParameter("@Cost", task.Costs);
+            dataCommand.SetParameter("@CustomerSettingSysNo", task.Setting.SysNo);
+            dataCommand.SetParameter("@RunTimes", task.RunTimes);
+            dataCommand.SetParameter("@BeginDate", task.BeginDate);
+            if (task.EndDate == DateTime.MinValue)
+            {
+                dataCommand.SetParameter("@EndDate", null);
+            }
+            else
+            {
+                dataCommand.SetParameter("@EndDate", task.EndDate);
+            }
+            dataCommand.SetParameter("@Costs", task.Costs);
 
             dataCommand.ExecuteNonQuery();
             int result = Convert.ToInt32(dataCommand.Parameters["@Result"].Value);

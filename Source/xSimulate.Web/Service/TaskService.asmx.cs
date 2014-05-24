@@ -20,6 +20,13 @@ namespace xSimulate.Web.Service
         [WebMethod]
         public string CreateTask(Model.Task task)
         {
+            if (task.Setting == null)
+            {
+                return "非法操作,没有可用设置!";
+            }
+            Model.CustomerSetting setting = task.Setting;
+            BLL.CustomerSettingBLL.SaveCustomerSetting(setting);
+
             int result =  BLL.TaskBLL.CreateTask(task);
             string content = string.Empty;
 

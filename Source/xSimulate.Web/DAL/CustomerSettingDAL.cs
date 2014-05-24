@@ -23,6 +23,7 @@ namespace xSimulate.Web.DAL
             dataCommand.SetParameter("@Setting", customerSetting.Setting);
 
             dataCommand.ExecuteNonQuery();
+            customerSetting.SysNo = Convert.ToInt32(dataCommand.Parameters["@SysNo"].Value);
         }
     }
 }

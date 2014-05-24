@@ -39,6 +39,31 @@ namespace xSimulate.UI
 
         private void BtnRun_Click(object sender, EventArgs e)
         {
+            FileGenerator file = SaveFileSetting();
+            if (file == null)
+            {
+                return;
+            }
+
+            CustomerSetting setting = new CustomerSetting();
+            setting.CustomerSysNo = SessionContext.CustomerInfo.SysNo;
+            setting.Setting = XmlSerializerHelper.Serializer<FileGenerator>(file);
+
+            CustomerService service = ServiceManager.CreateCustomerService();
+            string result = service.SaveCustomerSetting(setting);
+
+            if (string.IsNullOrEmpty(result))
+            {
+                MessageHelper.ShowMeesageBox("保持成功!");
+            }
+            else
+            {
+                MessageHelper.ShowMeesageBox(result);
+            }
+        }
+
+        private FileGenerator SaveFileSetting()
+        {
             FileGenerator file = new FileGenerator();
             file.Browser = comboBoxBrowser.SelectedItem.ToString();
             file.Keyword = TxtKeyword.Text;
@@ -73,20 +98,7 @@ namespace xSimulate.UI
             file.ItemBrowserTime = ItemBrowserTimes.Value.ToString();
             file.ClickReview = checkBoxItemClickReview.Checked.ToString();
 
-            CustomerSetting setting = new CustomerSetting();
-            setting.CustomerSysNo = SessionContext.CustomerInfo.SysNo;
-            setting.Setting = XmlSerializerHelper.Serializer<FileGenerator>(file);
-
-            CustomerService service = ServiceManager.CreateCustomerService();
-            string result = service.SaveCustomerSetting(setting);
-            if (string.IsNullOrEmpty(result))
-            {
-                MessageHelper.ShowMeesageBox("保持成功!");
-            }
-            else
-            {
-                MessageHelper.ShowMeesageBox(result);
-            }
+            return file;
         }
 
         private void checkBoxQuJian_CheckedChanged(object sender, EventArgs e)
@@ -106,7 +118,18 @@ namespace xSimulate.UI
 
         private void BtnPublish_Click(object sender, EventArgs e)
         {
+            FileGenerator file = SaveFileSetting();
+            if (file == null)
+            {
+                return;
+            }
 
+            CustomerSetting setting = new CustomerSetting();
+            setting.CustomerSysNo = SessionContext.CustomerInfo.SysNo;
+            setting.Setting = XmlSerializerHelper.Serializer<FileGenerator>(file);
+
+            Task task = new Task();
+            
         }
     }
 }

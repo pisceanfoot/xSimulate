@@ -14,10 +14,10 @@ namespace xSimulate.Web.BLL
             return 1;
         }
 
-        public static string GetCustomerSetting(int customerSysNo)
+        public static Model.CustomerSetting GetCustomerSetting(int customerSysNo)
         {
             Model.CustomerSetting setting = CustomerSettingDAL.GetCustomerSetting(customerSysNo);
-            return string.Empty;
+            return setting;
         }
     }
 }

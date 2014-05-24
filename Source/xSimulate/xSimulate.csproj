@@ -85,6 +85,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Action\ActionStep.cs" />
+    <Compile Include="Customer\SessionCustomer.cs" />
     <Compile Include="Exception\ElementNoFoundException.cs" />
     <Compile Include="LoggerManager.cs" />
     <Compile Include="Trace\MyTraceListener.cs" />
@@ -158,7 +159,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Customer\" />
     <Folder Include="Html\" />
     <Folder Include="UI\" />
   </ItemGroup>

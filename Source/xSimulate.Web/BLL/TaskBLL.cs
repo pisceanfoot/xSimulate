@@ -10,8 +10,6 @@ namespace xSimulate.Web.BLL
     {
         public static int CreateTask(Model.Task task)
         {
-            // TODO: 计算花费
-
             return TaskDAL.CreateTask(task);
         }
 

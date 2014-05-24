@@ -23,6 +23,12 @@ namespace xSimulate.Web.Model
         [DataMapping]
         public int DownTimes { get; set; }
 
+        [DataMapping]
+        public DateTime BeginDate { get; set; }
+
+        [DataMapping]
+        public DateTime EndDate { get; set; }
+
         public decimal Costs { get; set; }
 
         [ReferencedEntity]

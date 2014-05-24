@@ -81,7 +81,7 @@ namespace xSimulate.Web.Service
         }
 
         [WebMethod]
-        public string GetCustomerSetting(int customerSysNo)
+        public Model.CustomerSetting GetCustomerSetting(int customerSysNo)
         {
             return CustomerSettingBLL.GetCustomerSetting(customerSysNo);
         }
