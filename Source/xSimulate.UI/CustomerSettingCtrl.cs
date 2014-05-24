@@ -73,15 +73,20 @@ namespace xSimulate.UI
             file.ItemBrowserTime = ItemBrowserTimes.Value.ToString();
             file.ClickReview = checkBoxItemClickReview.Checked.ToString();
 
-            Task task = new Task();
-            task.CustomerSysNo = SessionContext.CustomerInfo.SysNo;
-            task.RunTimes = 10;
-            task.Setting = new CustomerSetting();
-            task.Setting.CustomerSysNo = task.CustomerSysNo;
-            task.Setting.Setting = XmlSerializerHelper.Serializer<FileGenerator>(file);
+            CustomerSetting setting = new CustomerSetting();
+            setting.CustomerSysNo = SessionContext.CustomerInfo.SysNo;
+            setting.Setting = XmlSerializerHelper.Serializer<FileGenerator>(file);
 
-            TaskService service = ServiceManager.CreateTaskService();
-            service.CreateTask(task);
+            CustomerService service = ServiceManager.CreateCustomerService();
+            string result = service.SaveCustomerSetting(setting);
+            if (string.IsNullOrEmpty(result))
+            {
+                MessageHelper.ShowMeesageBox("保持成功!");
+            }
+            else
+            {
+                MessageHelper.ShowMeesageBox(result);
+            }
         }
 
         private void checkBoxQuJian_CheckedChanged(object sender, EventArgs e)
@@ -93,6 +98,5 @@ namespace xSimulate.UI
         {
             Province.Enabled = City.Enabled = checkBoxDiZhi.Checked;
         }
-
     }
 }

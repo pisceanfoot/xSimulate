@@ -10,6 +10,9 @@ namespace xSimulate.Web.BLL
     {
         public static bool Register(Model.Customer customer)
         {
+            customer.Account = new Model.CustomerAccount();
+            customer.Account.Amount = 100M;
+
             return CustomerDAL.Register(customer);
         }
 

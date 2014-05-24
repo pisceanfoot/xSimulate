@@ -11,10 +11,12 @@ namespace xSimulate.Web.DAL
         public static int CreateTask(Model.Task task)
         {
             IDataCommand dataCommand = DataCommandManager.GetCommand("Task_CreateTask");
-            dataCommand.SetParameter("@CustomerID", task.CustomerSysNo);
+            dataCommand.SetParameter("@CustomerSysNo", task.CustomerSysNo);
             dataCommand.SetParameter("@Cost", task.Costs);
 
-            return dataCommand.ExecuteScalar<int>();
+            dataCommand.ExecuteNonQuery();
+            int result = Convert.ToInt32(dataCommand.Parameters["@Result"].Value);
+            return result;
         }
 
         public static Model.Task RetrieveTask(int customerSysNo)

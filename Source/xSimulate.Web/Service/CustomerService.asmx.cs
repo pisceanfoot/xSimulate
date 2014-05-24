@@ -13,6 +13,7 @@ namespace xSimulate.Web.Service
     [System.ComponentModel.ToolboxItem(false)]
     public class CustomerService : System.Web.Services.WebService
     {
+        #region Customer
         [WebMethod]
         public ResponseInfo<Model.Customer> Register(Customer customer)
         {
@@ -68,11 +69,22 @@ namespace xSimulate.Web.Service
 
             return response;
         }
+        #endregion
+
+        #region Custome Setting
+        [WebMethod]
+        public string SaveCustomerSetting(Model.CustomerSetting customerSetting)
+        {
+            int result =  CustomerSettingBLL.SaveCustomerSetting(customerSetting);
+
+            return string.Empty;
+        }
 
         [WebMethod]
         public string GetCustomerSetting(int customerSysNo)
         {
             return CustomerSettingBLL.GetCustomerSetting(customerSysNo);
         }
+        #endregion
     }
 }

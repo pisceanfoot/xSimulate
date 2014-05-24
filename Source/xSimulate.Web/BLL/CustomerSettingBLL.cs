@@ -8,6 +8,12 @@ namespace xSimulate.Web.BLL
 {
     public class CustomerSettingBLL
     {
+        public static int SaveCustomerSetting(Model.CustomerSetting customerSetting)
+        {
+            CustomerSettingDAL.SaveCustomerSetting(customerSetting);
+            return 1;
+        }
+
         public static string GetCustomerSetting(int customerSysNo)
         {
             Model.CustomerSetting setting = CustomerSettingDAL.GetCustomerSetting(customerSysNo);

@@ -42,5 +42,15 @@ namespace xSimulate.UI.Services
                         customer});
             return ((ResponseInfo<Customer>)(results[0]));
         }
+
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/SaveCustomerSetting", RequestNamespace = "http://tempuri.org/", ResponseNamespace = "http://tempuri.org/", Use = System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle = System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string SaveCustomerSetting(CustomerSetting customerSetting)
+        {
+            object[] results = this.Invoke("SaveCustomerSetting", new object[] {
+                        customerSetting});
+            return (string)(results[0]);
+        }
+        
     }
 }

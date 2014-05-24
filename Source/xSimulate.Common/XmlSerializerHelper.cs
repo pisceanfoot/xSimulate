@@ -16,9 +16,13 @@ namespace xSimulate.Common
             byte[] buffer = null;
             using (MemoryStream ms = new MemoryStream())
             {
-                using (XmlTextWriter xtw = new XmlTextWriter(ms, Encoding.UTF8))
+                XmlWriterSettings setting = new XmlWriterSettings();
+                setting.OmitXmlDeclaration = true;
+                XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
+                ns.Add("", "");
+                using (XmlWriter writer = XmlWriter.Create(ms, setting))
                 {
-                    serializer.Serialize(xtw, obj);
+                    serializer.Serialize(writer, obj, ns);
                     ms.Position = 0;
                     buffer = ms.ToArray();
                 }

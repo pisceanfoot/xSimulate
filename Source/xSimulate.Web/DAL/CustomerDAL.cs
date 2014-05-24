@@ -11,6 +11,8 @@ namespace xSimulate.Web.DAL
             dataCommand.SetParameter("@CustomerID", customer.CustomerID);
             dataCommand.SetParameter("@Name", customer.Name);
             dataCommand.SetParameter("@QQ", customer.QQ);
+
+            dataCommand.SetParameter("@Amount", customer.Account == null ? 0M : customer.Account.Amount);
             dataCommand.SetParameter("@Password", customer.Password);
 
             dataCommand.ExecuteNonQuery();
