@@ -305,35 +305,35 @@
             this.groupBox8.Controls.Add(this.BtnCostFee);
             this.groupBox8.Controls.Add(this.BtnPublish);
             this.groupBox8.Controls.Add(this.BtnRun);
-            this.groupBox8.Location = new System.Drawing.Point(336, 135);
+            this.groupBox8.Location = new System.Drawing.Point(336, 112);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(276, 100);
+            this.groupBox8.Size = new System.Drawing.Size(276, 123);
             this.groupBox8.TabIndex = 6;
             this.groupBox8.TabStop = false;
             // 
             // BtnCostFee
             // 
-            this.BtnCostFee.Location = new System.Drawing.Point(105, 60);
+            this.BtnCostFee.Location = new System.Drawing.Point(107, 79);
             this.BtnCostFee.Name = "BtnCostFee";
             this.BtnCostFee.Size = new System.Drawing.Size(75, 23);
             this.BtnCostFee.TabIndex = 0;
             this.BtnCostFee.Text = "花费计算";
             this.BtnCostFee.UseVisualStyleBackColor = true;
-            this.BtnCostFee.Click += new System.EventHandler(this.BtnRun_Click);
+            this.BtnCostFee.Click += new System.EventHandler(this.BtnCostFee_Click);
             // 
             // BtnPublish
             // 
-            this.BtnPublish.Location = new System.Drawing.Point(189, 60);
+            this.BtnPublish.Location = new System.Drawing.Point(191, 79);
             this.BtnPublish.Name = "BtnPublish";
             this.BtnPublish.Size = new System.Drawing.Size(75, 23);
             this.BtnPublish.TabIndex = 0;
             this.BtnPublish.Text = "发布任务";
             this.BtnPublish.UseVisualStyleBackColor = true;
-            this.BtnPublish.Click += new System.EventHandler(this.BtnRun_Click);
+            this.BtnPublish.Click += new System.EventHandler(this.BtnPublish_Click);
             // 
             // BtnRun
             // 
-            this.BtnRun.Location = new System.Drawing.Point(19, 60);
+            this.BtnRun.Location = new System.Drawing.Point(21, 79);
             this.BtnRun.Name = "BtnRun";
             this.BtnRun.Size = new System.Drawing.Size(75, 23);
             this.BtnRun.TabIndex = 0;
@@ -642,7 +642,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Name = "CustomerSettingCtrl";
-            this.Size = new System.Drawing.Size(650, 436);
+            this.Size = new System.Drawing.Size(655, 441);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);

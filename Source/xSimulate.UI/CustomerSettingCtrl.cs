@@ -98,5 +98,15 @@ namespace xSimulate.UI
         {
             Province.Enabled = City.Enabled = checkBoxDiZhi.Checked;
         }
+
+        private void BtnCostFee_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnPublish_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
