@@ -47,10 +47,20 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\xSimulate.UI\Model\Test.cs">
+      <Link>Model\Test.cs</Link>
+    </Compile>
+    <Compile Include="..\xSimulate.Web\Model\CustomerSetting.cs">
+      <Link>Model\CustomerSetting.cs</Link>
+    </Compile>
+    <Compile Include="..\xSimulate.Web\Model\Task.cs">
+      <Link>Model\Task.cs</Link>
+    </Compile>
     <Compile Include="Action\ActionBase.cs" />
     <Compile Include="Action\ActionContext.cs" />
     <Compile Include="Action\ClearHistoryAction.cs" />
@@ -88,6 +98,8 @@
     <Compile Include="Customer\SessionCustomer.cs" />
     <Compile Include="Exception\ElementNoFoundException.cs" />
     <Compile Include="LoggerManager.cs" />
+    <Compile Include="Services\ServiceManager.cs" />
+    <Compile Include="Services\TaskService.cs" />
     <Compile Include="Trace\MyTraceListener.cs" />
     <Compile Include="Util\ClassLoader.cs" />
     <Compile Include="Util\Converter.cs" />

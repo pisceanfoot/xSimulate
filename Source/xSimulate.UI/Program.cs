@@ -12,9 +12,35 @@ namespace xSimulate.UI
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainFrm());
+            if (IsOneInstance())
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new MainFrm());
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private static System.Threading.Mutex mutex;
+        private static bool IsOneInstance()
+        {
+            Application.ApplicationExit += Application_ApplicationExit;
+
+            bool one;
+            mutex = new System.Threading.Mutex(true, "{585CFBAD-3B6C-413F-88D1-6233310688FE}", out one);
+            return one;
+        }
+
+        private static void Application_ApplicationExit(object sender, EventArgs e)
+        {
+            if (mutex != null)
+            {
+                mutex.ReleaseMutex();
+                mutex.Close();
+            }
         }
     }
 }

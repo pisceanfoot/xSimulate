@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace xSimulate.Customer
+namespace xSimulate
 {
     public class SessionCustomer
     {
-        public int SysNo { get; set; }
+        public static int CustomerSysNo { get; set; }
 
-        public string Token { get; set; }
+        public static string Token { get; set; }
     }
 }

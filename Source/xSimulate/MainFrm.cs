@@ -19,21 +19,10 @@ namespace xSimulate
             InitWebBrowser();
         }
 
-        private void MainFrm_Load(object sender, EventArgs e)
-        {
-            this.timer.Start();
-        }
-
-        private void timer_Tick(object sender, EventArgs e)
-        {
-            this.timer.Stop();
-            Run();
-        }
-
         public void Init()
         {
             manager = new AutomationManagement();
-            manager.ErrorMessage += manager_ErrorMessage;   
+            manager.ErrorMessage += manager_ErrorMessage;
 
             this.Load += MainFrm_Load;
             this.timer = new Timer();
@@ -54,8 +43,26 @@ namespace xSimulate
             this.tabPageWebBrowser.Controls.Add(this.webBrowser);
         }
 
+        private void MainFrm_Load(object sender, EventArgs e)
+        {
+            this.timer.Start();
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            this.timer.Stop();
+            Run();
+        }
+
+        private void RecieveTask()
+        {
+
+        }
+
         private void Run()
         {
+
+
             try
             {
                 manager.LoadConfig();

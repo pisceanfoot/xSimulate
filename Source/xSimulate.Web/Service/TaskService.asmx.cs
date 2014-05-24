@@ -33,9 +33,20 @@ namespace xSimulate.Web.Service
             return content;
         }
 
+        [WebMethod]
         public Model.Task RetrieveTask(int customerSysNo)
         {
-            return BLL.TaskBLL.RetrieveTask(customerSysNo);
+            // TODO:
+            // 1. 记录发布者任务消费日志
+            // 2. 记录执行者日志
+            Model.Task task = BLL.TaskBLL.RetrieveTask(customerSysNo);
+            return task;
+        }
+
+        [WebMethod]
+        public void UpdateRunTaskStatus(int taskSysNo)
+        {
+
         }
     }
 }
