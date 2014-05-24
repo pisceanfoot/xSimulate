@@ -9,7 +9,7 @@ namespace xSimulate.UI.Services
         public static CustomerService CreateCustomerService()
         {
             CustomerService customerService = new CustomerService();
-            customerService.Url = "http://localhost:54706/Service/CustomerService.asmx";
+            customerService.Url = "http://localhost:9990/Service/CustomerService.asmx";
 
             return customerService;
         }

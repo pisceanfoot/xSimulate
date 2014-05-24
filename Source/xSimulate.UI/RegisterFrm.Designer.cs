@@ -31,14 +31,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.TxtUserName = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.TxtQQ = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.TxtPassword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.BtnRegister = new System.Windows.Forms.Button();
             this.BtnClose = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.txtPasssConfirm = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,6 +63,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtPasssConfirm);
+            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.TxtQQ);
@@ -76,19 +80,38 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "用户注册";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(319, 90);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(11, 12);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "*";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(319, 57);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(11, 12);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "*";
+            // 
             // TxtQQ
             // 
-            this.TxtQQ.Location = new System.Drawing.Point(98, 120);
+            this.TxtQQ.Location = new System.Drawing.Point(98, 148);
             this.TxtQQ.MaxLength = 30;
             this.TxtQQ.Name = "TxtQQ";
-            this.TxtQQ.PasswordChar = '*';
             this.TxtQQ.Size = new System.Drawing.Size(209, 21);
-            this.TxtQQ.TabIndex = 2;
+            this.TxtQQ.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(58, 123);
+            this.label3.Location = new System.Drawing.Point(58, 151);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 12);
             this.label3.TabIndex = 0;
@@ -114,43 +137,41 @@
             // 
             // BtnRegister
             // 
-            this.BtnRegister.Location = new System.Drawing.Point(172, 245);
+            this.BtnRegister.Location = new System.Drawing.Point(131, 245);
             this.BtnRegister.Name = "BtnRegister";
             this.BtnRegister.Size = new System.Drawing.Size(75, 21);
-            this.BtnRegister.TabIndex = 0;
+            this.BtnRegister.TabIndex = 4;
             this.BtnRegister.Text = "注册(&R)";
             this.BtnRegister.UseVisualStyleBackColor = true;
             this.BtnRegister.Click += new System.EventHandler(this.BtnRegister_Click);
             // 
             // BtnClose
             // 
-            this.BtnClose.Location = new System.Drawing.Point(269, 245);
+            this.BtnClose.Location = new System.Drawing.Point(239, 245);
             this.BtnClose.Name = "BtnClose";
             this.BtnClose.Size = new System.Drawing.Size(75, 21);
-            this.BtnClose.TabIndex = 1;
+            this.BtnClose.TabIndex = 5;
             this.BtnClose.Text = "关闭(&C)";
             this.BtnClose.UseVisualStyleBackColor = true;
             this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
-            // label4
+            // txtPasssConfirm
             // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(319, 57);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(11, 12);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "*";
+            this.txtPasssConfirm.Location = new System.Drawing.Point(98, 121);
+            this.txtPasssConfirm.MaxLength = 30;
+            this.txtPasssConfirm.Name = "txtPasssConfirm";
+            this.txtPasssConfirm.PasswordChar = '*';
+            this.txtPasssConfirm.Size = new System.Drawing.Size(209, 21);
+            this.txtPasssConfirm.TabIndex = 2;
             // 
-            // label5
+            // label6
             // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(319, 90);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(11, 12);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "*";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(34, 124);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(53, 12);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "确认密码";
             // 
             // RegisterFrm
             // 
@@ -182,5 +203,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtPasssConfirm;
+        private System.Windows.Forms.Label label6;
     }
 }
