@@ -11,6 +11,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xSimulate.Common", "xSimula
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xSimulate.Web", "xSimulate.Web\xSimulate.Web.csproj", "{D2C41DD8-39D7-406C-BD74-ADF4379DBA43}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{97800CF2-8003-4025-9579-7C7399509250}"
+	ProjectSection(SolutionItems) = preProject
+		SQL\Log.sql = SQL\Log.sql
+		SQL\Tables.sql = SQL\Tables.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using xSimulate.Common;
 using xSimulate.UI.Config;
 using xSimulate.UI.Services;
 using xSimulate.Web.Model;
@@ -72,14 +73,12 @@ namespace xSimulate.UI
             file.ItemBrowserTime = ItemBrowserTimes.Value.ToString();
             file.ClickReview = checkBoxItemClickReview.Checked.ToString();
 
-            string content = ConfigHelper.Create(file);
-
             Task task = new Task();
             task.CustomerSysNo = SessionContext.CustomerInfo.SysNo;
             task.RunTimes = 10;
             task.Setting = new CustomerSetting();
             task.Setting.CustomerSysNo = task.CustomerSysNo;
-            task.Setting.Setting = content;
+            task.Setting.Setting = XmlSerializerHelper.Serializer<FileGenerator>(file);
 
             TaskService service = ServiceManager.CreateTaskService();
             service.CreateTask(task);

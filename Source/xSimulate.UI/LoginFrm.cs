@@ -30,6 +30,7 @@ namespace xSimulate.UI
             if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
             {
                 MessageHelper.ShowMeesageBox("用户名或密码不能为空");
+                return;
             }
 
             Customer customer = new Customer();
