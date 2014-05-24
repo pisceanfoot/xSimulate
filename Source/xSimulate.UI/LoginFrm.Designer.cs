@@ -38,11 +38,15 @@
             this.BtnLogin = new System.Windows.Forms.Button();
             this.BtnExit = new System.Windows.Forms.Button();
             this.btnReg = new System.Windows.Forms.Button();
+            this.chkPass = new System.Windows.Forms.CheckBox();
+            this.chkAuto = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chkAuto);
+            this.groupBox1.Controls.Add(this.chkPass);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.TxtPassword);
@@ -123,7 +127,7 @@
             // 
             // BtnExit
             // 
-            this.BtnExit.Location = new System.Drawing.Point(166, 165);
+            this.BtnExit.Location = new System.Drawing.Point(142, 165);
             this.BtnExit.Name = "BtnExit";
             this.BtnExit.Size = new System.Drawing.Size(75, 23);
             this.BtnExit.TabIndex = 1;
@@ -141,6 +145,26 @@
             this.btnReg.UseVisualStyleBackColor = true;
             this.btnReg.Click += new System.EventHandler(this.btnReg_Click);
             // 
+            // chkPass
+            // 
+            this.chkPass.AutoSize = true;
+            this.chkPass.Location = new System.Drawing.Point(51, 120);
+            this.chkPass.Name = "chkPass";
+            this.chkPass.Size = new System.Drawing.Size(72, 16);
+            this.chkPass.TabIndex = 3;
+            this.chkPass.Text = "记住密码";
+            this.chkPass.UseVisualStyleBackColor = true;
+            // 
+            // chkAuto
+            // 
+            this.chkAuto.AutoSize = true;
+            this.chkAuto.Location = new System.Drawing.Point(141, 120);
+            this.chkAuto.Name = "chkAuto";
+            this.chkAuto.Size = new System.Drawing.Size(72, 16);
+            this.chkAuto.TabIndex = 5;
+            this.chkAuto.Text = "自动登录";
+            this.chkAuto.UseVisualStyleBackColor = true;
+            // 
             // LoginFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -154,6 +178,7 @@
             this.MaximizeBox = false;
             this.Name = "LoginFrm";
             this.Text = "登录";
+            this.Load += new System.EventHandler(this.LoginFrm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -172,5 +197,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnReg;
+        private System.Windows.Forms.CheckBox chkPass;
+        private System.Windows.Forms.CheckBox chkAuto;
     }
 }
