@@ -128,9 +128,6 @@
     <Compile Include="WebAutomationTasks\WaitTask.cs" />
     <Compile Include="xSimulateArgument.cs" />
     <Compile Include="xSimulateDelegate.cs" />
-    <EmbeddedResource Include="MainFrm.resx">
-      <DependentUpon>MainFrm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

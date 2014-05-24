@@ -3,6 +3,27 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xSimulate", "xSimulate\xSimulate.csproj", "{18C5B982-661F-43F9-9922-5036AB43A683}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xSimulate.Common", "xSimulate.Common\xSimulate.Common.csproj", "{5638602E-F373-464B-A811-ED03C8BBFF1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xSimulate.UI", "xSimulate.UI\xSimulate.UI.csproj", "{BB9F9F46-9331-4C4E-A883-DF6C10C6280C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{0D77C89E-50F8-49B8-85EC-7F6DCED78ADD}"
+	ProjectSection(SolutionItems) = preProject
+		Lib\Interop.SHDocVw.dll = Lib\Interop.SHDocVw.dll
+		Lib\Microsoft.mshtml.dll = Lib\Microsoft.mshtml.dll
+		Lib\NetFramework.dll = Lib\NetFramework.dll
+		Lib\NetFramework.Logger.dll = Lib\NetFramework.Logger.dll
+		Lib\NetFramework.Logger.pdb = Lib\NetFramework.Logger.pdb
+		Lib\NetFramework.pdb = Lib\NetFramework.pdb
+		Lib\nunit.framework.dll = Lib\nunit.framework.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{B3BED109-C197-4DE5-898A-EEDB6DCEAC17}"
+	ProjectSection(SolutionItems) = preProject
+		SQL\Log.sql = SQL\Log.sql
+		SQL\Tables.sql = SQL\Tables.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +34,14 @@ Global
 		{18C5B982-661F-43F9-9922-5036AB43A683}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18C5B982-661F-43F9-9922-5036AB43A683}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18C5B982-661F-43F9-9922-5036AB43A683}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5638602E-F373-464B-A811-ED03C8BBFF1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5638602E-F373-464B-A811-ED03C8BBFF1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5638602E-F373-464B-A811-ED03C8BBFF1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5638602E-F373-464B-A811-ED03C8BBFF1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB9F9F46-9331-4C4E-A883-DF6C10C6280C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB9F9F46-9331-4C4E-A883-DF6C10C6280C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB9F9F46-9331-4C4E-A883-DF6C10C6280C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB9F9F46-9331-4C4E-A883-DF6C10C6280C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
