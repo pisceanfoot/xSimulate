@@ -172,6 +172,7 @@
     <Content Include="Setting\Step_End.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="TextFile1.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\xSimulate.Common\xSimulate.Common.csproj">
