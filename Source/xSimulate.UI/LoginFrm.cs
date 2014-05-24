@@ -35,7 +35,7 @@ namespace xSimulate.UI
 
             Customer customer = new Customer();
             customer.CustomerID = userName;
-            customer.Password = password;
+            customer.Password = xSimulate.Common.clsMD5.MD5(password);
             ResponseInfo<Customer> response = ServiceManager.CreateCustomerService().Login(customer);
             if (response.Code != 1)
             {
@@ -62,6 +62,12 @@ namespace xSimulate.UI
             {
                 this.Show();
             }
+        }
+
+        private void btnReg_Click(object sender, EventArgs e)
+        {
+            RegisterFrm regfrm = new RegisterFrm();
+            regfrm.ShowDialog();
         }
     }
 }

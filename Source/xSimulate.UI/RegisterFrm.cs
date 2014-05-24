@@ -32,7 +32,7 @@ namespace xSimulate.UI
 
             Customer customer = new Customer();
             customer.CustomerID = userName;
-            customer.Password = password;
+            customer.Password = xSimulate.Common.clsMD5.MD5(password);
             customer.QQ = qq;
 
 
@@ -44,6 +44,7 @@ namespace xSimulate.UI
             else
             {
                 this.DialogResult = DialogResult.OK;
+                MessageBox.Show("恭喜，注册成功！");
                 this.Close();
             }
         }
