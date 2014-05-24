@@ -89,6 +89,7 @@
     </Compile>
     <Compile Include="Services\CustomerService.cs" />
     <Compile Include="Services\ServiceManager.cs" />
+    <Compile Include="Services\TaskService.cs" />
     <Compile Include="SessionContext.cs" />
     <Compile Include="Util\MessageHelper.cs" />
     <EmbeddedResource Include="LoginFrm.resx">

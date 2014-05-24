@@ -7,6 +7,8 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using xSimulate.UI.Config;
+using xSimulate.UI.Services;
+using xSimulate.Web.Model;
 
 namespace xSimulate.UI
 {
@@ -71,7 +73,16 @@ namespace xSimulate.UI
             file.ClickReview = checkBoxItemClickReview.Checked.ToString();
 
             string content = ConfigHelper.Create(file);
-            File.WriteAllText("a.config", content);
+
+            Task task = new Task();
+            task.CustomerSysNo = SessionContext.CustomerInfo.SysNo;
+            task.RunTimes = 10;
+            task.Setting = new CustomerSetting();
+            task.Setting.CustomerSysNo = task.CustomerSysNo;
+            task.Setting.Setting = content;
+
+            TaskService service = ServiceManager.CreateTaskService();
+            service.CreateTask(task);
         }
 
         private void checkBoxQuJian_CheckedChanged(object sender, EventArgs e)

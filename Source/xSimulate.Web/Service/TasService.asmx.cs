@@ -18,9 +18,17 @@ namespace xSimulate.Web.Service
     {
 
         [WebMethod]
-        public string HelloWorld()
+        public string CreateTask(Model.Task task)
         {
-            return "Hello World";
+            int result =  BLL.TaskBLL.CreateTask(task);
+            string content = string.Empty;
+
+            return content;
+        }
+
+        public Model.Task RetrieveTask(int customerSysNo)
+        {
+            return BLL.TaskBLL.RetrieveTask(customerSysNo);
         }
     }
 }
