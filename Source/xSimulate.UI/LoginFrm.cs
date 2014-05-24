@@ -19,19 +19,7 @@ namespace xSimulate.UI
 
         private void BtnExit_Click(object sender, EventArgs e)
         {
-            if (File.Exists("member"))
-            {
-                MessageBox.Show("0k");
-                string s = File.ReadAllText("member");
-                MessageBox.Show(s);
-                File.AppendAllText("member", DateTime.Now.ToString() + "中国", Encoding.GetEncoding("GB2312"));
-                //File.WriteAllLines
-            }
-            else
-            {
-                File.AppendAllText("member", DateTime.Now.ToString() + "中国", Encoding.GetEncoding("GB2312"));
-            }
-            //this.Close();
+            this.Close();
         }
 
         private void BtnLogin_Click(object sender, EventArgs e)
@@ -88,10 +76,6 @@ namespace xSimulate.UI
             regfrm.ShowDialog();
         }
 
-        //private bool Login()
-        //{
-
-        //}
 
         private void LoginFrm_Load(object sender, EventArgs e)
         {
@@ -119,12 +103,6 @@ namespace xSimulate.UI
                             }
                             else
                             {
-                                //string boolPass = chkPass.Checked ? "1" : "0";
-                                //string boolLogin = chkAuto.Checked ? "1" : "0";
-                                //string[] member = { customer.CustomerID, password, boolPass, boolLogin };
-
-                                //File.WriteAllLines("member", member, Encoding.GetEncoding("GB2312"));
-
                                 SessionContext.CustomerInfo = response.Value;
                                 this.DialogResult = DialogResult.OK;
                                 this.Close();
