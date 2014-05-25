@@ -13,6 +13,30 @@ namespace xSimulate.Util
         /// <typeparam name="T"></typeparam>
         /// <param name="fileName"></param>
         /// <returns></returns>
+        public static T LoadFromXmlFromString<T>(string xmlContent) where T : class
+        {
+            try
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(T));
+                byte[] bytes = Encoding.UTF8.GetBytes(xmlContent);
+                using (MemoryStream ms = new MemoryStream(bytes))
+                {
+                    return (T)serializer.Deserialize(ms);
+                }
+
+            }
+            catch
+            {
+                return default(T);
+            }
+        }
+
+        /// <summary>
+        /// deserialize an object from a file
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
         public static T LoadFromXml<T>(string fileName) where T : class
         {
             FileStream fs = null;

@@ -66,49 +66,49 @@
     <Content Include="Global.asax" />
     <Content Include="Service\CustomerService.asmx" />
     <Content Include="Service\TaskService.asmx" />
-    <Content Include="Setting\Tmall\Detail_Product.txt">
+    <Content Include="Setting\Detail_Product.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Setting\Tmall\Footer.txt">
+    <Content Include="Setting\Footer.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Setting\Tmall\Header.txt">
+    <Content Include="Setting\Header.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Setting\Tmall\HomePage_Attribute.txt">
+    <Content Include="Setting\HomePage_Attribute.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Setting\Tmall\HomePage_Browser.txt">
+    <Content Include="Setting\HomePage_Browser.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Setting\Tmall\SearchPage_FindItemID.txt">
+    <Content Include="Setting\SearchPage_FindItemID.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Setting\Tmall\SearchPage_FindWangWang.txt">
+    <Content Include="Setting\SearchPage_FindWangWang.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Setting\Tmall\SearchPage_Location.txt">
+    <Content Include="Setting\SearchPage_Location.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Setting\Tmall\SearchPage_PageFind.txt">
+    <Content Include="Setting\SearchPage_PageFind.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Setting\Tmall\SearchPage_PriceFilter.txt">
+    <Content Include="Setting\SearchPage_PriceFilter.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Setting\Tmall\SearchPage_PriceFrom.txt">
+    <Content Include="Setting\SearchPage_PriceFrom.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Setting\Tmall\SearchPage_PriceTO.txt">
+    <Content Include="Setting\SearchPage_PriceTO.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Setting\Tmall\SearchPage_Sort.txt">
+    <Content Include="Setting\SearchPage_Sort.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Setting\Tmall\Step_Begin.txt">
+    <Content Include="Setting\Step_Begin.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Setting\Tmall\Step_End.txt">
+    <Content Include="Setting\Step_End.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Web.config" />
@@ -121,13 +121,17 @@
     <Compile Include="DAL\CustomerDAL.cs" />
     <Compile Include="DAL\CustomerSettingDAL.cs" />
     <Compile Include="DAL\TaskDAL.cs" />
+    <Compile Include="Genration\ConfigHelper.cs" />
+    <Compile Include="Genration\ConfigValidationException.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\CustomerAccount.cs" />
     <Compile Include="Model\CustomerSetting.cs" />
+    <Compile Include="Model\FileGenerator.cs" />
     <Compile Include="Model\ResponseInfo.cs" />
+    <Compile Include="Model\RetrieveTask.cs" />
     <Compile Include="Model\Task.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\CustomerService.asmx.cs">
@@ -172,7 +176,15 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\xSimulate.Common\xSimulate.Common.csproj">
+      <Project>{5638602e-f373-464b-a811-ed03c8bbff1e}</Project>
+      <Name>xSimulate.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Setting\Tmall\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

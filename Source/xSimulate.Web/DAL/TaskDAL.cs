@@ -33,7 +33,15 @@ namespace xSimulate.Web.DAL
         public static Model.Task RetrieveTask(int customerSysNo)
         {
             IDataCommand dataCommand = DataCommandManager.GetCommand("Task_RetrieveTask");
-            dataCommand.SetParameter("@CustomerID", customerSysNo);
+            dataCommand.SetParameter("@CustomerSysNo", customerSysNo);
+
+            return dataCommand.ExecuteEntity<Model.Task>();
+        }
+
+        public static Model.Task RetrieveTask(int customerSysNo)
+        {
+            IDataCommand dataCommand = DataCommandManager.GetCommand("Task_RetrieveTask");
+            dataCommand.SetParameter("@CustomerSysNo", customerSysNo);
 
             return dataCommand.ExecuteEntity<Model.Task>();
         }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using xSimulate.Services;
+using xSimulate.Web.Model;
 
 namespace xSimulate
 {
@@ -23,6 +25,7 @@ namespace xSimulate
         {
             manager = new AutomationManagement();
             manager.ErrorMessage += manager_ErrorMessage;
+            manager.Complete += manager_Complete;
 
             this.Load += MainFrm_Load;
             this.timer = new Timer();
@@ -51,27 +54,39 @@ namespace xSimulate
         private void timer_Tick(object sender, EventArgs e)
         {
             this.timer.Stop();
-            Run();
+            if (RecieveTask())
+            {
+                this.timer.Start();
+            }
         }
 
-        private void RecieveTask()
+        private bool RecieveTask()
         {
-
+            TaskService service = Services.ServiceManager.CreateTaskService();
+            Task task = service.RetrieveTask(SessionCustomer.CustomerSysNo);
+            if (task != null)
+            {
+                SessionCustomer.CurrentTask = task;
+                Run(task);
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
-        private void Run()
+        private void Run(Task task)
         {
-
-
             try
             {
-                manager.LoadConfig();
+                manager.LoadConfig(task.Setting.Setting);
                 manager.Run();
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                Application.Exit();
+                
             }
         }
 
@@ -82,8 +97,13 @@ namespace xSimulate
 
         private void manager_ErrorMessage(string obj, string obje1)
         {
-            MessageBox.Show(obj);
-            Application.Exit();
+            // ERROR LOG
+        }
+
+        private void manager_Complete()
+        {
+            // next
+            this.timer.Start();
         }
     }
 }

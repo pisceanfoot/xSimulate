@@ -37,5 +37,18 @@ namespace xSimulate.Common
                 return null;
             }
         }
+
+        public static T DeSerializer<T>(string xml)
+            where T : class,new()
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(T));
+            byte[] bytes = Encoding.UTF8.GetBytes(xml);
+
+            using (MemoryStream stream = new MemoryStream(bytes))
+            {
+                object obj = serializer.Deserialize(stream);
+                return obj as T;
+            }
+        }
     }
 }

@@ -92,6 +92,7 @@ CREATE Table [dbo].[RetrieveTask]
 	RetrieveCustomerSysNo	INT					NOT NULL,  -- 任务接受者编号
 	RunTaskSysNo			INT					NOT NULL,
 	[Status]				CHAR(1)				NOT NULL,  -- A: 接受 D:完成 F:失败
+	[Description]			NVARCHAR(500)		NULL,
 	[InDate]				[datetime]			NULL,
 	[InUser]				[varchar](20)		NULL,
 	[EditDate]				[datetime]			NULL,

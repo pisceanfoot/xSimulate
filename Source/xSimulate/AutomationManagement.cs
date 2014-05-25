@@ -32,6 +32,8 @@ namespace xSimulate
         public event MessageHandle<string, string> PageChanged;
 
         public event MessageHandle<string, string> RuningInfo;
+
+        public event Callback Complete;
         #endregion
 
         public AutomationManagement()
@@ -51,6 +53,15 @@ namespace xSimulate
             this.backgroundWorker = new BackgroundWorker();
             this.backgroundWorker.WorkerSupportsCancellation = true;
             this.backgroundWorker.DoWork += backgroundWorker_DoWork;
+            this.backgroundWorker.RunWorkerCompleted += backgroundWorker_RunWorkerCompleted;
+        }
+
+        void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (this.Complete != null)
+            {
+                this.Complete();
+            }
         }
 
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -119,7 +130,11 @@ namespace xSimulate
         #endregion New Window
 
         #region Load Config && Convert To IAction
-
+        public void LoadConfig(string xmlContent)
+        {
+            WebAutomationConfig config = XmlSerializerHelper.LoadFromXmlFromString<WebAutomationConfig>(xmlContent);
+            LoadConfig(config);
+        }
         public void LoadConfig()
         {
             WebAutomationConfig config = WebAutomationConfig.Load();

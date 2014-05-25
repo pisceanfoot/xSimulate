@@ -31,6 +31,12 @@ namespace xSimulate.Web.Model
 
         public decimal Costs { get; set; }
 
+        [DataMapping]
+        public string Status { get; set; }
+
+        [DataMapping]
+        public string Description { get; set; }
+
         [ReferencedEntity]
         public CustomerSetting Setting { get; set; }
     }
