@@ -30,20 +30,23 @@ namespace xSimulate.Web.DAL
             return result;
         }
 
-        public static Model.Task RetrieveTask(int customerSysNo)
+        public static Model.RetrieveTask RetrieveTask(int customerSysNo)
         {
             IDataCommand dataCommand = DataCommandManager.GetCommand("Task_RetrieveTask");
             dataCommand.SetParameter("@CustomerSysNo", customerSysNo);
 
-            return dataCommand.ExecuteEntity<Model.Task>();
+            return dataCommand.ExecuteEntity<Model.RetrieveTask>();
         }
 
-        public static Model.Task RetrieveTask(int customerSysNo)
+        public static void UpdateRetrieveTaskStatus(Model.RetrieveTask retrieveTask)
         {
-            IDataCommand dataCommand = DataCommandManager.GetCommand("Task_RetrieveTask");
-            dataCommand.SetParameter("@CustomerSysNo", customerSysNo);
+            IDataCommand dataCommand = DataCommandManager.GetCommand("Task_UpdateRetrieveTaskStatus");
+            dataCommand.SetParameter("@TaskSysNo", retrieveTask.RunTaskSysNo);
+            dataCommand.SetParameter("@RetrieveTask", retrieveTask.SysNo);
+            dataCommand.SetParameter("@Status", retrieveTask.Status);
+            dataCommand.SetParameter("@Description", retrieveTask.Description);
 
-            return dataCommand.ExecuteEntity<Model.Task>();
+            dataCommand.ExecuteNonQuery();
         }
     }
 }

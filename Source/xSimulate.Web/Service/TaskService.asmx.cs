@@ -34,19 +34,19 @@ namespace xSimulate.Web.Service
         }
 
         [WebMethod]
-        public Model.Task RetrieveTask(int customerSysNo)
+        public Model.RetrieveTask RetrieveTask(int customerSysNo)
         {
             // TODO:
             // 1. 记录发布者任务消费日志
             // 2. 记录执行者日志
-            Model.Task task = BLL.TaskBLL.RetrieveTask(customerSysNo);
+            Model.RetrieveTask task = BLL.TaskBLL.RetrieveTask(customerSysNo);
             return task;
         }
 
         [WebMethod]
-        public void UpdateRunTaskStatus(int taskSysNo)
+        public void UpdateRunTaskStatus(Model.RetrieveTask retrieveTask)
         {
-
+            BLL.TaskBLL.UpdateRetrieveTaskStatus(retrieveTask);
         }
     }
 }

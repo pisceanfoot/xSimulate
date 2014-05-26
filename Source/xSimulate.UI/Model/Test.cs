@@ -26,5 +26,7 @@ namespace NetFramework.DataAccess.EntityBuilder
         {
 
         }
+
+        public string Prefix { get; set; }
     }
 }

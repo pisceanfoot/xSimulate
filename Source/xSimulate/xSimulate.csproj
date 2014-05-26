@@ -58,6 +58,9 @@
     <Compile Include="..\xSimulate.Web\Model\CustomerSetting.cs">
       <Link>Model\CustomerSetting.cs</Link>
     </Compile>
+    <Compile Include="..\xSimulate.Web\Model\RetrieveTask.cs">
+      <Link>Model\RetrieveTask.cs</Link>
+    </Compile>
     <Compile Include="..\xSimulate.Web\Model\Task.cs">
       <Link>Model\Task.cs</Link>
     </Compile>

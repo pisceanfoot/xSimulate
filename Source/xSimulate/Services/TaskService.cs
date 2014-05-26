@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using xSimulate.Web.Model;
 
 namespace xSimulate.Services
 {
@@ -34,6 +35,14 @@ namespace xSimulate.Services
             object[] results = this.Invoke("RetrieveTask", new object[] {
                         customerSysNo});
             return ((xSimulate.Web.Model.Task)(results[0]));
+        }
+
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/UpdateRunTaskStatus", RequestNamespace = "http://tempuri.org/", ResponseNamespace = "http://tempuri.org/", Use = System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle = System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void UpdateRunTaskStatus(RetrieveTask retrieveTask)
+        {
+            this.Invoke("UpdateRunTaskStatus", new object[] {
+                        retrieveTask});
         }
     }
 

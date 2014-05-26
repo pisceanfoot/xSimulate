@@ -14,9 +14,10 @@ namespace xSimulate.Web.BLL
             return TaskDAL.CreateTask(task);
         }
 
-        public static Model.Task RetrieveTask(int customerSysNo)
+        public static Model.RetrieveTask RetrieveTask(int customerSysNo)
         {
-            Model.Task task = TaskDAL.RetrieveTask(customerSysNo);
+            Model.RetrieveTask retrieveTask = TaskDAL.RetrieveTask(customerSysNo);
+            Model.Task task = retrieveTask.Task;
             if (task == null || task.Setting == null || string.IsNullOrEmpty(task.Setting.Setting))
             {
                 return null;
@@ -33,14 +34,19 @@ namespace xSimulate.Web.BLL
 
                 task.Setting.Setting = content;
             }
-            catch 
+            catch
             {
                 // feedback error
                 return null;
             }
-            
 
-            return task;
+
+            return retrieveTask;
+        }
+
+        public static void UpdateRetrieveTaskStatus(Model.RetrieveTask retrieveTask)
+        {
+            BLL.TaskBLL.UpdateRetrieveTaskStatus(retrieveTask);
         }
     }
 }
