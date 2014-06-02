@@ -94,9 +94,9 @@
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
             this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView1.Location = new System.Drawing.Point(3, 15);
+            this.listView1.Location = new System.Drawing.Point(3, 17);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(219, 285);
+            this.listView1.Size = new System.Drawing.Size(219, 282);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
@@ -117,10 +117,10 @@
             // webBrowser1
             // 
             this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser1.Location = new System.Drawing.Point(3, 15);
+            this.webBrowser1.Location = new System.Drawing.Point(3, 17);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 18);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(525, 404);
+            this.webBrowser1.Size = new System.Drawing.Size(525, 402);
             this.webBrowser1.TabIndex = 0;
             // 
             // groupBox1

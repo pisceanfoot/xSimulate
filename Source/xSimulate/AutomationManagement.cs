@@ -288,12 +288,21 @@ namespace xSimulate
                 {
                     RunAction(action);
                 }
-                catch(ElementNoFoundException ex)
+                catch (ElementNoFoundException ex)
                 {
                     // report fatal
                     if (ErrorMessage != null)
                     {
                         ErrorMessage(ex.Message, ex.Action.AutomationActionData.ToString());
+                    }
+
+                    return;
+                }
+                catch (Exception ex)
+                {
+                    if (ErrorMessage != null)
+                    {
+                        ErrorMessage(ex.Message, string.Empty);
                     }
 
                     return;

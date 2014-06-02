@@ -129,7 +129,23 @@ namespace xSimulate.UI
             setting.Setting = XmlSerializerHelper.Serializer<FileGenerator>(file);
 
             Task task = new Task();
-            
+            task.Setting = setting;
+            task.CustomerSysNo = SessionContext.CustomerInfo.SysNo;
+            task.RunTimes = 10;
+            task.BeginDate = DateTime.Now;
+            task.Costs = 100;
+
+            TaskService taskService= ServiceManager.CreateTaskService();
+            string result = taskService.CreateTask(task);
+
+            if (string.IsNullOrEmpty(result))
+            {
+                MessageHelper.ShowMeesageBox("发布成功!");
+            }
+            else
+            {
+                MessageHelper.ShowMeesageBox(result);
+            }
         }
     }
 }

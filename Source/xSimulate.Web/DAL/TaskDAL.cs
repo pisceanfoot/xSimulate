@@ -30,6 +30,8 @@ namespace xSimulate.Web.DAL
             return result;
         }
 
+
+
         public static Model.RetrieveTask RetrieveTask(int customerSysNo)
         {
             IDataCommand dataCommand = DataCommandManager.GetCommand("Task_RetrieveTask");
