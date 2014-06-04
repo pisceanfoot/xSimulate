@@ -11,6 +11,6 @@ namespace xSimulate
 
         public static string Token { get; set; }
 
-        public static Task CurrentTask { get; set; }
+        public static RetrieveTask CurrentTask { get; set; }
     }
 }

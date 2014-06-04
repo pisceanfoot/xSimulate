@@ -63,12 +63,11 @@ namespace xSimulate
         private bool RecieveTask()
         {
             TaskService service = Services.ServiceManager.CreateTaskService();
-            Task task = service.RetrieveTask(SessionCustomer.CustomerSysNo);
+            RetrieveTask task = service.RetrieveTask(SessionCustomer.CustomerSysNo);
             if (task != null)
             {
                 SessionCustomer.CurrentTask = task;
-                Run(task);
-                return false;
+                return !Run(task.Task);
             }
             else
             {
@@ -76,17 +75,18 @@ namespace xSimulate
             }
         }
 
-        private void Run(Task task)
+        private bool Run(Task task)
         {
             try
             {
                 manager.LoadConfig(task.Setting.Setting);
                 manager.Run();
+                return true;
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                
+                return false;
             }
         }
 
@@ -98,10 +98,35 @@ namespace xSimulate
         private void manager_ErrorMessage(string obj, string obje1)
         {
             // ERROR LOG
+            RetrieveTask retrieveTask = new RetrieveTask();
+            retrieveTask.Description = "执行失败";
+            retrieveTask.RunTaskSysNo = SessionCustomer.CurrentTask.RunTaskSysNo;
+            retrieveTask.SysNo = SessionCustomer.CurrentTask.SysNo;
+            retrieveTask.Status = "E";
+
+            TaskService  task = ServiceManager.CreateTaskService();
+            task.UpdateRunTaskStatus(retrieveTask);
         }
 
         private void manager_Complete()
         {
+
+            try
+            {
+                RetrieveTask retrieveTask = new RetrieveTask();
+                retrieveTask.Description = "执行完成";
+                retrieveTask.RunTaskSysNo = SessionCustomer.CurrentTask.RunTaskSysNo;
+                retrieveTask.SysNo = SessionCustomer.CurrentTask.SysNo;
+                retrieveTask.Status = "S";
+
+                TaskService task = ServiceManager.CreateTaskService();
+                task.UpdateRunTaskStatus(retrieveTask);
+            }
+            catch
+            {
+                
+            }
+
             // next
             this.timer.Start();
         }

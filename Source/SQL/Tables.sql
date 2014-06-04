@@ -1,8 +1,6 @@
 
 
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Customer]') AND type in (N'U'))
-	DROP TABLE [dbo].[Customer]
-GO
+-- DROP Table [dbo].[Customer]
 CREATE Table [dbo].[Customer]
 
 (
@@ -23,9 +21,7 @@ CREATE Table [dbo].[Customer]
 ) ON [PRIMARY]
 GO
 
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Account]') AND type in (N'U'))
-	DROP TABLE [dbo].[Account]
-GO
+-- DROP Table [dbo].[Account]
 CREATE Table [dbo].[Account]
 
 (
@@ -45,9 +41,7 @@ GO
 
 
 
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[CustomerSetting]') AND type in (N'U'))
-	DROP TABLE [dbo].[CustomerSetting]
-GO
+-- DROP Table [dbo].[CustomerSetting]
 CREATE Table [dbo].[CustomerSetting]
 
 (
@@ -65,9 +59,7 @@ CREATE Table [dbo].[CustomerSetting]
 ) ON [PRIMARY]
 GO
 
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Task]') AND type in (N'U'))
-	DROP TABLE [dbo].[Task]
-GO
+-- DROP Table [dbo].[Task]
 CREATE Table [dbo].[Task]
 
 (
@@ -91,9 +83,7 @@ CREATE Table [dbo].[Task]
 ) ON [PRIMARY]
 GO
 
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[RetrieveTask]') AND type in (N'U'))
-	DROP TABLE [dbo].[RetrieveTask]
-GO
+-- DROP Table [dbo].[RetrieveTask]
 CREATE Table [dbo].[RetrieveTask]
 
 (

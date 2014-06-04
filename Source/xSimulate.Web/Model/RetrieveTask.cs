@@ -22,7 +22,7 @@ namespace xSimulate.Web.Model
         public string Status { get; set; }
 
         [DataMapping]
-        public int Description { get; set; }
+        public string Description { get; set; }
 
         [DataMapping]
         public DateTime InDate { get; set; }
