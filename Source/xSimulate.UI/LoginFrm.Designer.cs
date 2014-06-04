@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkAuto = new System.Windows.Forms.CheckBox();
+            this.chkPass = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.TxtPassword = new System.Windows.Forms.TextBox();
@@ -38,8 +40,6 @@
             this.BtnLogin = new System.Windows.Forms.Button();
             this.BtnExit = new System.Windows.Forms.Button();
             this.btnReg = new System.Windows.Forms.Button();
-            this.chkPass = new System.Windows.Forms.CheckBox();
-            this.chkAuto = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,20 +53,40 @@
             this.groupBox1.Controls.Add(this.TxtUserName);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(378, 142);
+            this.groupBox1.Size = new System.Drawing.Size(378, 154);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "用户登录";
+            // 
+            // chkAuto
+            // 
+            this.chkAuto.AutoSize = true;
+            this.chkAuto.Location = new System.Drawing.Point(141, 130);
+            this.chkAuto.Name = "chkAuto";
+            this.chkAuto.Size = new System.Drawing.Size(74, 17);
+            this.chkAuto.TabIndex = 5;
+            this.chkAuto.Text = "自动登录";
+            this.chkAuto.UseVisualStyleBackColor = true;
+            // 
+            // chkPass
+            // 
+            this.chkPass.AutoSize = true;
+            this.chkPass.Location = new System.Drawing.Point(51, 130);
+            this.chkPass.Name = "chkPass";
+            this.chkPass.Size = new System.Drawing.Size(74, 17);
+            this.chkPass.TabIndex = 3;
+            this.chkPass.Text = "记住密码";
+            this.chkPass.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(325, 85);
+            this.label3.Location = new System.Drawing.Point(325, 92);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(11, 12);
+            this.label3.Size = new System.Drawing.Size(11, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "*";
             // 
@@ -74,52 +94,52 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(325, 46);
+            this.label4.Location = new System.Drawing.Point(325, 50);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(11, 12);
+            this.label4.Size = new System.Drawing.Size(11, 13);
             this.label4.TabIndex = 4;
             this.label4.Text = "*";
             // 
             // TxtPassword
             // 
-            this.TxtPassword.Location = new System.Drawing.Point(108, 82);
+            this.TxtPassword.Location = new System.Drawing.Point(108, 89);
             this.TxtPassword.MaxLength = 20;
             this.TxtPassword.Name = "TxtPassword";
             this.TxtPassword.PasswordChar = '*';
-            this.TxtPassword.Size = new System.Drawing.Size(202, 21);
+            this.TxtPassword.Size = new System.Drawing.Size(202, 20);
             this.TxtPassword.TabIndex = 1;
             // 
             // TxtUserName
             // 
-            this.TxtUserName.Location = new System.Drawing.Point(108, 43);
+            this.TxtUserName.Location = new System.Drawing.Point(108, 47);
             this.TxtUserName.MaxLength = 30;
             this.TxtUserName.Name = "TxtUserName";
-            this.TxtUserName.Size = new System.Drawing.Size(202, 21);
+            this.TxtUserName.Size = new System.Drawing.Size(202, 20);
             this.TxtUserName.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(49, 85);
+            this.label2.Location = new System.Drawing.Point(49, 92);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 12);
+            this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "密  码:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(49, 46);
+            this.label1.Location = new System.Drawing.Point(49, 50);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 12);
+            this.label1.Size = new System.Drawing.Size(46, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "用户名:";
             // 
             // BtnLogin
             // 
-            this.BtnLogin.Location = new System.Drawing.Point(48, 165);
+            this.BtnLogin.Location = new System.Drawing.Point(48, 179);
             this.BtnLogin.Name = "BtnLogin";
-            this.BtnLogin.Size = new System.Drawing.Size(75, 23);
+            this.BtnLogin.Size = new System.Drawing.Size(75, 25);
             this.BtnLogin.TabIndex = 0;
             this.BtnLogin.Text = "登录(&L)";
             this.BtnLogin.UseVisualStyleBackColor = true;
@@ -127,9 +147,9 @@
             // 
             // BtnExit
             // 
-            this.BtnExit.Location = new System.Drawing.Point(142, 165);
+            this.BtnExit.Location = new System.Drawing.Point(142, 179);
             this.BtnExit.Name = "BtnExit";
-            this.BtnExit.Size = new System.Drawing.Size(75, 23);
+            this.BtnExit.Size = new System.Drawing.Size(75, 25);
             this.BtnExit.TabIndex = 1;
             this.BtnExit.Text = "退出(&X)";
             this.BtnExit.UseVisualStyleBackColor = true;
@@ -137,39 +157,19 @@
             // 
             // btnReg
             // 
-            this.btnReg.Location = new System.Drawing.Point(298, 165);
+            this.btnReg.Location = new System.Drawing.Point(298, 179);
             this.btnReg.Name = "btnReg";
-            this.btnReg.Size = new System.Drawing.Size(75, 23);
+            this.btnReg.Size = new System.Drawing.Size(75, 25);
             this.btnReg.TabIndex = 2;
             this.btnReg.Text = "注册";
             this.btnReg.UseVisualStyleBackColor = true;
             this.btnReg.Click += new System.EventHandler(this.btnReg_Click);
             // 
-            // chkPass
-            // 
-            this.chkPass.AutoSize = true;
-            this.chkPass.Location = new System.Drawing.Point(51, 120);
-            this.chkPass.Name = "chkPass";
-            this.chkPass.Size = new System.Drawing.Size(72, 16);
-            this.chkPass.TabIndex = 3;
-            this.chkPass.Text = "记住密码";
-            this.chkPass.UseVisualStyleBackColor = true;
-            // 
-            // chkAuto
-            // 
-            this.chkAuto.AutoSize = true;
-            this.chkAuto.Location = new System.Drawing.Point(141, 120);
-            this.chkAuto.Name = "chkAuto";
-            this.chkAuto.Size = new System.Drawing.Size(72, 16);
-            this.chkAuto.TabIndex = 5;
-            this.chkAuto.Text = "自动登录";
-            this.chkAuto.UseVisualStyleBackColor = true;
-            // 
             // LoginFrm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(402, 200);
+            this.ClientSize = new System.Drawing.Size(402, 217);
             this.Controls.Add(this.btnReg);
             this.Controls.Add(this.BtnExit);
             this.Controls.Add(this.BtnLogin);
@@ -177,6 +177,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "LoginFrm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "登录";
             this.Load += new System.EventHandler(this.LoginFrm_Load);
             this.groupBox1.ResumeLayout(false);
