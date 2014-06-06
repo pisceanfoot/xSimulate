@@ -18,6 +18,8 @@ namespace xSimulate.WebAutomationTasks
                 return;
             }
 
+            LoggerManager.Debug(action.AutomationActionData);
+
             if (!string.IsNullOrEmpty(scriptAction.ScriptContent))
             {
                 object[] args = new object[1];

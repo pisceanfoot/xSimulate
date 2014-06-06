@@ -63,7 +63,7 @@ namespace xSimulate
         private bool RecieveTask()
         {
             TaskService service = Services.ServiceManager.CreateTaskService();
-            RetrieveTask task = service.RetrieveTask(SessionCustomer.CustomerSysNo);
+            RetrieveTask task = service.GetTask(SessionCustomer.CustomerSysNo);
             if (task != null)
             {
                 SessionCustomer.CurrentTask = task;

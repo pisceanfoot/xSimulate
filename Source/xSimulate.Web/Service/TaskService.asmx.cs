@@ -34,7 +34,7 @@ namespace xSimulate.Web.Service
         }
 
         [WebMethod]
-        public Model.RetrieveTask RetrieveTask(int customerSysNo)
+        public Model.RetrieveTask GetTask(int customerSysNo)
         {
             // TODO:
             // 1. 记录发布者任务消费日志

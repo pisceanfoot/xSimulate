@@ -29,10 +29,10 @@ namespace xSimulate.Services
         }
 
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RetrieveTask", RequestNamespace = "http://tempuri.org/", ResponseNamespace = "http://tempuri.org/", Use = System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle = System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public xSimulate.Web.Model.RetrieveTask RetrieveTask(int customerSysNo)
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetTask", RequestNamespace = "http://tempuri.org/", ResponseNamespace = "http://tempuri.org/", Use = System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle = System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public xSimulate.Web.Model.RetrieveTask GetTask(int customerSysNo)
         {
-            object[] results = this.Invoke("RetrieveTask", new object[] {
+            object[] results = this.Invoke("GetTask", new object[] {
                         customerSysNo});
             return ((xSimulate.Web.Model.RetrieveTask)(results[0]));
         }

@@ -169,13 +169,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Setting\Tmall\" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\xSimulate.Common\xSimulate.Common.csproj">
       <Project>{5638602e-f373-464b-a811-ed03c8bbff1e}</Project>
       <Name>xSimulate.Common</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Setting\Tmall\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

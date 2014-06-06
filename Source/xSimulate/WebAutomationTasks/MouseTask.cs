@@ -19,6 +19,8 @@ namespace xSimulate.WebAutomationTasks
         {
             base.OnProcess(action);
 
+            LoggerManager.Debug(action.AutomationActionData);
+
             HtmlElement element = this.GetData(action) as HtmlElement;
             if (element == null)
             {

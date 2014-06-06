@@ -16,7 +16,9 @@ namespace xSimulate.Browser
 
         protected override void OnProcess(IAction action)
         {
+            LoggerManager.Debug(action.AutomationActionData);
         }
+
 
         public override bool ChildComplete(IAction action)
         {

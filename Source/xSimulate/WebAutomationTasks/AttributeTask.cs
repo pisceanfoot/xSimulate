@@ -21,6 +21,8 @@ namespace xSimulate.WebAutomationTasks
                 return;
             }
 
+            LoggerManager.Debug(action.AutomationActionData);
+
             SetValue(attributeAction);
         }
 

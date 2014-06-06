@@ -14,7 +14,7 @@ namespace xSimulate.WebAutomationTasks
 
         protected override void OnProcess(Action.IAction action)
         {
-            LoggerManager.Debug("ClearHistoryTask");
+            LoggerManager.Debug(action.AutomationActionData);
 
             ClearHistoryAction clearHistoryAction = action as ClearHistoryAction;
 

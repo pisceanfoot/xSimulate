@@ -21,7 +21,7 @@ namespace xSimulate.WebAutomationTasks
             BrowserAction pageAction = action as BrowserAction;
             webBrowser.Navigate(pageAction.Url);
 
-            LoggerManager.Debug("Browser: {0}", pageAction.Url);
+            LoggerManager.Debug(action.AutomationActionData);
         }
 
         public override bool IsComplete()

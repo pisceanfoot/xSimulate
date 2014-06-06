@@ -24,6 +24,8 @@ namespace xSimulate.WebAutomationTasks
                 return;
             }
 
+            LoggerManager.Debug(action.AutomationActionData);
+
             if (findElementAction.Combine)
             {
                 FindContidion(findElementAction);

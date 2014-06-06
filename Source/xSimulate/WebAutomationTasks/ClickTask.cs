@@ -26,6 +26,8 @@ namespace xSimulate.WebAutomationTasks
                 throw new ElementNoFoundException("Element Not Found", action);
             }
 
+            LoggerManager.Debug(action.AutomationActionData);
+
             ClickAction clickAction = action as ClickAction;
             if (clickAction == null)
             {

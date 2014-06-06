@@ -19,6 +19,9 @@ namespace xSimulate.Configuration
         [XmlAttribute("enabled")]
         public bool Enabled { get; set; }
 
+        [XmlElement("name")]
+        public string Name { get; set; }
+
         [XmlElement("saveData")]
         public string SaveData { get; set; }
 
@@ -68,6 +71,8 @@ namespace xSimulate.Configuration
             StringBuilder builder = new StringBuilder();
             builder.Append("type:");
             builder.AppendLine(this.Type);
+            builder.Append("name:");
+            builder.AppendLine(this.Name);
             builder.Append("saveData:");
             builder.AppendLine(this.SaveData);
             builder.Append("saveDataKey:");

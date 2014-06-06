@@ -91,7 +91,16 @@
     <Compile Include="Services\ServiceManager.cs" />
     <Compile Include="Services\TaskService.cs" />
     <Compile Include="SessionContext.cs" />
+    <Compile Include="KeywordSearchCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="KeywordSearchCtrl.Designer.cs">
+      <DependentUpon>KeywordSearchCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Util\MessageHelper.cs" />
+    <EmbeddedResource Include="KeywordSearchCtrl.resx">
+      <DependentUpon>KeywordSearchCtrl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginFrm.resx">
       <DependentUpon>LoginFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -178,7 +187,6 @@
   <ItemGroup>
     <ProjectReference Include="..\xSimulate.Common\xSimulate.Common.csproj">
       <Project>{5638602e-f373-464b-a811-ed03c8bbff1e}</Project>
-      <Project>{5638602E-F373-464B-A811-ED03C8BBFF1E}</Project>
       <Name>xSimulate.Common</Name>
     </ProjectReference>
   </ItemGroup>

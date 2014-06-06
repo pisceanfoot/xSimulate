@@ -13,6 +13,7 @@ namespace xSimulate.WebAutomationTasks
 
         protected override void OnProcess(Action.IAction action)
         {
+            LoggerManager.Debug(action.AutomationActionData);
         }
 
         public override bool CanChildRun(IAction action)

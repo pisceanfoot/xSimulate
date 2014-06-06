@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using xSimulate.Configuration;
 
 namespace xSimulate
 {
@@ -224,6 +225,11 @@ namespace xSimulate
             }
 
             return message;
+        }
+
+        public static void Debug(AutomationAction AutomationActionData)
+        {
+            System.Diagnostics.Debug.WriteLine(AutomationActionData.ToString());
         }
     }
 }

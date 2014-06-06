@@ -46,6 +46,7 @@ namespace xSimulate.UI
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.用户管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.修改密码CToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -59,11 +60,12 @@ namespace xSimulate.UI
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 25);
+            this.tabControl1.Location = new System.Drawing.Point(0, 24);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(784, 464);
+            this.tabControl1.Size = new System.Drawing.Size(784, 506);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -74,7 +76,7 @@ namespace xSimulate.UI
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(776, 438);
+            this.tabPage1.Size = new System.Drawing.Size(776, 480);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "主界面";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -82,9 +84,9 @@ namespace xSimulate.UI
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.listView1);
-            this.groupBox3.Location = new System.Drawing.Point(8, 129);
+            this.groupBox3.Location = new System.Drawing.Point(8, 140);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(225, 302);
+            this.groupBox3.Size = new System.Drawing.Size(225, 327);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "任务记录";
@@ -107,9 +109,9 @@ namespace xSimulate.UI
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.webBrowser1);
-            this.groupBox2.Location = new System.Drawing.Point(239, 6);
+            this.groupBox2.Location = new System.Drawing.Point(239, 7);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(531, 422);
+            this.groupBox2.Size = new System.Drawing.Size(531, 457);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "广告信息";
@@ -118,7 +120,7 @@ namespace xSimulate.UI
             // 
             this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.webBrowser1.Location = new System.Drawing.Point(3, 16);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 18);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.Size = new System.Drawing.Size(525, 438);
             this.webBrowser1.TabIndex = 0;
@@ -130,18 +132,18 @@ namespace xSimulate.UI
             this.groupBox1.Controls.Add(this.LblAmount);
             this.groupBox1.Controls.Add(this.LblUserName);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(8, 6);
+            this.groupBox1.Location = new System.Drawing.Point(8, 7);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(225, 117);
+            this.groupBox1.Size = new System.Drawing.Size(225, 127);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "当前用户";
             // 
             // BtnRun
             // 
-            this.BtnRun.Location = new System.Drawing.Point(135, 80);
+            this.BtnRun.Location = new System.Drawing.Point(135, 87);
             this.BtnRun.Name = "BtnRun";
-            this.BtnRun.Size = new System.Drawing.Size(75, 21);
+            this.BtnRun.Size = new System.Drawing.Size(75, 23);
             this.BtnRun.TabIndex = 1;
             this.BtnRun.Text = "运行";
             this.BtnRun.UseVisualStyleBackColor = true;
@@ -149,36 +151,36 @@ namespace xSimulate.UI
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 41);
+            this.label2.Location = new System.Drawing.Point(17, 44);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 12);
+            this.label2.Size = new System.Drawing.Size(34, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "余额:";
             // 
             // LblAmount
             // 
             this.LblAmount.AutoSize = true;
-            this.LblAmount.Location = new System.Drawing.Point(58, 41);
+            this.LblAmount.Location = new System.Drawing.Point(58, 44);
             this.LblAmount.Name = "LblAmount";
-            this.LblAmount.Size = new System.Drawing.Size(41, 12);
+            this.LblAmount.Size = new System.Drawing.Size(43, 13);
             this.LblAmount.TabIndex = 0;
             this.LblAmount.Text = "Amount";
             // 
             // LblUserName
             // 
             this.LblUserName.AutoSize = true;
-            this.LblUserName.Location = new System.Drawing.Point(58, 20);
+            this.LblUserName.Location = new System.Drawing.Point(58, 22);
             this.LblUserName.Name = "LblUserName";
-            this.LblUserName.Size = new System.Drawing.Size(53, 12);
+            this.LblUserName.Size = new System.Drawing.Size(57, 13);
             this.LblUserName.TabIndex = 0;
             this.LblUserName.Text = "UserName";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 20);
+            this.label1.Location = new System.Drawing.Point(17, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 12);
+            this.label1.Size = new System.Drawing.Size(34, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "用户:";
             // 
@@ -188,7 +190,7 @@ namespace xSimulate.UI
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(776, 438);
+            this.tabPage2.Size = new System.Drawing.Size(776, 480);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "任务设置";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -198,7 +200,7 @@ namespace xSimulate.UI
             this.customerSettingCtrl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.customerSettingCtrl1.Location = new System.Drawing.Point(3, 3);
             this.customerSettingCtrl1.Name = "customerSettingCtrl1";
-            this.customerSettingCtrl1.Size = new System.Drawing.Size(770, 432);
+            this.customerSettingCtrl1.Size = new System.Drawing.Size(770, 474);
             this.customerSettingCtrl1.TabIndex = 0;
             // 
             // menuStrip1
@@ -207,7 +209,7 @@ namespace xSimulate.UI
             this.用户管理ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(784, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(784, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -216,20 +218,30 @@ namespace xSimulate.UI
             this.用户管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.修改密码CToolStripMenuItem});
             this.用户管理ToolStripMenuItem.Name = "用户管理ToolStripMenuItem";
-            this.用户管理ToolStripMenuItem.Size = new System.Drawing.Size(85, 21);
+            this.用户管理ToolStripMenuItem.Size = new System.Drawing.Size(83, 20);
             this.用户管理ToolStripMenuItem.Text = "用户管理(&U)";
             // 
             // 修改密码CToolStripMenuItem
             // 
             this.修改密码CToolStripMenuItem.Name = "修改密码CToolStripMenuItem";
-            this.修改密码CToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.修改密码CToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.修改密码CToolStripMenuItem.Text = "修改密码(&C)";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(776, 480);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "关键词查询";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // MainFrm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 489);
+            this.ClientSize = new System.Drawing.Size(784, 530);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -272,5 +284,6 @@ namespace xSimulate.UI
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.WebBrowser webBrowser1;
+        private System.Windows.Forms.TabPage tabPage3;
     }
 }

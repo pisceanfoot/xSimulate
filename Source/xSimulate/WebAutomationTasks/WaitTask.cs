@@ -20,7 +20,7 @@ namespace xSimulate.WebAutomationTasks
                 return;
             }
 
-            LoggerManager.Debug("WaitTask");
+            LoggerManager.Debug(action.AutomationActionData);
 
             if (waitAction.Seconds > 0)
             {

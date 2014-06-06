@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Text;
 using System.Windows.Forms;
 using xSimulate.Common;
-using xSimulate.UI.Config;
 using xSimulate.UI.Services;
 using xSimulate.Web.Model;
 
@@ -113,7 +106,6 @@ namespace xSimulate.UI
 
         private void BtnCostFee_Click(object sender, EventArgs e)
         {
-
         }
 
         private void BtnPublish_Click(object sender, EventArgs e)
@@ -135,7 +127,7 @@ namespace xSimulate.UI
             task.BeginDate = DateTime.Now;
             task.Costs = 100;
 
-            TaskService taskService= ServiceManager.CreateTaskService();
+            TaskService taskService = ServiceManager.CreateTaskService();
             string result = taskService.CreateTask(task);
 
             if (string.IsNullOrEmpty(result))

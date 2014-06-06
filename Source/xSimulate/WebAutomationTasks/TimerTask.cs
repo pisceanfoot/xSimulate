@@ -23,6 +23,8 @@ namespace xSimulate.WebAutomationTasks
                 return;
             }
 
+            LoggerManager.Debug(action.AutomationActionData);
+
             if (endDate == DateTime.MinValue)
             {
                 endDate = DateTime.Now.AddSeconds(timerAction.Seconds);
