@@ -33,6 +33,13 @@ namespace xSimulate.Web.Service
             return content;
         }
 
+
+        [WebMethod]
+        public Model.Task GetTaskSetting(int customerSysNo)
+        {
+            
+        }
+
         [WebMethod]
         public Model.RetrieveTask GetTask(int customerSysNo)
         {

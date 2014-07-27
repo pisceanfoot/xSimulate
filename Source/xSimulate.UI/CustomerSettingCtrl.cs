@@ -20,6 +20,11 @@ namespace xSimulate.UI
             this.comboBoxBrowser.SelectedIndex = 0;
         }
 
+        public void LoadTaskSetting()
+        {
+
+        }
+
         private void radioButtonWangWang_CheckedChanged(object sender, EventArgs e)
         {
             TxtWangwang.Enabled = radioButtonWangWang.Checked;
